@@ -8,7 +8,7 @@
 		- style.tsx (화면별 스타일)
 	- SignUp
 		- index.tsx
-		-style.tsx
+		- style.tsx
 - componets (화면속 컴포넌트 폴더)
     - common (공통 컴포넌트)
     - Login (특정화면에 해당하는 컴포넌트)
