@@ -9,10 +9,7 @@
 	- SignUp
 		- index.tsx
 		- style.tsx
-- componets (화면속 컴포넌트 폴더)
-    - common (공통 컴포넌트)
-    - Login (특정화면에 해당하는 컴포넌트)
-    - SignUp
+- componets (각 화면속 컴포넌트 폴더 - 추후 컴포넌트 양에 따라 폴더 분화 예정)
 - hooks (커스텀 훅)
 - recoil (전역 상태관리)
 - utils (validation, date등 )
