@@ -4,7 +4,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomePage from './pages/HomePage';
 import PuzzlePage from './pages/PuzzlePage';
 import ProfilePage from './pages/ProfilePage';
-import {Text, Image, StyleSheet} from 'react-native';
+import {Text, Image, StyleSheet, Dimensions} from 'react-native';
+import {getBottomSpace, getStatusBarHeight} from "react-native-iphone-x-helper";
 
 const MainScreenTab = createBottomTabNavigator();
 
@@ -65,17 +66,14 @@ const RootNavigator = () => {
   );
 };
 
-
 const defaultHeaderStyle = {
-    height:64,
+    height: 64 + getStatusBarHeight(),
     backgroundColor: '#ffffff',
     elevation: 0, // Android
     shadowOpacity: 0, // iOS
     borderBottomWidth: 0,
-
 };
 export default RootNavigator;
-
 
 const mainTapStyles = StyleSheet.create({
   imgIcon:{
