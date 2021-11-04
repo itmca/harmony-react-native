@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './header';
+import DefaultHeaderLeft from './conponents/header/DefaultHeaderLeft';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomePage from './pages/HomePage';
 import PuzzlePage from './pages/PuzzlePage';
@@ -10,7 +10,7 @@ const MainScreenTab = createBottomTabNavigator();
 
 const RootNavigator = () => {
   return (
-    
+
     <MainScreenTab.Navigator
       initialRouteName="Home"
       screenOptions={{
@@ -22,56 +22,57 @@ const RootNavigator = () => {
       }}
       >
       <MainScreenTab.Screen
-          name="Home" 
+          name="Home"
           component={HomePage}
-          options={{ 
+          options={{
             tabBarShowLabel: false,
             tabBarIcon: () =>
             <Image
               style={mainTapStyles.imgIcon}
               source={require('./assets/images/menu_book.png')} />,
-            headerLeft: () => <Header />,
-            headerStyle: headerStyle, 
-            headerTitle: ''
-                  }} 
-          />
-      <MainScreenTab.Screen 
-          name="Puzzle" 
-          component={PuzzlePage} 
+            headerStyle: defaultHeaderStyle,
+            headerLeft: () => <DefaultHeaderLeft />,
+            headerTitle: '',
+          }}
+      />
+      <MainScreenTab.Screen
+          name="Puzzle"
+          component={PuzzlePage}
           options={{
             tabBarShowLabel: false,
             tabBarIcon: () =>
             <Image
               style={mainTapStyles.imgPuzzleIcon}
               source={require('./assets/images/puzzle_onepiece.png')} />,
-            headerLeft: () => <Header />,
-            headerStyle: headerStyle, 
-            headerTitle: ''}} 
+            headerLeft: () => (<DefaultHeaderLeft/>),
+            headerStyle: defaultHeaderStyle,
+            headerTitle: ''}}
           />
       <MainScreenTab.Screen
-           name="Profile" 
-           component={ProfilePage} 
+           name="Profile"
+           component={ProfilePage}
            options={{
             tabBarShowLabel: false,
             tabBarIcon: () =>
             <Image
               style={mainTapStyles.imgIcon}
               source={require('./assets/images/person_outline.png')} />,
-              headerLeft: () => <Header />,
-              headerStyle: headerStyle, 
-              headerTitle: ''}} 
+              headerLeft: () => <DefaultHeaderLeft />,
+              headerStyle: defaultHeaderStyle,
+              headerTitle: ''}}
            />
     </MainScreenTab.Navigator>
   );
 };
 
 
-const headerStyle = {
-  height: 94,
-  backgroundColor: '#ffffff',
-  elevation: 0, // Android
-  shadowOpacity: 0, // iOS
-  borderBottomWidth: 0
+const defaultHeaderStyle = {
+    height:64,
+    backgroundColor: '#ffffff',
+    elevation: 0, // Android
+    shadowOpacity: 0, // iOS
+    borderBottomWidth: 0,
+
 };
 export default RootNavigator;
 
