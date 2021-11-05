@@ -1,0 +1,52 @@
+name: Running Code Coverage
+
+#이벤트 trigger
+on: [pull_request]
+
+#이벤트 발생 시 실행할 작업
+jobs:
+  build:
+    #실행환경
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.18.1]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          package-manager: yarn
+          threshold: 70
+
+      - name: if jest failed pr close
+        uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+              const ref = "${{github.ref}}"
+              const pull_number = Number(ref.split("/")[2])
+              await github.pulls.createReview({
+                ...context.repo,
+                pull_number,
+                body: "테스트코드를 다시 확인해주세요.",
+                event: "REQUEST_CHANGES"
+              })
+              await github.pulls.update({
+                ...context.repo,
+                pull_number,
+                state: "closed"
+              })
+        if: failure()
