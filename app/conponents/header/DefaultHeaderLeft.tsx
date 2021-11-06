@@ -1,6 +1,7 @@
 import React from 'react';
-import { Image, StyleSheet, Pressable} from 'react-native';
+import { Image, Pressable} from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
+import styles from './styles';
 
 const DefaultHeaderLeft = () => {
   const navigation = useNavigation();
@@ -19,10 +20,6 @@ const DefaultHeaderLeft = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  headerLeft: {
-    marginLeft: 16,
-  },
-})
+
 
 export default DefaultHeaderLeft;
