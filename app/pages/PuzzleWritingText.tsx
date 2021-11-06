@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Text, View} from 'react-native';
 
-const PuzzlePage = () => {
+const PuzzleWritingText = () => {
   return (
     <View
       style={{
@@ -10,8 +10,8 @@ const PuzzlePage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Puzzle Page </Text>
+      <Text>Puzzle Writing </Text>
     </View>
   );
 };
-export default PuzzlePage;
+export default PuzzleWritingText;
