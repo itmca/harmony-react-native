@@ -15,7 +15,7 @@ const Home = () => {
           <View style={mainStyles.imageContainer}>
             <Image
               style={mainStyles.mainImage}
-              source={require('../assets/images/mainPuzzle.png')} />
+              source={require('../../assets/images/mainPuzzle.png')} />
           </View>
           <View style={mainStyles.textContainer}>
             <View style={mainStyles.titleTextContainer}>
@@ -85,7 +85,7 @@ const BounceAnimation = () => {
       <Text style={mainStyles.animationText}>인생 한조각 맞추러 가기</Text>
       <Image
         style={mainStyles.fingerImage}
-        source={require('../assets/images/finger.png')} />
+        source={require('../../assets/images/finger.png')} />
     </Animated.View>
   )
 }
