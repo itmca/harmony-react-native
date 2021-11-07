@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Text, View} from 'react-native';
 
-const ProfilePage = () => {
+const PuzzleWritingQuestion = () => {
   return (
     <View
       style={{
@@ -10,8 +10,8 @@ const ProfilePage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Profile Page </Text>
+      <Text>Puzzle Question </Text>
     </View>
   );
 };
-export default ProfilePage;
+export default PuzzleWritingQuestion;

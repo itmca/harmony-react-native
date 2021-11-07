@@ -1,8 +1,8 @@
 import React from 'react';
-import MainPage from './Main';
+
 import {Text, View} from 'react-native';
 
-const HomePage = () => {
+const Profile = () => {
   return (
     <View
       style={{
@@ -10,8 +10,8 @@ const HomePage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <MainPage />
+      <Text>Profile Page </Text>
     </View>
   );
 };
-export default HomePage;
+export default Profile;
