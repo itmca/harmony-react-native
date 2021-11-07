@@ -14,6 +14,7 @@
 - recoil (전역 상태관리)
 - utils (validation, date등 )
 - constants (상수 처리)
+- route (화면 Navigator)
 - assets (이미지, 폰트 처리)
     - images
     - fonts

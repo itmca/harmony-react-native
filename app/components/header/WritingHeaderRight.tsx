@@ -3,22 +3,23 @@ import {Pressable, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 
-type props = {
+type Props = {
   text: string;
   nextScreenName?: string;
   customAction?: Function;
 };
 
-const WritingHeaderRight = ({text, nextScreenName, customAction}: props) => {
+const WritingHeaderRight = ({text, nextScreenName, customAction}: Props) => {
   const navigation = useNavigation();
   return (
-    <Pressable onPress={()=>{
-      if (typeof customAction === 'function') {
+    <Pressable
+      onPress={() => {
+        if (typeof customAction === 'function') {
           customAction();
-      } else {
+        } else {
           navigation.navigate(nextScreenName);
-      }
-    }}>
+        }
+      }}>
       <Text style={styles.writingRightText}>{text}</Text>
     </Pressable>
   );
