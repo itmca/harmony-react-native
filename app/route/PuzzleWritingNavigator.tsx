@@ -13,13 +13,13 @@ const PuzzleWritingNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="PuzzleWritingQuestion"
-      screenOptions={{headerShadowVisible: false}}>
+      screenOptions={{headerShadowVisible: false, headerTitleAlign: 'center'}}>
       <Stack.Screen
         name="PuzzleWritingQuestion"
         component={PuzzleWritingQuestion}
         options={{
           headerLeft: () => <WritingHeaderLeft type="cancel" />,
-          headerTitle: '조각 맞추기',
+          title: '조각 맞추기',
           headerRight: () => (
             <WritingHeaderRight text="다음" nextScreenName="PuzzleWritingPhoto" />
           ),
@@ -30,7 +30,7 @@ const PuzzleWritingNavigator = () => {
         component={PuzzleWritingPhoto}
         options={{
           headerLeft: () => <WritingHeaderLeft type="before" />,
-          headerTitle: '조각 맞추기',
+          title: '조각 맞추기',
           headerRight: () => (
             <WritingHeaderRight text="다음" nextScreenName="PuzzleWritingText" />
           ),
@@ -41,7 +41,7 @@ const PuzzleWritingNavigator = () => {
         component={PuzzleWritingText}
         options={{
           headerLeft: () => <WritingHeaderLeft type="before" />,
-          headerTitle: '조각 맞추기',
+          title: '조각 맞추기',
           headerRight: () => (
             <WritingHeaderRight text="완료" customAction={() => {}} />
           ),
@@ -52,7 +52,7 @@ const PuzzleWritingNavigator = () => {
         component={PuzzleWritingVoice}
         options={{
           headerLeft: () => <WritingHeaderLeft type="cancel" />,
-          headerTitle: '음성 녹음',
+          title: '음성 녹음',
         }}
       />
     </Stack.Navigator>

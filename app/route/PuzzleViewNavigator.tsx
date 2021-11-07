@@ -12,13 +12,13 @@ const PuzzleViewNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShadowVisible: false}}>
+      screenOptions={{headerShadowVisible: false, headerTitleAlign: 'center'}}>
       <Stack.Screen
         name="StoryView"
         component={PuzzleView}
         options={{
           headerLeft: () => <WritingHeaderLeft type="cancel" />,
-          headerTitle: '조각 맞추기',
+          title: '조각 맞추기',
           headerRight: () => (
             <WritingHeaderRight
               text="다음"
@@ -32,7 +32,7 @@ const PuzzleViewNavigator = () => {
         component={Home}
         options={{
           headerLeft: () => <DefaultHeaderLeft />,
-          headerTitle: '',
+          title: '',
         }}
       />
     </Stack.Navigator>

@@ -15,7 +15,8 @@ const ProfileNavigator = () => {
         options={{
           headerLeft: () => <DefaultHeaderLeft />,
           headerStyle: defaultHeaderStyle,
-          headerTitle: ''}}
+          title: '',
+        }}
       />
     </Stack.Navigator>
   );
