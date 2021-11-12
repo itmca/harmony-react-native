@@ -1,5 +1,5 @@
 import React from 'react';
-import MainPage from './Main';
+// import MainPage from './Main';
 import {Animated, Image, Platform, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 const Home = () => {
