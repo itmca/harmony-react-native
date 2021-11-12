@@ -5,11 +5,11 @@ import WritingHeaderRight from '../components/header/WritingHeaderRight';
 import PuzzleWritingPhoto from '../pages/PuzzleWritingPhoto/PuzzleWritingPhoto';
 import PuzzleWritingText from '../pages/PuzzleWritingText/PuzzleWritingText';
 import PuzzleWritingQuestion from '../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
-import PuzzleWritingVoice from "../pages/PuzzleWritingVoice/PuzzleWritingVoice";
+import PuzzleWritingVoice from '../pages/PuzzleWritingVoice/PuzzleWritingVoice';
 
 const Stack = createNativeStackNavigator();
 
-const PuzzleWritingNavigator = () => {
+const PuzzleWritingNavigator = (): JSX.Element => {
   return (
     <Stack.Navigator
       initialRouteName="PuzzleWritingQuestion"
@@ -21,7 +21,10 @@ const PuzzleWritingNavigator = () => {
           headerLeft: () => <WritingHeaderLeft type="cancel" />,
           title: '조각 맞추기',
           headerRight: () => (
-            <WritingHeaderRight text="다음" nextScreenName="PuzzleWritingPhoto" />
+            <WritingHeaderRight
+              text="다음"
+              nextScreenName="PuzzleWritingPhoto"
+            />
           ),
         }}
       />
@@ -32,7 +35,10 @@ const PuzzleWritingNavigator = () => {
           headerLeft: () => <WritingHeaderLeft type="before" />,
           title: '조각 맞추기',
           headerRight: () => (
-            <WritingHeaderRight text="다음" nextScreenName="PuzzleWritingText" />
+            <WritingHeaderRight
+              text="다음"
+              nextScreenName="PuzzleWritingText"
+            />
           ),
         }}
       />

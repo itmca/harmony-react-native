@@ -8,7 +8,7 @@ import DefaultHeaderLeft from '../components/header/DefaultHeaderLeft';
 
 const Stack = createNativeStackNavigator();
 
-const PuzzleViewNavigator = () => {
+const PuzzleViewNavigator = (): JSX.Element => {
   return (
     <Stack.Navigator
       initialRouteName="Home"

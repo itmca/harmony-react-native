@@ -8,7 +8,7 @@ import ProfileNavigator from './ProfileNavigator';
 
 const BottomTab = createBottomTabNavigator();
 
-const RootNavigator = () => {
+const RootNavigator = (): JSX.Element => {
   return (
     <BottomTab.Navigator
       initialRouteName="PuzzleViewNavigator"

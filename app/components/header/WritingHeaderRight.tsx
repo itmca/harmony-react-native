@@ -9,8 +9,12 @@ type Props = {
   customAction?: Function;
 };
 
-const WritingHeaderRight = ({text, nextScreenName, customAction}: Props) => {
-  const navigation = useNavigation();
+const WritingHeaderRight = ({
+  text,
+  nextScreenName,
+  customAction,
+}: Props): JSX.Element => {
+  const navigation = useNavigation<any>();
   return (
     <Pressable
       onPress={() => {
