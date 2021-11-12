@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Text, View} from 'react-native';
 
-const PuzzleView = () => {
+const PuzzleView = (): JSX.Element => {
   return (
     <View
       style={{

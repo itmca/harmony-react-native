@@ -2,8 +2,8 @@ import React from 'react';
 import {Image, Pressable} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
-const DefaultHeaderLeft = () => {
-  const navigation = useNavigation();
+const DefaultHeaderLeft = (): JSX.Element => {
+  const navigation = useNavigation<any>();
   const route = useRoute();
   return (
     <Pressable

@@ -14,7 +14,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigator from './route/RootNavigator';
 
-const index = () => {
+const index = (): JSX.Element => {
   return (
     <>
       <NavigationContainer>

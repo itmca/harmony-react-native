@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {defaultHeaderStyle} from './styles';
-import Profile from "../pages/Profile/Profile";
-import DefaultHeaderLeft from "../components/header/DefaultHeaderLeft";
+import Profile from '../pages/Profile/Profile';
+import DefaultHeaderLeft from '../components/header/DefaultHeaderLeft';
 
 const Stack = createNativeStackNavigator();
 
-const ProfileNavigator = () => {
+const ProfileNavigator = (): JSX.Element => {
   return (
     <Stack.Navigator>
       <Stack.Screen

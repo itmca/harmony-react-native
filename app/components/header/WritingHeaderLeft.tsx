@@ -7,7 +7,7 @@ type Props = {
   type: 'cancel' | 'before';
 };
 
-const WritingHeaderLeft = ({type}: Props) => {
+const WritingHeaderLeft = ({type}: Props): JSX.Element => {
   const navigation = useNavigation();
   return (
     <Pressable

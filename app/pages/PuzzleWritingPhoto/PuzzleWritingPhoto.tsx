@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Text, View} from 'react-native';
 
-const PuzzleWritingPhoto = () => {
+const PuzzleWritingPhoto = (): JSX.Element => {
   return (
     <View
       style={{
@@ -10,7 +10,7 @@ const PuzzleWritingPhoto = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Puzzle Photo </Text>
+      <Text>Puzzle Photo</Text>
     </View>
   );
 };
