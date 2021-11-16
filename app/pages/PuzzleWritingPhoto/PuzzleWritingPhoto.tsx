@@ -2,18 +2,22 @@ import CameraRoll, {PhotoIdentifier} from '@react-native-community/cameraroll';
 import React, {useEffect, useState} from 'react';
 
 import {Dimensions, ScrollView, View} from 'react-native';
+import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
 
 import SelectablePhoto from '../../components/PuzzleWirtingPhoto/SelectablePhoto';
 import SelectedPhoto from '../../components/PuzzleWirtingPhoto/SelectedPhoto';
+import {
+  mainSelectedPhotoState,
+  selectedPhotoState,
+} from '../../recoils/SelectedPhotoRecoil';
 
 const DeviceWidth = Dimensions.get('window').width;
 
 const PuzzleWritingPhoto = (): JSX.Element => {
   const [photos, setPhotos] = useState<Array<PhotoIdentifier>>();
-  const [selectedPhotoList, setSelectedPhotoList] =
-    useState<Array<PhotoIdentifier>>();
-  const [selectedPhoto, setSelectedPhoto] = useState<PhotoIdentifier>();
-
+  const setSelectedPhotoList = useSetRecoilState(selectedPhotoState);
+  // const [selectedPhoto, setSelectedPhoto] = useState<PhotoIdentifier>();
+  const selectedPhoto = useRecoilValue(mainSelectedPhotoState);
   useEffect(() => {
     void getMedia();
   }, []);
@@ -45,12 +49,14 @@ const PuzzleWritingPhoto = (): JSX.Element => {
             <SelectablePhoto
               key={index}
               onSelected={(photo: PhotoIdentifier) => {
-                setSelectedPhoto(photo);
+                setSelectedPhotoList(prev => prev.concat([photo]));
               }}
               //! size 수정 필요
-              onDeselected={(photo: PhotoIdentifier) =>
-                console.log('onDeselected!')
-              }
+              onDeselected={(photo: PhotoIdentifier) => {
+                setSelectedPhotoList(prev =>
+                  prev.filter(e => e.node.image.uri !== photo.node.image.uri),
+                );
+              }}
               size={DeviceWidth / 3}
               photo={photo}
             />
