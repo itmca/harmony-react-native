@@ -1,12 +1,18 @@
 import CameraRoll, {PhotoIdentifier} from '@react-native-community/cameraroll';
 import React, {useEffect, useState} from 'react';
 
-import {ScrollView, View} from 'react-native';
+import {Dimensions, ScrollView, View} from 'react-native';
 
 import SelectablePhoto from '../../components/PuzzleWirtingPhoto/SelectablePhoto';
+import SelectedPhoto from '../../components/PuzzleWirtingPhoto/SelectedPhoto';
+
+const DeviceWidth = Dimensions.get('window').width;
 
 const PuzzleWritingPhoto = (): JSX.Element => {
   const [photos, setPhotos] = useState<Array<PhotoIdentifier>>();
+  const [selectedPhotoList, setSelectedPhotoList] =
+    useState<Array<PhotoIdentifier>>();
+  const [selectedPhoto, setSelectedPhoto] = useState<PhotoIdentifier>();
 
   useEffect(() => {
     void getMedia();
@@ -27,7 +33,9 @@ const PuzzleWritingPhoto = (): JSX.Element => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
+      <SelectedPhoto size={DeviceWidth} photo={selectedPhoto} />
       <ScrollView
+        style={{height: 500}}
         contentContainerStyle={{
           flexDirection: 'row',
           flexWrap: 'wrap',
@@ -36,13 +44,15 @@ const PuzzleWritingPhoto = (): JSX.Element => {
           return (
             <SelectablePhoto
               key={index}
-              onSelected={() => {
-                console.log('onSelected!');
+              onSelected={(photo: PhotoIdentifier) => {
+                setSelectedPhoto(photo);
               }}
               //! size 수정 필요
-              onDeselected={() => console.log('onDeselected!')}
-              size={130}
-              url={photo.node.image.uri}
+              onDeselected={(photo: PhotoIdentifier) =>
+                console.log('onDeselected!')
+              }
+              size={DeviceWidth / 3}
+              photo={photo}
             />
           );
         })}
