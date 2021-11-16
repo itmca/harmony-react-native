@@ -2,7 +2,7 @@ import CameraRoll, {PhotoIdentifier} from '@react-native-community/cameraroll';
 import React, {useEffect, useState} from 'react';
 
 import {Dimensions, ScrollView, View} from 'react-native';
-import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
+import {useRecoilValue, useSetRecoilState} from 'recoil';
 
 import SelectablePhoto from '../../components/PuzzleWirtingPhoto/SelectablePhoto';
 import SelectedPhoto from '../../components/PuzzleWirtingPhoto/SelectedPhoto';
