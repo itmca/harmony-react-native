@@ -3,7 +3,6 @@ package com.harmony_app;
 import android.app.Application;
 import android.content.Context;
 
-import com.reactnativecommunity.cameraroll.CameraRollPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -30,7 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
-          packages.add(new CameraRollPackage());
+          // packages.add(new MyReactNativePackage());
           return packages;
         }
 
