@@ -15,6 +15,7 @@ const PuzzleRandomQuestionView = (isLoading:Boolean, questionData:String) => {
             <Text>{questionData}</Text>
           </View>
         )}
+        
           <Button
           title="Puzzle Question"
           onPress={() => getQuestionData()}
