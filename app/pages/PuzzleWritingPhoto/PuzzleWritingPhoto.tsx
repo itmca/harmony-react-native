@@ -16,13 +16,13 @@ const DeviceWidth = Dimensions.get('window').width;
 const PuzzleWritingPhoto = (): JSX.Element => {
   const [photos, setPhotos] = useState<Array<PhotoIdentifier>>();
   const setSelectedPhotoList = useSetRecoilState(selectedPhotoState);
-  // const [selectedPhoto, setSelectedPhoto] = useState<PhotoIdentifier>();
   const selectedPhoto = useRecoilValue(mainSelectedPhotoState);
+
   useEffect(() => {
-    void getMedia();
+    void initPhotos();
   }, []);
 
-  const getMedia = async () => {
+  const initPhotos = async () => {
     const result = await CameraRoll.getPhotos({
       first: 20,
       assetType: 'Photos',
