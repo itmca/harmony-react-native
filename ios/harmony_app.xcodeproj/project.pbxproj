@@ -13,6 +13,7 @@
 		6172F2D35A4C3AA820D92908 /* libPods-harmony_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-harmony_app.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-harmony_app-harmony_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-harmony_app-harmony_appTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9F2C946B273E9C60003FCD78 /* libreact-native-cameraroll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F2C946A273E9C60003FCD78 /* libreact-native-cameraroll.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +23,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = harmony_app;
+		};
+		9F2C9417273E9892003FCD78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F2C9413273E9892003FCD78 /* RNCCameraRoll.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
+			remoteInfo = RNCCameraRoll;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -50,6 +58,8 @@
 		7C843D864E6E4FBB812D1351 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = harmony_app/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91DA8247853B49FB836284BD /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		9F2C9413273E9892003FCD78 /* RNCCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCCameraRoll.xcodeproj; path = "../node_modules/@react-native-community/cameraroll/ios/RNCCameraRoll.xcodeproj"; sourceTree = "<group>"; };
+		9F2C946A273E9C60003FCD78 /* libreact-native-cameraroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-cameraroll.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-harmony_app-harmony_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harmony_app-harmony_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC050B5741884E6893BA2192 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		B89499F471E44C06B8EE4ACE /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -74,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F2C946B273E9C60003FCD78 /* libreact-native-cameraroll.a in Frameworks */,
 				6172F2D35A4C3AA820D92908 /* libPods-harmony_app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +148,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F2C946A273E9C60003FCD78 /* libreact-native-cameraroll.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				6423831EA8574132BED9D8CC /* libPods-harmony_app.a */,
 				ABFE59519B596E51CEFDCCC0 /* libPods-harmony_app-harmony_appTests.a */,
@@ -147,6 +159,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9F2C9413273E9892003FCD78 /* RNCCameraRoll.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -172,6 +185,14 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* harmony_app.app */,
 				00E356EE1AD99517003FC87E /* harmony_appTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9F2C9414273E9892003FCD78 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F2C9418273E9892003FCD78 /* libRNCCameraRoll.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -261,6 +282,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9F2C9414273E9892003FCD78 /* Products */;
+					ProjectRef = 9F2C9413273E9892003FCD78 /* RNCCameraRoll.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* harmony_app */,
@@ -268,6 +295,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9F2C9418273E9892003FCD78 /* libRNCCameraRoll.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCCameraRoll.a;
+			remoteRef = 9F2C9417273E9892003FCD78 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
