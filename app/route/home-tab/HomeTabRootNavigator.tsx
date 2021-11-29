@@ -4,8 +4,10 @@ import {Image} from 'react-native';
 import styles from '../styles';
 import Home from '../../pages/Home/Home';
 import Profile from '../../pages/Profile/Profile';
-import PuzzleWritingBridge from './PuzzleWritingBridge';
 import DefaultHeaderLeft from '../../components/header/DefaultHeaderLeft';
+import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
+import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
+import WritingHeaderRight from '../../components/header/WritingHeaderRight';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -13,6 +15,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
+      backBehavior="history"
       screenOptions={{
         tabBarStyle: {
           height: 74,
@@ -27,6 +30,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
         headerRightContainerStyle: {
           paddingRight: 16,
         },
+        tabBarHideOnKeyboard: true,
       }}>
       <BottomTab.Screen
         name="Home"
@@ -44,14 +48,22 @@ const HomeTabRootNavigator = (): JSX.Element => {
         }}
       />
       <BottomTab.Screen
-        name="PuzzleWritingBridge"
-        component={PuzzleWritingBridge}
+        name="PuzzleWritingQuestion"
+        component={PuzzleWritingQuestion}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: () => (
             <Image
               style={styles.imgPuzzleIcon}
               source={require('../../assets/images/puzzle_onepiece.png')}
+            />
+          ),
+          headerLeft: () => <WritingHeaderLeft type="cancel" />,
+          title: '조각 맞추기',
+          headerRight: () => (
+            <WritingHeaderRight
+              text="다음"
+              nextScreenName="PuzzleWritingPhoto"
             />
           ),
         }}
