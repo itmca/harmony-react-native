@@ -14,7 +14,7 @@ const WritingHeaderLeft = ({type}: Props): JSX.Element => {
       onPress={() => {
         navigation.goBack();
       }}>
-      <Icon name={type === 'cancel' ? 'close' : 'chevron_left'} size={24} />
+      <Icon name={type === 'cancel' ? 'close' : 'chevron-left'} size={24} />
     </Pressable>
   );
 };
