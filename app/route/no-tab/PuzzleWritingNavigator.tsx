@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import WritingHeaderLeft from '../components/header/WritingHeaderLeft';
-import WritingHeaderRight from '../components/header/WritingHeaderRight';
-import PuzzleWritingPhoto from '../pages/PuzzleWritingPhoto/PuzzleWritingPhoto';
-import PuzzleWritingText from '../pages/PuzzleWritingText/PuzzleWritingText';
-import PuzzleWritingQuestion from '../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
-import PuzzleWritingVoice from '../pages/PuzzleWritingVoice/PuzzleWritingVoice';
+import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
+import WritingHeaderRight from '../../components/header/WritingHeaderRight';
+import PuzzleWritingPhoto from '../../pages/PuzzleWritingPhoto/PuzzleWritingPhoto';
+import PuzzleWritingText from '../../pages/PuzzleWritingText/PuzzleWritingText';
+import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
+import PuzzleWritingVoice from '../../pages/PuzzleWritingVoice/PuzzleWritingVoice';
 
 const Stack = createNativeStackNavigator();
 

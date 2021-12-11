@@ -21,7 +21,12 @@ const WritingHeaderRight = ({
         if (typeof customAction === 'function') {
           customAction();
         } else {
-          navigation.navigate(nextScreenName);
+          navigation.push('NoTab', {
+            screen: 'PuzzleWritingNavigator',
+            params: {
+              screen: nextScreenName,
+            },
+          });
         }
       }}>
       <Text style={styles.writingRightText}>{text}</Text>

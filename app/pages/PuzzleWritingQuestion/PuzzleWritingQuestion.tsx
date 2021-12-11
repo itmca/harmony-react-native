@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {Text, View} from 'react-native';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
@@ -10,7 +9,7 @@ const PuzzleWritingQuestion = (): JSX.Element => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Puzzle Question </Text>
+      <Text>Puzzle Question !</Text>
     </View>
   );
 };
