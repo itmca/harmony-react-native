@@ -7,14 +7,14 @@ type Props = {
   type: 'cancel' | 'before';
 };
 
-const WritingHeaderLeft = ({type}: Props) => {
+const WritingHeaderLeft = ({type}: Props): JSX.Element => {
   const navigation = useNavigation();
   return (
     <Pressable
       onPress={() => {
         navigation.goBack();
       }}>
-      <Icon name={type === 'cancel' ? 'close' : 'chevron_left'} size={24} />
+      <Icon name={type === 'cancel' ? 'close' : 'chevron-left'} size={24} />
     </Pressable>
   );
 };

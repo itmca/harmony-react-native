@@ -925,6 +925,10 @@
     "jest-resolve" "^26.6.2"
     "jest-util" "^26.6.2"
     "jest-worker" "^26.6.2"
+<<<<<<< HEAD
+=======
+    "node-notifier" "^8.0.0"
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
     "slash" "^3.0.0"
     "source-map" "^0.6.0"
     "string-length" "^4.0.1"
@@ -1208,6 +1212,7 @@
     "nanoid" "^3.1.23"
     "query-string" "^7.0.0"
     "react-is" "^16.13.0"
+<<<<<<< HEAD
 
 "@react-navigation/elements@^1.1.2":
   "integrity" "sha512-PbPCleC1HpUlXtuP0DFNCNTEhRLd6lmB0KxY0SGRGqCemS3HpG/PajEQ1LDe7S51M03a1tDby1MfKTkNanUXAg=="
@@ -1219,6 +1224,14 @@
   "resolved" "https://registry.npmjs.org/@react-navigation/elements/-/elements-1.2.1.tgz"
   "version" "1.2.1"
 
+=======
+
+"@react-navigation/elements@^1.1.2", "@react-navigation/elements@^1.2.1":
+  "integrity" "sha512-EnmAbKMsptrliRKf95rdgS6BhMjML+mIns06+G1Vdih6BrEo7/0iytThUv3WBf99AI76dyEq/cqLUwHPiFzXWg=="
+  "resolved" "https://registry.npmjs.org/@react-navigation/elements/-/elements-1.2.1.tgz"
+  "version" "1.2.1"
+
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
 "@react-navigation/native-stack@^6.2.5":
   "integrity" "sha512-XCtwl4LEr06nzxMG4aXbYfbO/pAjyhGOR3QtBVBq/uGfVGkeK8utKUe925reqd1x099CiEfSJLpgeR2KzzYp+Q=="
   "resolved" "https://registry.npmjs.org/@react-navigation/native-stack/-/native-stack-6.2.5.tgz"
@@ -1450,7 +1463,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+<<<<<<< HEAD
 "@typescript-eslint/eslint-plugin@^3.1.0":
+=======
+"@typescript-eslint/eslint-plugin@^3.1.0", "@typescript-eslint/eslint-plugin@^3.10.1":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   "integrity" "sha512-PQg0emRtzZFWq6PxBcdxRH3QIQiyFO3WCVpRL3fgj5oQS3CDs3AeAKfv4DxNhzn8ITdNJGJ4D3Qw8eAJf3lXeQ=="
   "resolved" "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-3.10.1.tgz"
   "version" "3.10.1"
@@ -1473,7 +1490,11 @@
     "eslint-scope" "^5.0.0"
     "eslint-utils" "^2.0.0"
 
+<<<<<<< HEAD
 "@typescript-eslint/parser@^3.0.0", "@typescript-eslint/parser@^3.1.0":
+=======
+"@typescript-eslint/parser@^3.0.0", "@typescript-eslint/parser@^3.1.0", "@typescript-eslint/parser@^3.10.1":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   "integrity" "sha512-Ug1RcWcrJP02hmtaXVS3axPPTTPnZjupqhgj+NnZ6BCkwSImWk/283347+x9wN+lqOdK9Eo3vsyiyDHgsmiEJw=="
   "resolved" "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-3.10.1.tgz"
   "version" "3.10.1"
@@ -2740,6 +2761,10 @@
     "estraverse" "^5.2.0"
     "esutils" "^2.0.2"
     "optionator" "^0.8.1"
+<<<<<<< HEAD
+=======
+    "source-map" "~0.6.1"
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   optionalDependencies:
     "source-map" "~0.6.1"
 
@@ -2770,14 +2795,22 @@
   "resolved" "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.4.1.tgz"
   "version" "22.4.1"
 
+<<<<<<< HEAD
 "eslint-plugin-prettier@3.1.2":
+=======
+"eslint-plugin-prettier@^3.1.2", "eslint-plugin-prettier@3.1.2":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   "integrity" "sha512-GlolCC9y3XZfv3RQfwGew7NnuFDKsfI4lbvRK+PIIo23SFH+LemGs4cKwzAaRa+Mdb+lQO/STaIayno8T5sJJA=="
   "resolved" "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.2.tgz"
   "version" "3.1.2"
   dependencies:
     "prettier-linter-helpers" "^1.0.0"
 
+<<<<<<< HEAD
 "eslint-plugin-react-hooks@^4.0.4":
+=======
+"eslint-plugin-react-hooks@^4.0.4", "eslint-plugin-react-hooks@^4.2.0":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   "integrity" "sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ=="
   "resolved" "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz"
   "version" "4.2.0"
@@ -2795,7 +2828,11 @@
     "@babel/traverse" "^7.7.4"
     "eslint-plugin-react-native-globals" "^0.1.1"
 
+<<<<<<< HEAD
 "eslint-plugin-react@^7.20.0":
+=======
+"eslint-plugin-react@^7.20.0", "eslint-plugin-react@^7.26.1":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   "integrity" "sha512-Lug0+NOFXeOE+ORZ5pbsh6mSKjBKXDXItUD2sQoT+5Yl0eoT82DqnXeTMfUare4QVCn9QwXbfzO/dBLjLXwVjQ=="
   "resolved" "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.26.1.tgz"
   "version" "7.26.1"
@@ -4006,6 +4043,10 @@
     "@types/node" "*"
     "anymatch" "^3.0.3"
     "fb-watchman" "^2.0.0"
+<<<<<<< HEAD
+=======
+    "fsevents" "^2.1.2"
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
     "graceful-fs" "^4.2.4"
     "jest-regex-util" "^26.0.0"
     "jest-serializer" "^26.6.2"
@@ -4397,6 +4438,11 @@
   "integrity" "sha1-NzaitCi4e72gzIO1P6PWM6NcKug="
   "resolved" "https://registry.yarnpkg.com/jsonfile/-/jsonfile-2.4.0.tgz"
   "version" "2.4.0"
+<<<<<<< HEAD
+=======
+  dependencies:
+    "graceful-fs" "^4.1.6"
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   optionalDependencies:
     "graceful-fs" "^4.1.6"
 
@@ -4404,6 +4450,11 @@
   "integrity" "sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss="
   "resolved" "https://registry.yarnpkg.com/jsonfile/-/jsonfile-4.0.0.tgz"
   "version" "4.0.0"
+<<<<<<< HEAD
+=======
+  dependencies:
+    "graceful-fs" "^4.1.6"
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   optionalDependencies:
     "graceful-fs" "^4.1.6"
 
@@ -4416,6 +4467,7 @@
   "integrity" "sha512-uP5vu8xfy2F9A6LGC22KO7e2/vGTS1MhP+18f++ZNlf0Ohaxbc9nIEwHAsejlJKyzfZzU5UIhe5ItYkitcZnZA=="
   "resolved" "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-3.2.1.tgz"
   "version" "3.2.1"
+<<<<<<< HEAD
   dependencies:
     "array-includes" "^3.1.3"
     "object.assign" "^4.1.2"
@@ -4428,12 +4480,32 @@
     "is-buffer" "^1.1.5"
 
 "kind-of@^3.0.3":
+=======
+  dependencies:
+    "array-includes" "^3.1.3"
+    "object.assign" "^4.1.2"
+
+"kind-of@^3.0.2":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
   "resolved" "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz"
   "version" "3.2.2"
   dependencies:
     "is-buffer" "^1.1.5"
 
+<<<<<<< HEAD
+"kind-of@^3.2.0":
+=======
+"kind-of@^3.0.3":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
+  "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
+  "resolved" "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz"
+  "version" "3.2.2"
+  dependencies:
+    "is-buffer" "^1.1.5"
+
+<<<<<<< HEAD
+=======
 "kind-of@^3.2.0":
   "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
   "resolved" "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz"
@@ -4441,12 +4513,14 @@
   dependencies:
     "is-buffer" "^1.1.5"
 
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
 "kind-of@^4.0.0":
   "integrity" "sha1-IIE989cSkosgc3hpGkUGb65y3Vc="
   "resolved" "https://registry.yarnpkg.com/kind-of/-/kind-of-4.0.0.tgz"
   "version" "4.0.0"
   dependencies:
     "is-buffer" "^1.1.5"
+<<<<<<< HEAD
 
 "kind-of@^5.0.0":
   "integrity" "sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw=="
@@ -4458,10 +4532,28 @@
   "resolved" "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz"
   "version" "6.0.3"
 
+=======
+
+"kind-of@^5.0.0":
+  "integrity" "sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw=="
+  "resolved" "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz"
+  "version" "5.1.0"
+
+"kind-of@^6.0.0", "kind-of@^6.0.2":
+  "integrity" "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw=="
+  "resolved" "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz"
+  "version" "6.0.3"
+
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
 "klaw@^1.0.0":
   "integrity" "sha1-QIhDO0azsbolnXh4XY6W9zugJDk="
   "resolved" "https://registry.yarnpkg.com/klaw/-/klaw-1.3.1.tgz"
   "version" "1.3.1"
+<<<<<<< HEAD
+=======
+  dependencies:
+    "graceful-fs" "^4.1.9"
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   optionalDependencies:
     "graceful-fs" "^4.1.9"
 
@@ -5541,7 +5633,11 @@
   dependencies:
     "fast-diff" "^1.1.2"
 
+<<<<<<< HEAD
 "prettier@^2.0.2", "prettier@>= 1.13.0":
+=======
+"prettier@^2.0.2", "prettier@^2.4.1", "prettier@>= 1.13.0":
+>>>>>>> b2462959191ced591ca17544fc7f7c578ac52708
   "integrity" "sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA=="
   "resolved" "https://registry.yarnpkg.com/prettier/-/prettier-2.4.1.tgz"
   "version" "2.4.1"
