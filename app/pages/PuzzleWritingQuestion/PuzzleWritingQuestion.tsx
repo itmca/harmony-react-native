@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import PuzzleWritingRandomQuestion from './PuzzleWritingRandomQuestion';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
   return (
@@ -9,7 +10,8 @@ const PuzzleWritingQuestion = (): JSX.Element => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Puzzle Question !</Text>
+      {/* <Text>Puzzle Question !</Text> */}
+      <PuzzleWritingRandomQuestion />
     </View>
   );
 };
