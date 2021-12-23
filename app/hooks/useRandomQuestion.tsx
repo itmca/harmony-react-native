@@ -1,37 +1,56 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 
+const useRandomQuestion = (props: {url: string}) => {
+  const [state, setState] = useState({
+    isLoading: false,
+    error: '' ?? undefined,
+    questionData: '',
+  });
 
+  const [trigger, setTrigger] = useState(false);
 
-function useRandomQuestion(){
-  const [ questionContent, setQuestionContent] = useState<string>('');
-  const [ isLoading, setLoading] = useState<boolean>(true);
-  const [ error, setError] = useState<string>('');
+  if (!props.url) {
+    return {...state};
+  }
 
-  const getQuestionListData = async() => {
-    try {
-        const response = await axios.get('http://localhost:5000/question/random'
-        );
-        // const json = await response.json();
-        console.log(response);
-        const question_content:string = response.toString();
-        setQuestionContent(question_content);
-        return questionContent;
-    } catch (error) {
-        console.error(error);
-        setError('랜덤 질문을 가져오는데 실패했습니다.');
-    } finally {
-        setLoading(false);
-    }
+  const refetch = () => {
+    setState({
+      ...state,
+      isLoading: true,
+    });
+    setTrigger(true);
   };
 
-
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    getQuestionListData()
-  }, []);
+    if (trigger) {
+      void getQuestionListData();
+      return setTrigger(false);
+    }
+  }, [trigger]);
 
-
-  return { questionContent, isLoading, error };
+  const getQuestionListData = async () => {
+    try {
+      const response = await axios.get(props.url);
+      const json = JSON.stringify(response.data['body']);
+      console.log(json);
+      const question_content: string = json.toString();
+      setState({
+        ...state,
+        isLoading: false,
+        questionData: question_content,
+      });
+    } catch (error) {
+      console.error(error);
+      setState({
+        ...state,
+        isLoading: false,
+        // error: error.toString,
+      });
+    }
+  };
+  return {...state, refetch};
 };
 
-export default useRandomQuestion();
+export default useRandomQuestion;

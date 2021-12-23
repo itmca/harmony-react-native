@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import {Text, View, Button, ActivityIndicator } from 'react-native';
+import React from 'react';
+import {Text, View, Button} from 'react-native';
 import useRandomQuestion from '../../hooks/useRandomQuestion';
 
-// export type QeustionInfo = {
-//   seq: number,
-//   category: string,
-//   question_content: string,
-//   use_count: number,
-//   create_date: Date,
-//   question_grade: number,
-// };
-
-
 // const PuzzleRandomQuestionView: React.FC<QeustionInfo> = ({seq, question_content})  => {
-const PuzzleRandomQuestionView = () => {
-  const { questionContent, isLoading, error } = useRandomQuestion();
+const PuzzleRandomQuestionView = (): JSX.Element => {
+  const {isLoading, questionData, error, refetch} = useRandomQuestion({
+    url: 'https://jsonplaceholder.typicode.com/posts/1',
+    // url = 'http://localhost:5000/question/random';
+  });
 
+  console.log(isLoading, questionData, error);
   return (
     <View
       style={{
@@ -24,15 +17,14 @@ const PuzzleRandomQuestionView = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-        { isLoading && <Text>Loading...</Text>}
-        { !isLoading && error && <Text>{error}</Text> }
-        { !isLoading && questionContent && <Text>{questionContent}</Text>}
-          <Button
-          title="Puzzle Question"
-          onPress={() => {
-
-        }}
-          />
+      {isLoading && <Text>Loading...</Text>}
+      {/* { !isLoading && error && <Text>{error}</Text> } */}
+      {!isLoading && questionData === '' ? (
+        <Text>질문을 적어보세요 !</Text>
+      ) : (
+        <Text>{questionData}</Text>
+      )}
+      <Button title="랜덤 질문 얻기" onPress={refetch} />
     </View>
   );
 };
