@@ -5,15 +5,6 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  card: {
-    height: 40,
-    width: '100%',
-    borderWidth: 3,
-    borderColor: '#dbdbdb',
-  },
-  scrollView: {
-    marginHorizontal: 20,
-  },
   titleInput: {
     marginBottom: 5,
     borderBottomWidth: 2,

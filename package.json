@@ -10,6 +10,13 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@ant-design/react-native": "^4.2.0",
+<<<<<<< HEAD
+    "@material-ui/icons": "^4.11.2",
+    "@mui/icons-material": "^5.2.1",
+    "@mui/material": "^5.2.3",
+=======
+>>>>>>> cbd6cc6eb14a52a49039f9cc58c327b858042f66
     "@react-native-community/cameraroll": "^4.1.2",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/picker": "^1.8.1",

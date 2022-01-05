@@ -1,20 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import {Image, ScrollView, TextInput, View,} from 'react-native';
+import {ScrollView, TextInput, View, Text} from 'react-native';
 import {KeyboardAccessoryView} from 'react-native-keyboard-accessory';
 import Button from '@ant-design/react-native/lib/button';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
 const PuzzleWritingText = (): JSX.Element => {
+  const inputRef = React.useRef<TextInput>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
-      <View style={styles.scrollView}>
+      <View style={{marginHorizontal: 20}}>
         <TextInput
+          ref={inputRef}
           style={styles.titleInput}
+          autoFocus={true}
           placeholder="제목을 입력해주세요."
         />
       </View>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={{marginHorizontal: 20}}>
         <TextInput
           multiline={true}
           style={styles.contentInput}
@@ -24,10 +35,11 @@ const PuzzleWritingText = (): JSX.Element => {
       <KeyboardAccessoryView
         alwaysVisible={true}
         hideBorder={true}
-        androidAdjustResize={true}>
+        androidAdjustResize={true}
+        style={{backgroundColor: 'white'}}>
         <Button onPress={() => null} style={styles.voiceBox}>
-          <Image source={require('../../assets/images/voice_icon.png')} /> 음성
-          녹음하기
+          <Icon name={'mic'} size={14}></Icon>
+          <Text> 음성 녹음하기</Text>
         </Button>
       </KeyboardAccessoryView>
     </View>
