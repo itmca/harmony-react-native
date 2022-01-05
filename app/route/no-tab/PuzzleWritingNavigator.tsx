@@ -1,21 +1,11 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-<<<<<<< HEAD:app/route/no-tab/PuzzleWritingNavigator.tsx
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
 import PuzzleWritingPhoto from '../../pages/PuzzleWritingPhoto/PuzzleWritingPhoto';
 import PuzzleWritingText from '../../pages/PuzzleWritingText/PuzzleWritingText';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import PuzzleWritingVoice from '../../pages/PuzzleWritingVoice/PuzzleWritingVoice';
-=======
-import WritingHeaderLeft from '../components/header/WritingHeaderLeft';
-import WritingHeaderRight from '../components/header/WritingHeaderRight';
-import PuzzleWritingPhoto from '../pages/PuzzleWritingPhoto/PuzzleWritingPhoto';
-import PuzzleWritingText from '../pages/PuzzleWritingText/PuzzleWritingText';
-import PuzzleWritingQuestion from '../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
-import PuzzleWritingVoice from '../pages/PuzzleWritingVoice/PuzzleWritingVoice';
->>>>>>> cbd6cc6eb14a52a49039f9cc58c327b858042f66:app/route/PuzzleWritingNavigator.tsx
-
 const Stack = createNativeStackNavigator();
 
 const PuzzleWritingNavigator = (): JSX.Element => {
