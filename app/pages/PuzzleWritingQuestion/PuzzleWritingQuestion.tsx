@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {styles} from './styles.ts';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
   const [text, setText] = useState("");
@@ -16,14 +17,14 @@ const PuzzleWritingQuestion = (): JSX.Element => {
     <View style={styles.container}>
 
       <View style={styles.topheader}>
-        <Image style={styles.profileImage} source={require('../../assets/images/puzzle_logo.png')} />
+        <Image style={styles.profileImage} source={require('../../assets/images/profile_image_sample.png')} />
         <View style={styles.headerText}>
           <Text style={styles.topText}>홍진경님, 할부지에게 </Text>
           <Text style={styles.topTextBold}>어떤 질문을 드려 볼까요? </Text>
         </View>
       </View>
 
-      <View style={{flex:3}}>
+      <View>
         <TextInput
         multiline
         style={styles.input}
@@ -35,89 +36,14 @@ const PuzzleWritingQuestion = (): JSX.Element => {
         />
       </View>
 
-      <View style={{flex:1}}>
+      <View>
         <TouchableOpacity style={styles.questionBtn}>
-          <Text style={styles.btnText}> ❔ 질문 추천 받기</Text>
+          <Image style={styles.btnQuestionMark} source={require('../../assets/images/puzzle_help_questionmark.png')} />
+          <Text style={styles.btnText}>질문 추천 받기</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f2',
-    paddingHorizontal: 15,
-    paddingVertical: 20,
-  },
-
-  topheader: {
-    flexDirection: "row",
-    marginVertical: 20,
-  },
-
-  headerText:{
-    flexDirection: "column",
-    marginLeft: 10,
-  },
-
-  profileImage: {
-    borderRadius: 50,
-  },
-
-  topText: {
-    fontSize: 20,
-  },
-
-  topTextBold:{
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-
-  input: {
-    backgroundColor: "white",
-    height: "100%",
-    paddingVertical: 30,
-    paddingHorizontal: 15,
-    borderRadius: 7,
-
-    alignItems: 'flex-start',
-
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-
-  questionBtn: {
-    backgroundColor: "#454958",
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 15,
-    height: 50,
-    borderRadius: 7,
-
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-
-  btnText:{
-    color: "white",
-    fontSize: 15,
-  }
-
-});
 
 export default PuzzleWritingQuestion;
