@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ecf0f2',
+    backgroundColor: '#ffffff',
     paddingHorizontal: 15,
     paddingVertical: 20,
   },
@@ -96,5 +96,12 @@ export const styles = StyleSheet.create({
     lineHeight: 16,
     letterSpacing: 1.25,
     textTransform: 'uppercase',
+  },
+
+  loadingSpin: {
+    position: 'absolute',
+    top: '30%',
+    right: 0,
+    left: 0,
   },
 });
