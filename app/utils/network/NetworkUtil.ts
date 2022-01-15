@@ -1,9 +1,17 @@
 import axios from 'axios';
 
 export default class NetworkUtil {
-  static async getResponseData(url: string): Promise<Record<string, string>> {
+  static async getResponseDataAsMap(
+    url: string,
+  ): Promise<Record<string, string>> {
     const response = await axios.get(url);
-    console.log('response :: ', response);
+    return response.data;
+  }
+
+  static async getResponseDataAsArray(
+    url: string,
+  ): Promise<Array<Record<string, string>>> {
+    const response = await axios.get(url);
     return response.data;
   }
 }

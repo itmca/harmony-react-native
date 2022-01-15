@@ -1,5 +1,5 @@
 import NetworkUtil from '../utils/network/NetworkUtil';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {SERVER_HOST} from '../constants/url.constants';
 
 type Param = {
@@ -10,25 +10,34 @@ type Param = {
 
 const useRecommendedQuestion = ({
   characterNo,
-  category = '',
   defaultQuestion = '',
-}: Param): [string, () => Promise<void>, boolean] => {
-  const REC_QUESTION_URL = `${SERVER_HOST}/question/recommend?characterNo=${characterNo}&category=${category}`;
+}: Param): [string, () => void] => {
+  const REC_QUESTION_URL = `${SERVER_HOST}/question/recommend?characterNo=${characterNo}`;
 
-  const [isLoading, setLoading] = useState(false);
   const [question, setQuestion] = useState(defaultQuestion);
+  const [questions, setQuestions] = useState(
+    new Array<Record<string, string>>(),
+  );
+  const [questionIndex, setQuestionIndex] = useState(0);
 
-  const fetcher = async () => {
-    try {
-      setLoading(true);
-      const responseData = await NetworkUtil.getResponseData(REC_QUESTION_URL);
-      setQuestion(responseData.question);
-    } finally {
-      setLoading(false);
-    }
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    NetworkUtil.getResponseDataAsArray(REC_QUESTION_URL).then(
+      responseQuestions => {
+        setQuestions(responseQuestions);
+      },
+    );
+  }, []);
+
+  useEffect(() => {
+    setQuestion(questions[questionIndex]?.question);
+  }, [questionIndex]);
+
+  const changer = () => {
+    setQuestionIndex((questionIndex + 1) % questions.length);
   };
 
-  return [question, fetcher, isLoading];
+  return [question, changer];
 };
 
 export {useRecommendedQuestion};

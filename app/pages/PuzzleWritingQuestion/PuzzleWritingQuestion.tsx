@@ -5,7 +5,7 @@ import {useRecommendedQuestion} from '../../hooks/question';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
   const [question, setQuestion] = useState<string>('');
-  const [recQuestion, fetchRecQuestion, isLoading] = useRecommendedQuestion({
+  const [recQuestion, fetchRecQuestion] = useRecommendedQuestion({
     characterNo: 1,
   });
 
@@ -40,10 +40,6 @@ const PuzzleWritingQuestion = (): JSX.Element => {
           onChangeText={setQuestion}
         />
       </View>
-      <View style={styles.loadingSpin}>
-        <ActivityIndicator animating={isLoading} size="large" color="blue" />
-      </View>
-
       <View>
         <TouchableOpacity style={styles.questionBtn} onPress={fetchRecQuestion}>
           <Image
