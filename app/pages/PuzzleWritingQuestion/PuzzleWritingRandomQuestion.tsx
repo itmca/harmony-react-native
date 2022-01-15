@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View, Button} from 'react-native';
-import useRandomQuestion from '../../hooks/useRandomQuestion';
+import question from '../../hooks/question';
 
 // const PuzzleRandomQuestionView: React.FC<QeustionInfo> = ({seq, question_content})  => {
 const PuzzleRandomQuestionView = (): JSX.Element => {
-  const {isLoading, questionData, error, refetch} = useRandomQuestion({
+  const {isLoading, questionData, error, refetch} = question({
     url: 'https://jsonplaceholder.typicode.com/posts/1',
     // url = 'http://localhost:5000/question/random';
   });

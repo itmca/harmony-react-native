@@ -6,7 +6,6 @@ import PuzzleWritingPhoto from '../../pages/PuzzleWritingPhoto/PuzzleWritingPhot
 import PuzzleWritingText from '../../pages/PuzzleWritingText/PuzzleWritingText';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import PuzzleWritingVoice from '../../pages/PuzzleWritingVoice/PuzzleWritingVoice';
-
 const Stack = createNativeStackNavigator();
 
 const PuzzleWritingNavigator = (): JSX.Element => {

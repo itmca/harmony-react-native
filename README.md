@@ -11,10 +11,10 @@
 		- style.tsx
 - components (각 화면속 컴포넌트 폴더)
 - hooks (커스텀 훅)
-- recoil (전역 상태관리)
+- recoils (전역 상태관리)
 - utils (validation, date등 )
 - constants (상수 처리)
-- route (화면 Navigator)
+- routes (화면 Navigator)
 - assets (이미지, 폰트 처리)
     - images
     - fonts
