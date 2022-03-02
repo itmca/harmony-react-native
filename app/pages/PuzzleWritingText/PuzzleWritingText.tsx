@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react';
 
-import {ScrollView, TextInput, View, Text} from 'react-native';
+import {ScrollView, TextInput, View, Text, Linking} from 'react-native';
 import {KeyboardAccessoryView} from 'react-native-keyboard-accessory';
 import Button from '@ant-design/react-native/lib/button';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
 const PuzzleWritingText = (): JSX.Element => {
+  const navigation = useNavigation();
   const inputRef = React.useRef<TextInput>(null);
 
   useEffect(() => {
@@ -37,7 +39,11 @@ const PuzzleWritingText = (): JSX.Element => {
         hideBorder={true}
         androidAdjustResize={true}
         style={{backgroundColor: 'white'}}>
-        <Button onPress={() => null} style={styles.voiceBox}>
+        <Button
+          onPress={() => {
+            navigation.navigate('PuzzleWritingVoice');
+          }}
+          style={styles.voiceBox}>
           <Icon name={'mic'} size={14}></Icon>
           <Text> 음성 녹음하기</Text>
         </Button>
