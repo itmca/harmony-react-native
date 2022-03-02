@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
 const PuzzleWritingText = (): JSX.Element => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const inputRef = React.useRef<TextInput>(null);
 
   useEffect(() => {
@@ -41,7 +41,12 @@ const PuzzleWritingText = (): JSX.Element => {
         style={{backgroundColor: 'white'}}>
         <Button
           onPress={() => {
-            navigation.navigate('PuzzleWritingVoice');
+            navigation.push('NoTab', {
+              screen: 'PuzzleWritingNavigator',
+              params: {
+                screen: 'PuzzleWritingVoice',
+              },
+            });
           }}
           style={styles.voiceBox}>
           <Icon name={'mic'} size={14}></Icon>

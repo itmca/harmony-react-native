@@ -56,7 +56,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
         name="PuzzleWritingVoice"
         component={PuzzleWritingVoice}
         options={{
-          headerLeft: () => <WritingHeaderLeft type="cancel" />,
+          headerLeft: () => <WritingHeaderLeft type="before" />,
           title: '음성 녹음',
         }}
       />
