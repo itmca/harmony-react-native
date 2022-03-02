@@ -8,6 +8,7 @@ import DefaultHeaderLeft from '../../components/header/DefaultHeaderLeft';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -37,11 +38,8 @@ const HomeTabRootNavigator = (): JSX.Element => {
         component={Home}
         options={{
           tabBarShowLabel: false,
-          tabBarIcon: () => (
-            <Image
-              style={styles.imgIcon}
-              source={require('../../assets/images/menu_book.png')}
-            />
+          tabBarIcon: ({focused}) => (
+            <Icon name={focused === true ? 'home' : 'home-outline'} size={24} />
           ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
@@ -73,11 +71,8 @@ const HomeTabRootNavigator = (): JSX.Element => {
         component={Profile}
         options={{
           tabBarShowLabel: false,
-          tabBarIcon: () => (
-            <Image
-              style={styles.imgIcon}
-              source={require('../../assets/images/person_outline.png')}
-            />
+          tabBarIcon: ({focused}) => (
+            <Icon name={focused === true ? 'account' : 'account-outline'} size={24} />
           ),
         }}
       />
