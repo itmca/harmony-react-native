@@ -80,8 +80,8 @@ const BounceAnimation = () => {
   };
 
   const bounce = bounceValue.interpolate({
-    inputRange: [0, 20],
-    outputRange: [20, 0],
+    inputRange: [0, 2],
+    outputRange: [2, 0],
   });
 
   return (
@@ -117,7 +117,7 @@ const mainStyles = StyleSheet.create({
   imageContainer: {
     width: '100%',
     overflow: 'hidden',
-    flex: 0.525,
+    flex: 1.2,
     maxHeight: 355,
   },
   mainImage: {
@@ -141,10 +141,9 @@ const mainStyles = StyleSheet.create({
   },
   textContainer: {
     width: '100%',
-    overflow: 'hidden',
     paddingLeft: 9,
     paddingRight: 9,
-    flex: 0.3,
+    flex: 1,
     alignItems: 'flex-start',
   },
   titleTextContainer: {
@@ -176,7 +175,7 @@ const mainStyles = StyleSheet.create({
   },
   aniContainer: {
     width: '100%',
-    flex: 0.15,
+    flex: 0.1,
     position: 'relative',
   },
   animationText: {
