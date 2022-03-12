@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import {styles} from './styles';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 const PuzzleHelpQuestion = (): JSX.Element => {
 	const [open, setOpen] = useState(true);
@@ -22,10 +24,11 @@ const PuzzleHelpQuestion = (): JSX.Element => {
 					</Text> : null}
 				<TouchableOpacity onPress={onToggle}>
 					{open ? 
-						<Image 
-							source={require('../../assets/images/close.png')} 
-							style={styles.close} 
-						/> : null}
+						<Icon 
+							name='chevron-left' size={24} 
+							style={styles.close}
+						/> : null
+					}
 				</TouchableOpacity>
 			</View>
 		</View>
