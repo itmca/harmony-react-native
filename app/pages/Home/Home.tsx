@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-  Animated,
-  Image,
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-
+import {Image, SafeAreaView, Text, View,} from 'react-native';
+import FingerBounceAnimation from '../../components/animation/FingerBounceAnimation';
 import {styles} from './styles';
 
 const Home = (): JSX.Element => {
@@ -48,7 +40,10 @@ const Home = (): JSX.Element => {
             </View>
           </View>
           <View style={styles.aniContainer}>
-            <BounceAnimation />
+            <FingerBounceAnimation
+              text={'인생 한조각 맞추러 가기'}
+              durationSeconds={15}
+            />
           </View>
         </View>
       </SafeAreaView>
@@ -56,52 +51,6 @@ const Home = (): JSX.Element => {
   );
 };
 
-const BounceAnimation = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [bounceValue, setBounceValue] = React.useState(new Animated.Value(20));
 
-  React.useEffect(() => {
-    playBounce();
-  }, []);
-
-  const playBounce = () => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(bounceValue, {
-          toValue: 0,
-          useNativeDriver: true,
-          duration: 2000,
-        }),
-        Animated.timing(bounceValue, {
-          toValue: 20,
-          useNativeDriver: true,
-          duration: 2000,
-        }),
-      ]),
-    ).start();
-  };
-
-  const bounce = bounceValue.interpolate({
-    inputRange: [0, Platform.OS === 'ios' ? 5 : 25],
-    outputRange: [Platform.OS === 'ios' ? 5 : 25, 0],
-  });
-
-  return (
-    <Animated.View
-      style={{
-        width: '100%',
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 35,
-        transform: [{translateY: bounce}],
-      }}>
-      <Text style={styles.animationText}>인생 한조각 맞추러 가기</Text>
-      <Image
-        style={styles.fingerImage}
-        source={require('../../assets/images/finger.png')}
-      />
-    </Animated.View>
-  );
-};
 
 export default Home;

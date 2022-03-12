@@ -24,7 +24,6 @@ const HomeTabRootNavigator = (): JSX.Element => {
           elevation: 0, // For Android
         },
         headerTitleAlign: 'center',
-        headerShadowVisible: false,
         headerLeftContainerStyle: {
           paddingLeft: 16,
         },
@@ -72,7 +71,10 @@ const HomeTabRootNavigator = (): JSX.Element => {
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => (
-            <Icon name={focused === true ? 'account' : 'account-outline'} size={24} />
+            <Icon
+              name={focused === true ? 'account' : 'account-outline'}
+              size={24}
+            />
           ),
         }}
       />
