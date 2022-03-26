@@ -6,8 +6,17 @@ export const styles = StyleSheet.create({
 		backgroundColor: '#ffffff',
 		paddingHorizontal: 16,
 	},
+	containerWrap: {
+		width: '100%',
+		paddingLeft:15,
+		paddingRight: 15,
+		paddingBottom: 15,
+		height: 88,
+		backgroundColor: '#ffffff',
+	},
 	div: {
 		position: 'relative',
+		width: '100%',
 		height: 73,
 		backgroundColor: '#ffffff',
 		borderRadius: 15,
@@ -58,6 +67,13 @@ export const styles = StyleSheet.create({
 		right: 0,
 		width: 24.5,
 		height: 24
+	},
+	closeIcon: {
+		position: 'absolute',
+		right: 15,
+		width: 24.5,
+		height: 24,
+		bottom: 11,
 	},
 	box: {
 		width: '100%',
