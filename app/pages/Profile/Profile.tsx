@@ -7,7 +7,7 @@ import {
   KakaoProfileNoneAgreement,
   getProfile,
   login,
-  logout
+  logout,
 } from '@react-native-seoul/kakao-login';
 
 const Profile = (): JSX.Element => {
