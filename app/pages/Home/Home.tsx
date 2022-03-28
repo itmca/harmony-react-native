@@ -11,7 +11,7 @@ const Home = (): JSX.Element => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <SafeAreaView style={styles.backgroundView}>
+      <SafeAreaView style={styles.mainContainer}>
         <View style={styles.containerWrap}>
           <View style={styles.imageContainer}>
             <Image
@@ -19,7 +19,7 @@ const Home = (): JSX.Element => {
               source={require('../../assets/images/mainPuzzle.png')}
             />
           </View>
-          <View style={styles.textContainer}>
+          <View style={styles.descContainer}>
             <View style={styles.titleTextContainer}>
               <Text style={styles.titleText}>
                 한 번에 맞추는 것은 어렵습니다

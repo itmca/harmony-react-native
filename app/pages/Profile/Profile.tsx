@@ -1,38 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import {Button, Text, View} from 'react-native';
-import {
-  KakaoOAuthToken,
-  KakaoProfile,
-  KakaoProfileNoneAgreement,
-  getProfile,
-  login,
-  logout,
-} from '@react-native-seoul/kakao-login';
+import {Text, View} from 'react-native';
+import {useRecoilValue} from 'recoil';
+import {isLoggedInState} from '../../recoils/UserRecoil';
 
-const Profile = (): JSX.Element => {
-  const [loginResult, setLoginResult] = useState('empty');
-  const [logoutResult, setLogOutResult] = useState('empty');
-  const [profileResult, setProfile] = useState('profile');
-
-  const signInWithKakao = async (): Promise<void> => {
-    const token: KakaoOAuthToken = await login();
-    setLoginResult(JSON.stringify(token));
-  };
-
-  const getKakaoProfile = async (): Promise<void> => {
-    const profile: KakaoProfile | KakaoProfileNoneAgreement =
-      await getProfile();
-
-    setProfile(JSON.stringify(profile));
-  };
-
-  const signOutWithKakao = async (): Promise<void> => {
-    const message = await logout();
-
-    setLogOutResult(message);
-  };
-
+const Profile = ({navigation}): JSX.Element => {
+  const isLoggedIn = useRecoilValue(isLoggedInState);
+  navigation.addListener('focus', () => {
+    if (!isLoggedIn) {
+      navigation.push('NoTab', {
+        screen: 'LoginMain',
+      });
+    }
+  });
   return (
     <View
       style={{
@@ -40,12 +20,7 @@ const Profile = (): JSX.Element => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Button title={'Kakao Login'} onPress={signInWithKakao} />
-      <Text>{loginResult}</Text>
-      <Button title={'Log Out'} onPress={signOutWithKakao} />
-      <Text>{logoutResult}</Text>
-      <Button title={'Get Profile'} onPress={getKakaoProfile} />
-      <Text>{profileResult}</Text>
+      <Text>Profile</Text>
     </View>
   );
 };
