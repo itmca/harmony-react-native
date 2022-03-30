@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, Platform, Text, View,} from 'react-native';
+import {Image, Platform, Text, View} from 'react-native';
 import KaKaoSocialLoginButton from '../../components/login/KaKaoSocialLoginButton';
 import AppleSocialLoginButton from '../../components/login/AppleSocialLoginButton';
 import OtherLoginButton from '../../components/login/OtherLoginButton';

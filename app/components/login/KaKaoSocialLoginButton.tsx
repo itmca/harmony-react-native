@@ -2,30 +2,31 @@ import React, {useEffect, useState} from 'react';
 import {Image, Text, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 import styles from './styles';
-import {
-  getProfile,
-  KakaoOAuthToken,
-  KakaoProfile,
-  KakaoProfileNoneAgreement,
-  login,
-} from '@react-native-seoul/kakao-login';
+import {KakaoOAuthToken, login} from '@react-native-seoul/kakao-login';
 import {useRecoilState} from 'recoil';
 import {userState} from '../../recoils/UserRecoil';
+import {authState} from '../../recoils/AuthRecoil';
+import {useNavigation} from '@react-navigation/native';
+import {SERVER_HOST} from '../../constants/url.constants';
 
 const KaKaoSocialLoginButton = (): JSX.Element => {
+  const navigation = useNavigation();
   const [accessToken, setAccessToken] = useState('');
-  const [_, setUser] = useRecoilState(userState);
+  const [, setUser] = useRecoilState(userState);
+  const [, setAuthTokens] = useRecoilState(authState);
   const signInWithKakao = async (): Promise<void> => {
     const tokens: KakaoOAuthToken = await login();
-    console.log('Kakao Access Token signInWithKakao :: ', tokens);
     setAccessToken(tokens.accessToken);
   };
 
   useEffect(() => {
-    console.log('Acess Token :: ', accessToken);
+    if (!accessToken) {
+      return;
+    }
+
     void axios
       .post(
-        'http://localhost:5001/auth/social/kakao',
+        `${SERVER_HOST}/auth/social/kakao`,
         {},
         {
           headers: {
@@ -34,15 +35,16 @@ const KaKaoSocialLoginButton = (): JSX.Element => {
         },
       )
       .then(res => res.data)
-      .then(user => {
-        console.log('User :: ', user);
+      .then((data: any) => {
+        const user = data.user;
         setUser({
           loginMethod: 'kakao',
-          userName: '',
-          userNickName: '',
-          userNo: 0,
-          ...user,
+          userName: user.name,
+          userNickName: user.nickName,
         });
+
+        setAuthTokens(data.authTokens);
+        navigation.goBack();
       });
   }, [accessToken]);
 

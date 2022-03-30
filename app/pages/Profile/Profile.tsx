@@ -3,10 +3,11 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {useRecoilValue} from 'recoil';
 import {isLoggedInState} from '../../recoils/UserRecoil';
+import {useFocusEffect} from '@react-navigation/native';
 
 const Profile = ({navigation}): JSX.Element => {
   const isLoggedIn = useRecoilValue(isLoggedInState);
-  navigation.addListener('focus', () => {
+  useFocusEffect(() => {
     if (!isLoggedIn) {
       navigation.push('NoTab', {
         screen: 'LoginMain',
