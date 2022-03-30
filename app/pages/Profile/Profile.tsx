@@ -1,8 +1,19 @@
 import React from 'react';
 
 import {Text, View} from 'react-native';
+import {useRecoilValue} from 'recoil';
+import {isLoggedInState} from '../../recoils/UserRecoil';
+import {useFocusEffect} from '@react-navigation/native';
 
-const Profile = (): JSX.Element => {
+const Profile = ({navigation}): JSX.Element => {
+  const isLoggedIn = useRecoilValue(isLoggedInState);
+  useFocusEffect(() => {
+    if (!isLoggedIn) {
+      navigation.push('NoTab', {
+        screen: 'LoginMain',
+      });
+    }
+  });
   return (
     <View
       style={{
@@ -10,7 +21,7 @@ const Profile = (): JSX.Element => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Profile Page </Text>
+      <Text>Profile</Text>
     </View>
   );
 };
