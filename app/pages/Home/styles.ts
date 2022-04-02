@@ -32,9 +32,6 @@ export const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 4},
         shadowRadius: 32,
       },
-      android: {
-        elevation: 5,
-      },
     }),
   },
   descContainer: {
