@@ -12,7 +12,7 @@ const Home = (): JSX.Element => {
         alignItems: 'center',
       }}>
       <SafeAreaView style={styles.mainContainer}>
-        <View style={styles.containerWrap}>
+        <View style={styles.container}>
           <View style={styles.imageContainer}>
             <Image
               style={styles.mainImage}

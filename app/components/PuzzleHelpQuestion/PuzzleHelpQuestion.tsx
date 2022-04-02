@@ -1,38 +1,55 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import React, { useState } from 'react';
+import React from 'react';
 import {styles} from './styles';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import {useRecoilState, useRecoilValue} from 'recoil';
+import {
+  HelpQuestionOpenState,
+  HelpQuestionTextState,
+} from '../../recoils/HelpQuestionTextState';
 
 const PuzzleHelpQuestion = (): JSX.Element => {
-	const [open, setOpen] = useState(true);
-	const onToggle = () => setOpen(!open);
-    
-	return (
-		<View style={styles.container}>
-			<View style={open ? styles.div:styles.smallDiv}>
-				<TouchableOpacity onPress={() => {!open ? setOpen((open) => !open):undefined;}}>
-					<Image 
-						source={require('../../assets/images/puzzle_blue_piece.png')} 
-						style={open ? styles.puzzle:{width: 24, height: 24}} 
-					/>
-				</TouchableOpacity>
-				{open ?
-					<Text style={styles.question}>
-                    초등학교 시절 친구들과 있었던 일 중 가장 기억에 남는 이야기를 들려주세요.
-					</Text> : null}
-				<TouchableOpacity onPress={onToggle}>
-					{open ? 
-						<Icon 
-							name='chevron-left' size={24} 
-							style={styles.close}
-						/> : null
-					}
-				</TouchableOpacity>
-			</View>
-		</View>
-	);
+  const helpQuestion = useRecoilValue(HelpQuestionTextState);
+  const [open, setOpen] = useRecoilState(HelpQuestionOpenState);
+
+  if (!helpQuestion) {
+    return <></>;
+  }
+
+  if (!open) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.smallSizeWrapper}>
+          <TouchableOpacity
+            onPress={() => {
+              setOpen(true);
+            }}>
+            <Image
+              source={require('../../assets/images/puzzle_blue_piece.png')}
+              style={styles.smallSizePuzzle}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.bigSizeWrapper}>
+        <Image
+          source={require('../../assets/images/puzzle_blue_piece.png')}
+          style={styles.bigSizePuzzle}
+        />
+        <View style={styles.verticalLine}></View>
+        <Text style={styles.helpQuestionText}>{helpQuestion}</Text>
+        <TouchableOpacity onPress={() => setOpen(false)} style={styles.closeIconWrapper}>
+          <Icon name="chevron-left" size={24} style={styles.closeIcon} />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 };
 
 export default PuzzleHelpQuestion;
