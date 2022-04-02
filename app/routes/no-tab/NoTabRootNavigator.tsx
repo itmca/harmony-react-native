@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import PuzzleViewNavigator from './PuzzleViewNavigator';
 import PuzzleWritingNavigator from './PuzzleWritingNavigator';
 import LoginMain from '../../pages/LoginMain/LoginMain';
-import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
+import LoginHeaderLeft from '../../components/header/LoginHeaderLeft';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +22,7 @@ const NoTabRootNavigator = (): JSX.Element => {
         name="LoginMain"
         component={LoginMain}
         options={{
-          headerLeft: () => <WritingHeaderLeft type="cancel" />,
+          headerLeft: () => <LoginHeaderLeft />,
           headerShown: true,
           title: '',
           headerShadowVisible: false,
