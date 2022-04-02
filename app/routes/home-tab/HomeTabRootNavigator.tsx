@@ -8,11 +8,16 @@ import DefaultHeaderLeft from '../../components/header/DefaultHeaderLeft';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import {useRecoilValue} from 'recoil';
+import {isLoggedInState} from '../../recoils/UserRecoil';
+import StoryList from '../../pages/StoryList/StoryList';
 
 const BottomTab = createBottomTabNavigator();
 
 const HomeTabRootNavigator = (): JSX.Element => {
+  const isLoggedIn = useRecoilValue(isLoggedInState);
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -34,12 +39,21 @@ const HomeTabRootNavigator = (): JSX.Element => {
       }}>
       <BottomTab.Screen
         name="Home"
-        component={Home}
+        component={isLoggedIn ? StoryList : Home}
         options={{
           tabBarShowLabel: false,
-          tabBarIcon: ({focused}) => (
-            <Icon name={focused === true ? 'home' : 'home-outline'} size={24} />
-          ),
+          tabBarIcon: ({focused}) =>
+            isLoggedIn ? (
+              <MaterialIcon
+                name={focused ? 'menu-book' : 'menu-book'}
+                size={24}
+              />
+            ) : (
+              <MaterialCommunityIcon
+                name={focused ? 'home' : 'home-outline'}
+                size={24}
+              />
+            ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
         }}
@@ -71,7 +85,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => (
-            <Icon
+            <MaterialCommunityIcon
               name={focused === true ? 'account' : 'account-outline'}
               size={24}
             />

@@ -6,7 +6,7 @@ import Button from '@ant-design/react-native/lib/button';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
-import HelpQuestion from '../../components/PuzzleHelpQuestion/HelpQuestion';
+import HelpQuestion from '../../components/help-question/HelpQuestion';
 
 const PuzzleWritingText = (): JSX.Element => {
   const navigation = useNavigation<any>();

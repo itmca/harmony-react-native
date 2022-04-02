@@ -9,11 +9,11 @@ import {
   View,
 } from 'react-native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
-import HelpQuestion from '../../components/PuzzleHelpQuestion/HelpQuestion';
+import HelpQuestion from '../../components/help-question/HelpQuestion';
 
-import SelectablePhoto from '../../components/PuzzleWirtingPhoto/SelectablePhoto';
-import SelectedPhoto from '../../components/PuzzleWirtingPhoto/SelectedPhoto';
-import TopDescriptionBox from '../../components/PuzzleWirtingPhoto/TopDescriptionBox';
+import SelectablePhoto from '../../components/photo/SelectablePhoto';
+import SelectedPhoto from '../../components/photo/SelectedPhoto';
+import TopDescriptionBox from '../../components/photo/TopDescriptionBox';
 import {
   mainSelectedPhotoState,
   selectedPhotoState,
