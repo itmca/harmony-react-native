@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     flexDirection: 'column',
   },
-  containerWrap: {
+  container: {
     flex: 1,
     paddingLeft: 16,
     paddingRight: 16,

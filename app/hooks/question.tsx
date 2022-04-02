@@ -30,7 +30,7 @@ const useRecommendedQuestion = ({
   }, []);
 
   useEffect(() => {
-    setQuestion(questions[questionIndex]?.question);
+    setQuestion(questions[questionIndex]?.helpQuestionText);
   }, [questionIndex]);
 
   const changer = () => {

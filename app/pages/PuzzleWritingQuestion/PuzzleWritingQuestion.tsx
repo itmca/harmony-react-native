@@ -3,11 +3,11 @@ import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import {useRecommendedQuestion} from '../../hooks/question';
 import {useSetRecoilState} from 'recoil';
-import {PuzzleWritingInput} from '../../recoils/PuzzleWritingInput';
+import {HelpQuestionTextState} from '../../recoils/HelpQuestionTextState';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
   const [question, setQuestion] = useState<string>('');
-  const setInputValue = useSetRecoilState<string>(PuzzleWritingInput);
+  const setInputValue = useSetRecoilState<string>(HelpQuestionTextState);
 
   useEffect(() => {
     setInputValue(question);

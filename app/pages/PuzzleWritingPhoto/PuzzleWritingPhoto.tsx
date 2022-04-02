@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
-import PuzzleHelpQuestion from '../../components/PuzzleHelpQuestion/PuzzleHelpQuestion';
+import HelpQuestion from '../../components/PuzzleHelpQuestion/PuzzleHelpQuestion';
 
 import SelectablePhoto from '../../components/PuzzleWirtingPhoto/SelectablePhoto';
 import SelectedPhoto from '../../components/PuzzleWirtingPhoto/SelectedPhoto';
@@ -57,7 +57,7 @@ const PuzzleWritingPhoto = (): JSX.Element => {
 
   return (
     <>
-      <PuzzleHelpQuestion />
+      <HelpQuestion />
       <TopDescriptionBox />
       <View
         style={{
