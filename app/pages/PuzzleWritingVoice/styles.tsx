@@ -11,8 +11,8 @@ export default StyleSheet.create({
     width: 62,
     height: 62,
     borderRadius: 50,
-    borderColor: '#fff',
-    borderWidth: 5,
+    borderColor: '#010440',
+    borderWidth: 1,
     margin: 10,
   },
   notIsRecordBox: {
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 50,
-    transform: [{scale: 0.94}],
+    transform: [{scale: 0.9}],
   },
   isRecordBox: {
     backgroundColor: 'red',
