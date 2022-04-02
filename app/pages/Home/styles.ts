@@ -1,7 +1,7 @@
 import {Platform, StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  backgroundView: {
+  mainContainer: {
     width: '100%',
     height: '100%',
     backgroundColor: '#ffffff',
@@ -32,12 +32,9 @@ export const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 4},
         shadowRadius: 32,
       },
-      android: {
-        elevation: 5,
-      },
     }),
   },
-  textContainer: {
+  descContainer: {
     width: '100%',
     paddingLeft: 9,
     paddingRight: 9,
