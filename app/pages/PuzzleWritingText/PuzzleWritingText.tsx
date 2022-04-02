@@ -5,7 +5,7 @@ import {KeyboardAccessoryView} from 'react-native-keyboard-accessory';
 import Button from '@ant-design/react-native/lib/button';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
-import HelpQuestion from '../../components/PuzzleHelpQuestion/PuzzleHelpQuestion';
+import HelpQuestion from '../../components/PuzzleHelpQuestion/HelpQuestion';
 
 const PuzzleWritingText = (): JSX.Element => {
   const inputRef = React.useRef<TextInput>(null);

@@ -2,12 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import {useRecommendedQuestion} from '../../hooks/question';
-import {useSetRecoilState} from 'recoil';
-import {HelpQuestionTextState} from '../../recoils/HelpQuestionTextState';
+import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
+import {HelpQuestionOpenState, HelpQuestionTextState} from '../../recoils/HelpQuestionRecoil';
+import {useFocusEffect} from '@react-navigation/native';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
   const [question, setQuestion] = useState<string>('');
   const setInputValue = useSetRecoilState<string>(HelpQuestionTextState);
+  const setHelpQuestionOpen = useSetRecoilState(HelpQuestionOpenState);
+
+  useFocusEffect(() => {
+    setHelpQuestionOpen(true);
+  });
 
   useEffect(() => {
     setInputValue(question);

@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
-import HelpQuestion from '../../components/PuzzleHelpQuestion/PuzzleHelpQuestion';
+import HelpQuestion from '../../components/PuzzleHelpQuestion/HelpQuestion';
 
 import SelectablePhoto from '../../components/PuzzleWirtingPhoto/SelectablePhoto';
 import SelectedPhoto from '../../components/PuzzleWirtingPhoto/SelectedPhoto';

@@ -7,9 +7,9 @@ import {useRecoilState, useRecoilValue} from 'recoil';
 import {
   HelpQuestionOpenState,
   HelpQuestionTextState,
-} from '../../recoils/HelpQuestionTextState';
+} from '../../recoils/HelpQuestionRecoil';
 
-const PuzzleHelpQuestion = (): JSX.Element => {
+const HelpQuestion = (): JSX.Element => {
   const helpQuestion = useRecoilValue(HelpQuestionTextState);
   const [open, setOpen] = useRecoilState(HelpQuestionOpenState);
 
@@ -52,4 +52,4 @@ const PuzzleHelpQuestion = (): JSX.Element => {
   );
 };
 
-export default PuzzleHelpQuestion;
+export default HelpQuestion;
