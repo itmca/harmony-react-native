@@ -9,9 +9,11 @@ import {
   View,
 } from 'react-native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
+import HelpQuestion from '../../components/PuzzleHelpQuestion/HelpQuestion';
 
 import SelectablePhoto from '../../components/PuzzleWirtingPhoto/SelectablePhoto';
 import SelectedPhoto from '../../components/PuzzleWirtingPhoto/SelectedPhoto';
+import TopDescriptionBox from '../../components/PuzzleWirtingPhoto/TopDescriptionBox';
 import {
   mainSelectedPhotoState,
   selectedPhotoState,
@@ -54,39 +56,43 @@ const PuzzleWritingPhoto = (): JSX.Element => {
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <SelectedPhoto size={DeviceWidth} photo={selectedPhoto} />
-      <ScrollView
-        style={{height: 500}}
-        contentContainerStyle={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
+    <>
+      <HelpQuestion />
+      <TopDescriptionBox />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
-        {photos?.map((photo, index) => {
-          return (
-            <SelectablePhoto
-              key={index}
-              onSelected={(photo: PhotoIdentifier) => {
-                setSelectedPhotoList(prev => prev.concat([photo]));
-              }}
-              //! size 수정 필요
-              onDeselected={(photo: PhotoIdentifier) => {
-                setSelectedPhotoList(prev =>
-                  prev.filter(e => e.node.image.uri !== photo.node.image.uri),
-                );
-              }}
-              size={DeviceWidth / 3}
-              photo={photo}
-            />
-          );
-        })}
-      </ScrollView>
-    </View>
+        <SelectedPhoto size={DeviceWidth} photo={selectedPhoto} />
+        <ScrollView
+          style={{height: 500}}
+          contentContainerStyle={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+          }}>
+          {photos?.map((photo, index) => {
+            return (
+              <SelectablePhoto
+                key={index}
+                onSelected={(photo: PhotoIdentifier) => {
+                  setSelectedPhotoList(prev => prev.concat([photo]));
+                }}
+                //! size 수정 필요
+                onDeselected={(photo: PhotoIdentifier) => {
+                  setSelectedPhotoList(prev =>
+                    prev.filter(e => e.node.image.uri !== photo.node.image.uri),
+                  );
+                }}
+                size={DeviceWidth / 3}
+                photo={photo}
+              />
+            );
+          })}
+        </ScrollView>
+      </View>
+    </>
   );
 };
 

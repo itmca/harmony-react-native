@@ -15,8 +15,8 @@ export default StyleSheet.create({
     height: 24,
   },
   imgPuzzleIcon: {
-    width: 59,
-    height: 59,
+    width: 52,
+    height: 52,
     position: 'absolute',
     bottom: '30%',
   },

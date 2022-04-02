@@ -6,6 +6,7 @@ import Button from '@ant-design/react-native/lib/button';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
+import HelpQuestion from '../../components/PuzzleHelpQuestion/HelpQuestion';
 
 const PuzzleWritingText = (): JSX.Element => {
   const navigation = useNavigation<any>();
@@ -19,6 +20,7 @@ const PuzzleWritingText = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
+      <HelpQuestion />
       <View style={{marginHorizontal: 20}}>
         <TextInput
           ref={inputRef}

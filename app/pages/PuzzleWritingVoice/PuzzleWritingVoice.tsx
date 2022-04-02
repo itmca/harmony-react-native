@@ -144,11 +144,7 @@ const PuzzleWritingVoice = (): JSX.Element => {
 
   return (
     <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+      style={styles.container}>
       <Text>{recordState.recordTime}</Text>
       <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
         <Image source={require('../../assets/images/voice_frequency.png')} />
