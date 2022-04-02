@@ -1,7 +1,15 @@
-import Button from '@ant-design/react-native/lib/button';
-import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import RNFetchBlob from 'rn-fetch-blob';
 
-import {Image, Text, View} from 'react-native';
+import {
+  Image,
+  PermissionsAndroid,
+  Platform,
+  Pressable,
+  Text,
+  View,
+} from 'react-native';
 import AudioRecorderPlayer, {
   AVEncoderAudioQualityIOSType,
   AVEncodingOption,
@@ -9,13 +17,75 @@ import AudioRecorderPlayer, {
   AudioSourceAndroidType,
   AVModeIOSOption,
 } from 'react-native-audio-recorder-player';
+import styles from './styles';
+
+const audioRecorderPlayer = new AudioRecorderPlayer();
 
 const PuzzleWritingVoice = (): JSX.Element => {
-  const [state, setState] = useState({recordSecs: 0, recordTime: '00:00:00'});
-  const audioRecorderPlayer = new AudioRecorderPlayer();
+  const navigation = useNavigation();
+
+  const [recordState, setRecordState] = useState({
+    recordSecs: 0,
+    recordTime: '00:00:00',
+  });
+
+  useEffect(() => {
+    void initVoicePermission();
+  }, []);
+
+  // TODO Android Voice Permission Code 추가
+  /*
+    권한을 허락하지 않은 경우 어떻게 할 것인가.(원래 화면으로 돌아가기)
+  */
+  const initVoicePermission = async function () {
+    if (Platform.OS === 'android') {
+      try {
+        const grants = await PermissionsAndroid.requestMultiple([
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+          PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+        ]);
+
+        console.log('write external stroage', grants);
+
+        if (
+          grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
+            PermissionsAndroid.RESULTS.GRANTED &&
+          grants['android.permission.READ_EXTERNAL_STORAGE'] ===
+            PermissionsAndroid.RESULTS.GRANTED &&
+          grants['android.permission.RECORD_AUDIO'] ===
+            PermissionsAndroid.RESULTS.GRANTED
+        ) {
+          console.log('Permissions granted');
+        } else {
+          console.log('All required permissions not granted');
+          const a = void hasAndroidPermission();
+          console.log('permission chekc', a);
+          console.log(grants);
+          return;
+        }
+      } catch (err) {
+        console.warn(err);
+        return;
+      }
+    }
+  };
+
+  async function hasAndroidPermission() {
+    const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+
+    const hasPermission = await PermissionsAndroid.check(permission);
+    console.log(hasPermission);
+    return hasPermission;
+  }
 
   const onStartRecord = async function () {
-    const path = 'sound.m4a';
+    // TODO Andrdid 및 IOS Path 설정 추가
+    const dirs = RNFetchBlob.fs.dirs;
+    const path = Platform.select({
+      ios: 'hello.m4a',
+      android: `${dirs.CacheDir}/hello.mp3`,
+    });
     const audioSet = {
       AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
       AudioSourceAndroid: AudioSourceAndroidType.MIC,
@@ -26,30 +96,50 @@ const PuzzleWritingVoice = (): JSX.Element => {
     };
     // const meteringEnabled = false;
 
-    //console.log('audioSet', audioSet);
-    await audioRecorderPlayer.startRecorder(path, audioSet);
-    //console.log('end url');
+    const uri = await audioRecorderPlayer.startRecorder(path, audioSet);
+    console.log(uri);
     audioRecorderPlayer.addRecordBackListener(e => {
-      setState({
+      console.log(e.currentPosition);
+      const HourMinuteSeconds = getHourMinuteSeconds(
+        Math.floor(e.currentPosition),
+      );
+
+      setRecordState({
+        ...recordState,
         recordSecs: e.currentPosition,
-        recordTime: audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)),
+        recordTime: HourMinuteSeconds,
       });
     });
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    //console.log(`uri: ${uri}`);
+  };
+
+  const getHourMinuteSeconds = function (mileSeconds: number) {
+    const seconds = Math.floor((mileSeconds / 1000) % 60);
+    const minute = Math.floor((mileSeconds / 60000) % 60);
+    const hour = Math.floor((mileSeconds / 3600000) % 60);
+
+    const hourMinuteSeconds =
+      hour.toLocaleString('en-US', {minimumIntegerDigits: 2}) +
+      ':' +
+      minute.toLocaleString('en-US', {minimumIntegerDigits: 2}) +
+      ':' +
+      seconds.toLocaleString('en-US', {minimumIntegerDigits: 2});
+
+    return hourMinuteSeconds;
   };
 
   const onStopRecord = async function () {
-    //console.log('RecordSec', state.recordSecs);
-    //console.log('RecordTime', state.recordTime);
-    // stopRecorder 정상작동하지 않아 멈추지 않은거지. // 파일이 안 늘어야 돼. -> (파일이 계속 늘어남) -> 라이브러리 문제일수도 있다.
-    const result = await audioRecorderPlayer.stopRecorder();
-    // removeRecordBackListener 작동 안했다고 해도.
+    await audioRecorderPlayer.stopRecorder();
     audioRecorderPlayer.removeRecordBackListener();
-    setState({...state, recordSecs: 0});
-    //console.log('RecordSec1', state.recordSecs);
-    //console.log('RecordTime2', state.recordTime);
-    console.log(result);
+
+    // TODO State 초기화는 해당 음성 녹음 화면에 진입할 때 처리하는 방식으로 변경하기
+    setRecordState({...recordState, recordSecs: 0});
+
+    // TODO Recoil 음성 녹음 데이터 저장하기
+    navigation.goBack();
+  };
+
+  const isRecording = function () {
+    return recordState.recordSecs > 0;
   };
 
   return (
@@ -59,26 +149,25 @@ const PuzzleWritingVoice = (): JSX.Element => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>{state.recordTime}</Text>
-      <View style={{flexDirection: 'row'}}>
+      <Text>{recordState.recordTime}</Text>
+      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
         <Image source={require('../../assets/images/voice_frequency.png')} />
         <Image source={require('../../assets/images/voice_frequency.png')} />
         <Image source={require('../../assets/images/voice_frequency.png')} />
         <Image source={require('../../assets/images/voice_frequency.png')} />
       </View>
       <View>
-        <Button
-          style={{
-            width: 44,
-            height: 44,
-            borderRadius: 44 / 2,
-            borderColor: 'black',
-            margin: 10,
-            backgroundColor: 'red',
-          }}></Button>
+        <Pressable
+          style={styles.recordContainer}
+          onPress={() => {
+            isRecording() ? void onStopRecord() : void onStartRecord();
+          }}>
+          <View
+            style={
+              isRecording() ? styles.isRecordBox : styles.notIsRecordBox
+            }></View>
+        </Pressable>
       </View>
-      <Button onPress={onStartRecord}>Start</Button>
-      <Button onPress={onStopRecord}>stop</Button>
     </View>
   );
 };
