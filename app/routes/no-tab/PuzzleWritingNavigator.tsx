@@ -6,9 +6,13 @@ import PuzzleWritingPhoto from '../../pages/PuzzleWritingPhoto/PuzzleWritingPhot
 import PuzzleWritingText from '../../pages/PuzzleWritingText/PuzzleWritingText';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import PuzzleWritingVoice from '../../pages/PuzzleWritingVoice/PuzzleWritingVoice';
+import {useRecoilValue} from 'recoil';
+import {writingStoryState} from '../../recoils/StoryWritingRecoil';
+
 const Stack = createNativeStackNavigator();
 
 const PuzzleWritingNavigator = (): JSX.Element => {
+  const writingStory = useRecoilValue(writingStoryState);
   return (
     <Stack.Navigator
       initialRouteName="PuzzleWritingQuestion"
@@ -48,7 +52,12 @@ const PuzzleWritingNavigator = (): JSX.Element => {
           headerLeft: () => <WritingHeaderLeft type="before" />,
           title: '조각 맞추기',
           headerRight: () => (
-            <WritingHeaderRight text="완료" customAction={() => {}} />
+            <WritingHeaderRight
+              text="완료"
+              customAction={() => {
+                console.log(writingStory?.photos[0].node);
+              }}
+            />
           ),
         }}
       />

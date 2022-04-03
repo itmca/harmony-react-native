@@ -7,10 +7,13 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import HelpQuestion from '../../components/help-question/HelpQuestion';
+import {useRecoilState} from 'recoil';
+import {storyTextState} from '../../recoils/StoryWritingRecoil';
 
 const PuzzleWritingText = (): JSX.Element => {
   const navigation = useNavigation<any>();
   const inputRef = React.useRef<TextInput>(null);
+  const [storyTextInfo, setStoryTextInfo] = useRecoilState(storyTextState);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -27,6 +30,13 @@ const PuzzleWritingText = (): JSX.Element => {
           style={styles.titleInput}
           autoFocus={true}
           placeholder="제목을 입력해주세요."
+          value={storyTextInfo?.title}
+          onChangeText={title => {
+            setStoryTextInfo({
+              ...storyTextInfo,
+              title,
+            });
+          }}
         />
       </View>
       <ScrollView style={{marginHorizontal: 20}}>
@@ -34,6 +44,13 @@ const PuzzleWritingText = (): JSX.Element => {
           multiline={true}
           style={styles.contentInput}
           placeholder="여기를 눌러 새로운 인생조각을 얘기해주세요."
+          value={storyTextInfo?.storyText}
+          onChangeText={storyText => {
+            setStoryTextInfo({
+              ...storyTextInfo,
+              storyText,
+            });
+          }}
         />
       </ScrollView>
       <KeyboardAccessoryView

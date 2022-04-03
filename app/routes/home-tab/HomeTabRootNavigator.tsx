@@ -36,6 +36,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
           paddingRight: 16,
         },
         tabBarHideOnKeyboard: true,
+
       }}>
       <BottomTab.Screen
         name="Home"

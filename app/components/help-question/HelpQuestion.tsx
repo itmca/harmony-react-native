@@ -5,13 +5,13 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import {
-  HelpQuestionOpenState,
-  HelpQuestionTextState,
+  helpQuestionOpenState,
+  helpQuestionTextState,
 } from '../../recoils/HelpQuestionRecoil';
 
 const HelpQuestion = (): JSX.Element => {
-  const helpQuestion = useRecoilValue(HelpQuestionTextState);
-  const [open, setOpen] = useRecoilState(HelpQuestionOpenState);
+  const helpQuestion = useRecoilValue(helpQuestionTextState);
+  const [open, setOpen] = useRecoilState(helpQuestionOpenState);
 
   if (!helpQuestion) {
     return <></>;

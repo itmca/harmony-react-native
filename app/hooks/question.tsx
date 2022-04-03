@@ -11,9 +11,10 @@ type Param = {
 const useRecommendedQuestion = ({
   characterNo,
   defaultQuestion = '',
-}: Param): [string, () => void] => {
+}: Param): [string, () => void, number] => {
   const REC_QUESTION_URL = `${SERVER_HOST}/question/recommend?characterNo=${characterNo}`;
 
+  const [questionNo, setQuestionNo] = useState(0);
   const [question, setQuestion] = useState(defaultQuestion);
   const [questions, setQuestions] = useState(
     new Array<Record<string, string>>(),
@@ -30,14 +31,15 @@ const useRecommendedQuestion = ({
   }, []);
 
   useEffect(() => {
-    setQuestion(questions[questionIndex]?.helpQuestionText);
+    setQuestion(questions[questionIndex]?.question);
+    setQuestionNo(parseInt(questions[questionIndex]?.questionNo));
   }, [questionIndex]);
 
   const changer = () => {
     setQuestionIndex((questionIndex + 1) % questions.length);
   };
 
-  return [question, changer];
+  return [question, changer, questionNo];
 };
 
 export {useRecommendedQuestion};

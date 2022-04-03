@@ -2,17 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import {useRecommendedQuestion} from '../../hooks/question';
-import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
-import {
-  HelpQuestionOpenState,
-  HelpQuestionTextState,
-} from '../../recoils/HelpQuestionRecoil';
+import {useRecoilState, useSetRecoilState} from 'recoil';
+import {helpQuestionOpenState, helpQuestionTextState,} from '../../recoils/HelpQuestionRecoil';
 import {useFocusEffect} from '@react-navigation/native';
+import {helpQuestionState} from '../../recoils/StoryWritingRecoil';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
   const [question, setQuestion] = useState<string>('');
-  const setInputValue = useSetRecoilState<string>(HelpQuestionTextState);
-  const setHelpQuestionOpen = useSetRecoilState(HelpQuestionOpenState);
+  const setInputValue = useSetRecoilState<string>(helpQuestionTextState);
+  const setHelpQuestionOpen = useSetRecoilState(helpQuestionOpenState);
+  const [writingStoryQuestionInfo, setWritingStoryQuestionInfo] = useRecoilState(helpQuestionState);
 
   useFocusEffect(() => {
     setHelpQuestionOpen(true);
@@ -20,15 +19,27 @@ const PuzzleWritingQuestion = (): JSX.Element => {
 
   useEffect(() => {
     setInputValue(question);
+    setWritingStoryQuestionInfo({
+      ...writingStoryQuestionInfo,
+      recQuestionModified: question === recQuestion,
+      helpQuestionText: question,
+    });
   }, [question]);
 
-  const [recQuestion, fetchRecQuestion] = useRecommendedQuestion({
-    characterNo: 1,
-  });
+  const [recQuestion, fetchRecQuestion, recQuestionNo] = useRecommendedQuestion(
+    {
+      characterNo: 1,
+    },
+  );
 
   useEffect(() => {
     if (recQuestion != '') {
       setQuestion(recQuestion);
+      setWritingStoryQuestionInfo({
+        ...writingStoryQuestionInfo,
+        recQuestionNo: recQuestionNo,
+        recQuestionModified: false,
+      });
     }
   }, [recQuestion]);
 
