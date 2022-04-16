@@ -19,9 +19,14 @@ type Props = {
 };
 
 const StoryListItem = ({data}: Props): JSX.Element => {
+
+  const onPress = (id: ItemData['id']) => {
+    console.log(id);
+  };
+
   const listItem = (
     <View style={styles.listItemContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => onPress(data.id)}>
           <View style={styles.textBox}>
             <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
               {data.title}
@@ -46,14 +51,16 @@ const StoryListItem = ({data}: Props): JSX.Element => {
 
   const thumbnailListItem = (
     <View style={styles.thumbnailListItemContainer}>
-      <View style={styles.thumbnailTextBox}>
-        <Text numberOfLines={1} ellipsizeMode="tail" style={styles.listTitle}>
-          {data.title}
-        </Text>
-        <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
-          {data.description}
-        </Text>
-      </View>
+      <TouchableOpacity onPress={() => onPress(data.id)}>
+        <View style={styles.thumbnailTextBox}>
+          <Text numberOfLines={1} ellipsizeMode="tail" style={styles.listTitle}>
+            {data.title}
+          </Text>
+          <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
+            {data.description}
+          </Text>
+        </View>
+      </TouchableOpacity>
       <View style={styles.thumbnailBox}>
         <View>
           <Image

@@ -76,28 +76,28 @@ const StoryListScrollView = (): JSX.Element => {
 
   return (
     <SafeAreaView style={styles.scrollViewContainer}>
-    <ScrollView onScroll={handleScroll} contentOffset={{y:scrollPositionY}}>
-      {StoryViewData.map((item:ItemData, index: number) =>
-          <StoryListItem data={item} key={index} />
-      )}
-      {/* <FlatList
-        data={StoryViewData}
-        renderItem={renderListItem}
-        keyExtractor={item => item.id}
-      /> */}
-    </ScrollView>
-    {
-      scrollPositionY >= 10 ? (<TouchableOpacity 
-        style={styles.floatingBtBox}
-        onPress={onPressTopButton}
-      >
-          <Icon
-            name="chevron-up-sharp"
-            size={34} color={'#000000'} 
-            style={styles.floatingBtTop}
-            />
-      </TouchableOpacity>) : null
-    }
+      <ScrollView onScroll={handleScroll} contentOffset={{y:scrollPositionY}} showsVerticalScrollIndicator={false}>
+        {StoryViewData.map((item:ItemData, index: number) =>
+            <StoryListItem data={item} key={index} />
+        )}
+        {/* <FlatList
+          data={StoryViewData}
+          renderItem={renderListItem}
+          keyExtractor={item => item.id}
+        /> */}
+      </ScrollView>
+      {
+        scrollPositionY >= 10 ? (<TouchableOpacity 
+          style={styles.floatingBtBox}
+          onPress={onPressTopButton}
+        >
+            <Icon
+              name="chevron-up-sharp"
+              size={34} color={'#000000'} 
+              style={styles.floatingBtTop}
+              />
+        </TouchableOpacity>) : null
+      }
   </SafeAreaView>
   );
 };

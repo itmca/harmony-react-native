@@ -61,6 +61,7 @@ const ChipList = (): JSX.Element => {
   return (
      <SafeAreaView style={styles.chipContainer}>
         <FlatList
+          showsHorizontalScrollIndicator={false}
           data={chipData}
           renderItem={renderItem}
           keyExtractor={(item) => item.key}
