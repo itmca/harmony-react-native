@@ -2,24 +2,14 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView, Button, SafeAreaView, FlatList, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
-import StoryListItem from '../../components/story-list/StoryListItem';
+import StoryListItem, {ItemData} from '../../components/story-list/StoryListItem';
 
-type ListItem = {
-  id: string;
-  title: string;
-  description: string;
-  thumbnailUrl: string | null;
-  totalImage: number;
-  voiceData: boolean;
-  createdAt: string;
-};
-
-const StoryViewData: ListItem[] = [
+const StoryViewData: ItemData[] = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1',
     title:
       '초등학교 시절 가장 기억에 남는 순간 초등학교 시절 기억에 남는 순간 타이틀 제목 2줄까지 늘어나라 얍',
-    description: '어렸을 때는 무슨 공부냐 농사나 지어라라는 이야기가 많았다. 그랬지만 공부하고 싶어 부모님께 말씀드리고 기회가 있을때마다 공부가 하고싶다고 부모님을 졸라봤지만 늘 돌아오는 대답은 한결같았다."너 밑으로 동생이 몇명이니? 엄마 아빠 둘이서 일해서는 너도 동생들도 공부는 커녕 밥도 못먹는다." 그때는 왜 그렇게 서운했는지',
+    description:'어렸을 때는 무슨 공부냐 농사나 지어라라는 이야기가 많았다. 그랬지만 공부하고 싶어 부모님께 말씀드리고 기회가 있을때마다 공부가 하고싶다고 부모님을 졸라봤지만 늘 돌아오는 대답은 한결같았다."너 밑으로 동생이 몇명이니? 엄마 아빠 둘이서 일해서는 너도 동생들도 공부는 커녕 밥도 못먹는다." 그때는 왜 그렇게 서운했는지',
     thumbnailUrl:
       'https://images.unsplash.com/photo-1648842316439-c018ff4e093e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1829&q=80',
     totalImage: 1,
@@ -87,7 +77,7 @@ const StoryListScrollView = (): JSX.Element => {
   return (
     <SafeAreaView style={styles.scrollViewContainer}>
     <ScrollView onScroll={handleScroll} contentOffset={{y:scrollPositionY}}>
-      {StoryViewData.map((item:ListItem, index: number) =>
+      {StoryViewData.map((item:ItemData, index: number) =>
           <StoryListItem data={item} key={index} />
       )}
       {/* <FlatList

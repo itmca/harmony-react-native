@@ -1,11 +1,10 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
 
-type Item = {
+export type ItemData = {
   id: string;
-  key: number;
   title: string;
   description: string;
   thumbnailUrl?: string;
@@ -14,28 +13,35 @@ type Item = {
   createdAt: string;
 };
 
-const StoryListItem = ({data}): JSX.Element => {
+type Props = {
+ data: ItemData;
+ index?: number;
+};
+
+const StoryListItem = ({data}: Props): JSX.Element => {
   const listItem = (
     <View style={styles.listItemContainer}>
-      <View style={styles.textBox}>
-        <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
-          {data.title}
-        </Text>
-        <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
-          {data.description}
-        </Text>
-      </View>
-      <View style={styles.bottomRowBox}>
-        <View>
-          <Text style={styles.dateText}>{data.createdAt}</Text>
-        </View>
-        {data.voiceData ? (
-          <View style={styles.micIconBox}>
-            <Icon name="mic" size={14} color={'#010440'} />
+        <TouchableOpacity>
+          <View style={styles.textBox}>
+            <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
+              {data.title}
+            </Text>
+            <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
+              {data.description}
+            </Text>
           </View>
-        ) : null}
+        </TouchableOpacity>
+        <View style={styles.bottomRowBox}>
+          <View>
+            <Text style={styles.dateText}>{data.createdAt}</Text>
+          </View>
+          {data.voiceData ? (
+            <View style={styles.micIconBox}>
+              <Icon name="mic" size={14} color={'#010440'} />
+            </View>
+          ) : null}
+        </View>
       </View>
-    </View>
   );
 
   const thumbnailListItem = (

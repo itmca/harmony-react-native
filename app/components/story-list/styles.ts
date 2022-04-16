@@ -66,4 +66,48 @@ export const styles = StyleSheet.create({
     paddingLeft: 5,
     paddingTop: 5,
   },
+  profileContainer: {
+    width: '100%',
+    paddingTop: 13,
+    paddingBottom: 22,
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 68,
+    height: 68,
+    borderRadius: 50,
+  },
+  profileTitle: {
+    fontSize: 14,
+    fontWeight: '500',
+    letterSpacing: 0.15,
+    marginTop: 10,
+    height: 20,
+    lineHeight: 20,
+  },
+  profileText: {
+    fontSize: 11,
+    letterSpacing: 0.15,
+    height: 20,
+    lineHeight: 20,
+  },
+  chipContainer: {
+    position: 'absolute',
+    bottom: 28,
+  },
+  chipItem: {
+    height: 26,
+    borderRadius: 16,
+    paddingTop: 4,
+    paddingBottom: 4,
+    paddingLeft: 12,
+    paddingRight: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 17,
+  },
+  chipText: {
+    fontSize: 14,
+    letterSpacing: 0.25,
+  },
 });
