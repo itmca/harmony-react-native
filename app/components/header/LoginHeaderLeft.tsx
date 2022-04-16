@@ -3,16 +3,31 @@ import {Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 
-const LoginHeaderLeft = (): JSX.Element => {
+type Props = {
+  type: 'main' | 'sub';
+};
+
+const LoginHeaderLeft = ({type}: Props): JSX.Element => {
   const navigation = useNavigation<any>();
+  if (type === 'main') {
+    return (
+      <Pressable
+        onPress={() => {
+          navigation.navigate('HomeTab', {
+            screen: 'Home',
+          });
+        }}>
+        <Icon name={'close'} size={24} />
+      </Pressable>
+    );
+  }
+
   return (
     <Pressable
       onPress={() => {
-        navigation.navigate('HomeTab', {
-          screen: 'Home',
-        });
+        navigation.goBack();
       }}>
-      <Icon name={'close'} size={24} />
+      <Icon name={'chevron-left'} size={24} />
     </Pressable>
   );
 };

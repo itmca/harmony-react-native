@@ -14,13 +14,26 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigator from './routes/RootNavigator';
 import {RecoilRoot} from 'recoil';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '343666',
+    accent: 'yellow',
+    background: '#ffffff',
+  },
+};
 
 const index = (): JSX.Element => {
   return (
     <RecoilRoot>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </PaperProvider>
     </RecoilRoot>
   );
 };

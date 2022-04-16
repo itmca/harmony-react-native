@@ -10,7 +10,10 @@ const Profile = ({navigation}): JSX.Element => {
   useFocusEffect(() => {
     if (!isLoggedIn) {
       navigation.push('NoTab', {
-        screen: 'LoginMain',
+        screen: 'LoginRegisterNavigator',
+        params: {
+          screen: 'LoginMain',
+        },
       });
     }
   });

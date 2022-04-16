@@ -8,7 +8,7 @@ const AppleSocialLoginButton = (): JSX.Element => {
       onPress={() => {}}
       style={styles.appleLoginButtonContainer}>
       <Image
-        source={require('../../assets/images/apple-logo-white.png')}
+        source={require('../../../assets/images/apple-logo-white.png')}
         style={styles.socialLoginIcon}
       />
       <Text style={styles.appleLoginFont}>애플로 로그인/회원가입</Text>
