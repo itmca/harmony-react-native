@@ -5,6 +5,7 @@ import styles from '../styles';
 import Home from '../../pages/Home/Home';
 import Profile from '../../pages/Profile/Profile';
 import DefaultHeaderLeft from '../../components/header/DefaultHeaderLeft';
+import DefaultHeaderRight from '../../components/header/DefaultHeaderRight';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
@@ -56,6 +57,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
             ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
+          headerRight: () => <DefaultHeaderRight />,
         }}
       />
       <BottomTab.Screen
