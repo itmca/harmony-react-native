@@ -1,25 +1,25 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import CharacterSetting from '../../pages/CharacterSetting/CharacterSetting';
 import GoBackHeaderLeft from '../../components/header/GoBackHeaderLeft';
+import AccountModification from '../../pages/AccountModification/AccountModification';
 
 const Stack = createNativeStackNavigator();
 
-const SettingNavigator = (): JSX.Element => {
+const AccountSettingNavigator = (): JSX.Element => {
   return (
     <Stack.Navigator
-      initialRouteName="CharacterSetting"
+      initialRouteName="AccountModification"
       screenOptions={{headerShadowVisible: false, headerTitleAlign: 'center'}}>
       <Stack.Screen
-        name="CharacterSetting"
-        component={CharacterSetting}
+        name="AccountModification"
+        component={AccountModification}
         options={{
           headerLeft: () => <GoBackHeaderLeft />,
-          title: '주인공 관리',
+          title: '계정 정보 수정',
         }}
       />
     </Stack.Navigator>
   );
 };
 
-export default SettingNavigator;
+export default AccountSettingNavigator;

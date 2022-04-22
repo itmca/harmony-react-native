@@ -8,62 +8,26 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
   },
-  topContainer: {
+  accountInfoContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
-    width: '90%',
-    marginBottom: 32,
-  },
-  logo: {
-    width: 16,
-    height: 16,
-    marginBottom: 2,
-    marginLeft: 1,
-  },
-  registerText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#000000',
-    marginLeft: 2,
-  },
-  loginTextContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
-    width: '90%',
-    marginBottom: 12,
-  },
-  loginText: {
-    fontSize: 32,
-    fontWeight: '600',
-    color: '#000000',
-    marginLeft: -2,
-  },
-  formContainer: {
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: '90%',
-  },
-  formInput: {
+    height: 80,
     width: '100%',
-    marginBottom: 8,
   },
-  passwordRegisterContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '99%',
-    marginBottom: 12,
+  accountAvatar: {
+    marginLeft: 20,
   },
-  passwordRegisterText: {
-    fontSize: 12,
+  accountNickName: {marginLeft: 24, fontSize: 24},
+  accountModificationButton: {position: 'absolute', right: 16},
+  customDivider: {
+    height: 8,
+    backgroundColor: '#E9E9E9',
   },
-  socialContainer: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: '90%',
-    marginTop: 32,
-    marginBottom: 120,
+  listContainer: {
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+  },
+  listItemIcon: {
+    marginLeft: 8,
   },
 });

@@ -1,14 +1,18 @@
 import React from 'react';
 
 import {Text, TouchableOpacity, View} from 'react-native';
-import {useRecoilState, useRecoilValue} from 'recoil';
+import {useRecoilValue} from 'recoil';
 import {isLoggedInState, userState} from '../../recoils/UserRecoil';
 import {useFocusEffect} from '@react-navigation/native';
-import {List, Divider, Avatar} from 'react-native-paper';
+import {Avatar, Divider, List} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './styles';
 
-const Profile = ({navigation}): JSX.Element => {
+type Props = {
+  navigation: any;
+};
+
+const Profile = ({navigation}: Props): JSX.Element => {
   const isLoggedIn = useRecoilValue(isLoggedInState);
   useFocusEffect(() => {
     if (!isLoggedIn) {
@@ -29,35 +33,32 @@ const Profile = ({navigation}): JSX.Element => {
 
   return (
     <View style={styles.mainContainer}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          height: 80,
-          width: '100%',
-        }}>
+      <View style={styles.accountInfoContainer}>
         <Avatar.Text
-          style={{marginLeft: 20}}
+          style={styles.accountAvatar}
           size={40}
           label={user.userNickName.substr(0, 1)}
         />
-        <Text style={{marginLeft: 24, fontSize: 24}}>
-          {user.userNickName} 님
-        </Text>
-        <TouchableOpacity style={{position: 'absolute', right: 16}}>
+        <Text style={styles.accountNickName}>{user.userNickName} 님</Text>
+        <TouchableOpacity
+          style={styles.accountModificationButton}
+          onPress={() => {
+            navigation.navigate('NoTab', {
+              screen: 'AccountSettingNavigator',
+              params: {
+                screen: 'AccountModification',
+              },
+            });
+          }}>
           <Icon size={24} name={'chevron-right'} />
         </TouchableOpacity>
       </View>
-      <View style={{height: 8, backgroundColor: '#E9E9E9'}}></View>
-      <View
-        style={{
-          justifyContent: 'center',
-          backgroundColor: '#ffffff',
-        }}>
+      <View style={styles.customDivider}></View>
+      <View style={styles.listContainer}>
         <List.Item
           title="공지사항"
           left={props => (
-            <List.Icon {...props} style={{marginLeft: 8}} icon="bell" />
+            <List.Icon {...props} style={styles.listItemIcon} icon="bell" />
           )}
           onPress={() => {}}
         />
@@ -67,13 +68,13 @@ const Profile = ({navigation}): JSX.Element => {
           left={props => (
             <List.Icon
               {...props}
-              style={{marginLeft: 8}}
+              style={styles.listItemIcon}
               icon="account-supervisor"
             />
           )}
           onPress={() => {
             navigation.navigate('NoTab', {
-              screen: 'SettingNavigator',
+              screen: 'CharacterSettingNavigator',
               params: {
                 screen: 'CharacterSetting',
               },

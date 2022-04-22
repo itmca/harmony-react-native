@@ -3,7 +3,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import PuzzleViewNavigator from './PuzzleViewNavigator';
 import PuzzleWritingNavigator from './PuzzleWritingNavigator';
 import LoginRegisterNavigator from './LoginRegisterNavigator';
-import SettingNavigator from './SettingNavigator';
+import CharacterSettingNavigator from './CharacterSettingNavigator';
+import AccountSettingNavigator from './AccountSettingNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,8 +24,12 @@ const NoTabRootNavigator = (): JSX.Element => {
         component={LoginRegisterNavigator}
       />
       <Stack.Screen
-        name="SettingNavigator"
-        component={SettingNavigator}
+        name="CharacterSettingNavigator"
+        component={CharacterSettingNavigator}
+      />
+      <Stack.Screen
+        name="AccountSettingNavigator"
+        component={AccountSettingNavigator}
       />
     </Stack.Navigator>
   );

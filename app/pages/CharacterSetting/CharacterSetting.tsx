@@ -6,7 +6,11 @@ import Carousel from 'react-native-snap-carousel';
 import CharacterCard from '../../components/card/CharacterCard';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const CharacterSetting = (): JSX.Element => {
+type Props = {
+  navigation: any;
+};
+
+const CharacterSetting = ({navigation}: Props): JSX.Element => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
@@ -60,7 +64,16 @@ const CharacterSetting = (): JSX.Element => {
         />
       </View>
       <View style={styles.addButtonContainer}>
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => {
+            navigation.navigate('NoTab', {
+              screen: 'CharacterSettingNavigator',
+              params: {
+                screen: 'CharacterRegister',
+              },
+            });
+          }}>
           <Icon name={'user-plus'} size={24} style={styles.addButtonIcon} />
         </TouchableOpacity>
       </View>

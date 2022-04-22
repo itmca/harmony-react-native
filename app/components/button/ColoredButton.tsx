@@ -6,7 +6,7 @@ type Props = {
   onPress: () => void;
   color?: 'primary';
   text: string;
-  style: any;
+  style?: any;
 };
 
 const ColoredButton = ({
