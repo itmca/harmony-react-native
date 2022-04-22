@@ -24,6 +24,13 @@ const Register = ({navigation}): JSX.Element => {
         <TextInput
           style={styles.formInput}
           mode="outlined"
+          label="닉네임"
+          value={''}
+          placeholder="공백 시 랜덤으로 설정"
+        />
+        <TextInput
+          style={styles.formInput}
+          mode="outlined"
           label="이메일"
           value={''}
           placeholder="user@domain.com"
