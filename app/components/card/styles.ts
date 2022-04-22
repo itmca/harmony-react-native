@@ -66,7 +66,21 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#eacc97',
   },
+  disabledSelectButton: {
+    marginLeft: 16,
+    marginRight: 16,
+    marginBottom: 20,
+    height: '80%',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#e5e5e5',
+  },
   selectButtonText: {
+    fontSize: 16,
+    color: '#010440',
+  },
+  disabledSelectButtonText: {
     fontSize: 16,
     color: '#010440',
   },

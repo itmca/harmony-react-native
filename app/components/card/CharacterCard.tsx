@@ -11,6 +11,7 @@ type Props = {
   characterNickName: string;
   title: string;
   characterNo: number;
+  selected: boolean;
 };
 
 const CharacterCard = ({
@@ -19,6 +20,7 @@ const CharacterCard = ({
   characterNickName,
   title,
   characterNo,
+  selected,
 }: Props): JSX.Element => {
   const navigation = useNavigation<any>();
 
@@ -46,11 +48,14 @@ const CharacterCard = ({
       </View>
       <View style={styles.selectButtonContainer}>
         <TouchableOpacity
-          style={styles.selectButton}
+          style={selected ? styles.disabledSelectButton : styles.selectButton}
+          disabled={selected}
           onPress={() => {
             console.log(characterNo);
           }}>
-          <Text style={styles.selectButtonText}>선택하기</Text>
+          <Text style={styles.selectButtonText}>
+            {selected ? '작성 중인 주인공' : '선택하기'}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

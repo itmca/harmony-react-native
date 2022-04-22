@@ -37,7 +37,7 @@ const CharacterSetting = ({navigation}: Props): JSX.Element => {
       characterNickName: '아부지',
       title: '인생은 즐거워',
       imageURL:
-        'https://images.unsplash.com/photo-1631981787167-2a2d0a5b4492?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
+        'https://images.unsplash.com/photo-1564156280315-1d42b4651629?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2584&q=80',
     },
   ];
   return (
@@ -50,7 +50,7 @@ const CharacterSetting = ({navigation}: Props): JSX.Element => {
           itemWidth={windowWidth * 0.8}
           itemHeight={windowHeight}
           layout={'default'}
-          renderItem={({item: story}: any) => {
+          renderItem={({item: story, index}: any) => {
             return (
               <CharacterCard
                 characterNo={story.characterNo}
@@ -58,6 +58,7 @@ const CharacterSetting = ({navigation}: Props): JSX.Element => {
                 characterNickName={story.characterNickName}
                 title={story.title}
                 imageURL={story.imageURL}
+                selected={index === 1}
               />
             );
           }}
