@@ -49,7 +49,7 @@ const LoginOthers = ({navigation}): JSX.Element => {
           <Text style={styles.passwordRegisterText}> </Text>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('NoTab', {
+              navigation.push('NoTab', {
                 screen: 'LoginRegisterNavigator',
                 params: {
                   screen: 'Register',

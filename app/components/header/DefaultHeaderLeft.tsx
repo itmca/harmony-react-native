@@ -9,7 +9,7 @@ const DefaultHeaderLeft = (): JSX.Element => {
     <Pressable
       onPress={() => {
         if (route.name !== 'Home') {
-          navigation.navigate('Home');
+          navigation.push('Home');
         }
       }}>
       <Image

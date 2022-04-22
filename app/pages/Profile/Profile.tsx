@@ -43,7 +43,7 @@ const Profile = ({navigation}: Props): JSX.Element => {
         <TouchableOpacity
           style={styles.accountModificationButton}
           onPress={() => {
-            navigation.navigate('NoTab', {
+            navigation.push('NoTab', {
               screen: 'AccountSettingNavigator',
               params: {
                 screen: 'AccountModification',
@@ -73,7 +73,7 @@ const Profile = ({navigation}: Props): JSX.Element => {
             />
           )}
           onPress={() => {
-            navigation.navigate('NoTab', {
+            navigation.push('NoTab', {
               screen: 'CharacterSettingNavigator',
               params: {
                 screen: 'CharacterSetting',

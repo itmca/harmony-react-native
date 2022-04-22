@@ -67,7 +67,7 @@ const CharacterSetting = ({navigation}: Props): JSX.Element => {
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => {
-            navigation.navigate('NoTab', {
+            navigation.push('NoTab', {
               screen: 'CharacterSettingNavigator',
               params: {
                 screen: 'CharacterRegister',

@@ -13,7 +13,7 @@ const LoginHeaderLeft = ({type}: Props): JSX.Element => {
     return (
       <Pressable
         onPress={() => {
-          navigation.navigate('HomeTab', {
+          navigation.push('HomeTab', {
             screen: 'Home',
           });
         }}>
