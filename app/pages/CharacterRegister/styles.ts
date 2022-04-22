@@ -9,13 +9,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
-    width: '100%',
-    marginBottom: 32,
-  },
   registerText: {
     fontSize: 32,
     fontWeight: '600',
@@ -33,34 +26,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     marginBottom: 8,
-  },
-  formVerificationPartContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: '100%',
-  },
-  formVerificationInput: {
-    flex: 0.6,
-    fontSize: 12,
-    height: 40,
-    marginRight: 12,
-    marginBottom: 4,
-  },
-  formVerificationSendButton: {
-    flex: 0.4,
-    fontSize: 16,
-    height: 40,
-  },
-  passwordRegisterContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '99%',
-    marginBottom: 12,
-  },
-  passwordRegisterText: {
-    fontSize: 12,
   },
   socialContainer: {
     alignItems: 'center',

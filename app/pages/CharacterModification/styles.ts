@@ -9,13 +9,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
-    width: '100%',
-    marginBottom: 32,
-  },
   registerText: {
     fontSize: 32,
     fontWeight: '600',

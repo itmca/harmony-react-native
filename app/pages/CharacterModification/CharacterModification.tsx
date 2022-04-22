@@ -11,79 +11,37 @@ const CharacterModification = (): JSX.Element => {
       <ScrollView
         style={styles.scrollViewContainer}
         contentContainerStyle={styles.formContainer}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.registerText}>회원가입</Text>
-        </View>
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
-          label="이름"
-          value={''}
-          placeholder="홍길동"
-        />
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
-          label="이메일"
-          value={''}
-          placeholder="user@domain.com"
-        />
-        <View style={styles.formVerificationPartContainer}>
           <TextInput
-            style={styles.formVerificationInput}
+            style={styles.formInput}
             mode="outlined"
+            label="이름"
             value={''}
-            placeholder="인증코드"
+            placeholder="홍길동"
           />
-          <ColoredButton
-            style={styles.formVerificationSendButton}
-            text="인증코드 전송"
-            onPress={() => {}}
+          <TextInput
+            style={styles.formInput}
+            mode="outlined"
+            label="닉네임"
+            value={''}
+            placeholder="소중한 당신"
           />
-        </View>
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
-          secureTextEntry={true}
-          label="비밀번호"
-          value={''}
-          placeholder="user@domain.com"
-        />
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
-          secureTextEntry={true}
-          label="비밀번호 확인"
-          value={''}
-          placeholder="user@domain.com"
-        />
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
-          secureTextEntry={true}
-          label="태어난 날"
-          value={''}
-          placeholder="user@domain.com"
-        />
-        <TouchableOpacity
-          style={{
-            width: '100%',
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            height: 32,
-            marginBottom: 4,
-          }}>
-          <BouncyCheckbox
-            size={18}
-            iconStyle={{borderColor: '#343666', borderRadius: 4}}
-            fillColor={'#343666'}
+          <TextInput
+            style={styles.formInput}
+            mode="outlined"
+            secureTextEntry={true}
+            label="태어난 날"
+            value={''}
+            placeholder="user@domain.com"
           />
-          <Text style={{marginLeft: -8}}>이용 약관 동의합니다.</Text>
-        </TouchableOpacity>
-        <ColoredButton text="회원가입" onPress={() => {
+          <TextInput
+            style={styles.formInput}
+            mode="outlined"
+            label="제목"
+            placeholder={'행복했던 나날들'}
+          />
+          <ColoredButton text="저장" onPress={() => {
 
-        }} />
+          }}/>
       </ScrollView>
     </View>
   );
