@@ -81,7 +81,9 @@ const Register = ({navigation}): JSX.Element => {
           />
           <Text style={{marginLeft: -8}}>이용 약관 동의합니다.</Text>
         </TouchableOpacity>
-        <ColoredButton text="회원가입" onPress={() => {}} />
+        <ColoredButton text="회원가입" onPress={() => {
+
+        }} />
       </ScrollView>
     </View>
   );

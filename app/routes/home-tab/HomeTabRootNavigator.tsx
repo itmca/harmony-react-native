@@ -83,6 +83,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
         name="Profile"
         component={Profile}
         options={{
+          title: '',
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => (
             <MaterialCommunityIcon
