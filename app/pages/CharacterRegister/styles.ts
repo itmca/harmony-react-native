@@ -27,6 +27,10 @@ export const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 8,
   },
+  dateInput: {
+    width: '100%',
+    marginBottom: 0,
+  },
   socialContainer: {
     alignItems: 'center',
     justifyContent: 'flex-start',

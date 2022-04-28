@@ -6,6 +6,8 @@ import ColoredButton from '../../components/button/ColoredButton';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const AccountModification = (): JSX.Element => {
+  const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
+
   return (
     <View style={styles.mainContainer}>
       <ScrollView
@@ -33,14 +35,23 @@ const AccountModification = (): JSX.Element => {
           value={''}
           placeholder="멋쟁이"
         />
-        <TextInput
+        {/* <TextInput
           style={styles.formInput}
           mode="outlined"
           secureTextEntry={true}
           label="태어난 날"
           value={''}
           placeholder="user@domain.com"
-        />
+        /> */}
+        <DatePickerInput
+          style={styles.dateInput}
+          locale="en"
+          label="태어난 날"
+          value={inputDate}
+          onChange={(d) => setInputDate(d)}
+          inputMode="start"
+          mode="outlined"
+        /> 
         <ColoredButton text="저장" onPress={() => {
 
         }} />

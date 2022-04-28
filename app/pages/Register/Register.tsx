@@ -8,7 +8,7 @@ import { DatePickerInput } from 'react-native-paper-dates';
 
 
 const Register = ({navigation}): JSX.Element => {
-  const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined)
+  const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
   
   return (
     <View style={styles.mainContainer}>
