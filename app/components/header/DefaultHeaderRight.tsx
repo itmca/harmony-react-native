@@ -3,7 +3,16 @@ import {Image, TouchableOpacity, Text} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import styles from './styles';
 
-const defaultHeaderRight = (): JSX.Element => {
+type Props = {
+  imageURL: string;
+  characterName: string;
+
+};
+
+const DefaultHeaderRight = ({
+  imageURL,
+  characterName
+}: Props): JSX.Element => {
   const navigation = useNavigation<any>();
   const route = useRoute();
   return (
@@ -11,13 +20,13 @@ const defaultHeaderRight = (): JSX.Element => {
         onPress={() => {}}
         style={styles.defaultHeaderRightContainer}>
         <Image
-            source={require('../../assets/images/profile_image_sample.png')}
+            source={{uri : imageURL}}
             style={styles.headerProfileIcon}
         />
-        <Text style={styles.headerProfileName}>홍진경</Text>
+        <Text style={styles.headerProfileName}>{characterName}</Text>
       
     </TouchableOpacity>
   );
 };
 
-export default defaultHeaderRight;
+export default DefaultHeaderRight;

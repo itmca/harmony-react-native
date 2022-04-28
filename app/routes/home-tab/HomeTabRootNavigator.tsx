@@ -57,7 +57,9 @@ const HomeTabRootNavigator = (): JSX.Element => {
             ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
-          headerRight: () => <DefaultHeaderRight />,
+          headerRight: () => (
+            <DefaultHeaderRight imageURL="../../assets/images/profile_image_sample.png" characterName="김영옥"/>
+          ), 
         }}
       />
       <BottomTab.Screen
