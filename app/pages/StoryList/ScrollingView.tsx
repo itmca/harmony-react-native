@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, Button, SafeAreaView, FlatList, TouchableOpacity} from 'react-native';
+import {ScrollView, SafeAreaView, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
-import StoryListItem, {ItemData} from '../../components/story-list/StoryListItem';
+import StoryListItem, {
+  ItemData,
+} from '../../components/story-list/StoryListItem';
 
-const StoryViewData: ItemData[] = [
+const storyViewData: ItemData[] = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1',
     title:
@@ -60,9 +62,8 @@ const StoryViewData: ItemData[] = [
   },
 ];
 
-const StoryListScrollView = (): JSX.Element => {
+const ScrollingView = (): JSX.Element => {
   const [scrollPositionY, setScrollPositionY] = useState<number>(0);
-
   const onPressTopButton = () => {
     console.log('top button clicked');
     setScrollPositionY(0);
@@ -77,11 +78,11 @@ const StoryListScrollView = (): JSX.Element => {
   return (
     <SafeAreaView style={styles.scrollViewContainer}>
       <ScrollView onScroll={handleScroll} contentOffset={{y:scrollPositionY}} showsVerticalScrollIndicator={false}>
-        {StoryViewData.map((item:ItemData, index: number) =>
+        {storyViewData.map((item:ItemData, index: number) =>
             <StoryListItem data={item} key={index} />
         )}
         {/* <FlatList
-          data={StoryViewData}
+          data={storyViewData}
           renderItem={renderListItem}
           keyExtractor={item => item.id}
         /> */}
@@ -102,4 +103,4 @@ const StoryListScrollView = (): JSX.Element => {
   );
 };
 
-export default StoryListScrollView;
+export default ScrollingView;

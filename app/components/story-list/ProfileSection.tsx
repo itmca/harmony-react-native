@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import {View, Text, FlatList, SafeAreaView, TouchableOpacity, Image} from 'react-native';
-import ChipList from './ChipList';
 import {styles} from './styles';
 
-type ProfileName = {
+type profileName = {
   name: string;
 };
 
-const ProfileSection = ({name}: ProfileName): JSX.Element => {
+const ProfileSection = ({name}: profileName): JSX.Element => {
   return (
      <View style={styles.profileContainer}>
        <Image

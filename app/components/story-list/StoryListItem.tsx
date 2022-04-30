@@ -1,4 +1,6 @@
 import React from 'react';
+// import {useFocusEffect} from '@react-navigation/native';
+// import { NavigationContainer } from '@react-navigation/native';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
@@ -13,15 +15,23 @@ export type ItemData = {
   createdAt: string;
 };
 
-type Props = {
- data: ItemData;
- index?: number;
+type props = {
+  data: ItemData;
+  index?: number;
 };
 
-const StoryListItem = ({data}: Props): JSX.Element => {
+const StoryListItem = ({data}: props, {navigation}): JSX.Element => {
+  // useFocusEffect(() => {
+  //   if (!isLoggedIn) {
+  //     navigation.push('NoTab', {
+  //       screen: 'LoginMain',
+  //     });
+  //   }
+  // });
 
   const onPress = (id: ItemData['id']) => {
     console.log(id);
+    // navigation.navigate('Story');
   };
 
   const listItem = (
