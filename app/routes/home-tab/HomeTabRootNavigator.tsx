@@ -5,6 +5,7 @@ import styles from '../styles';
 import Home from '../../pages/Home/Home';
 import Profile from '../../pages/Profile/Profile';
 import DefaultHeaderLeft from '../../components/header/DefaultHeaderLeft';
+import DefaultHeaderRight from '../../components/header/DefaultHeaderRight';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
@@ -57,6 +58,9 @@ const HomeTabRootNavigator = (): JSX.Element => {
             ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
+          headerRight: () => (
+            <DefaultHeaderRight imageURL="../../assets/images/profile_image_sample.png" characterName="김영옥"/>
+          ), 
         }}
       />
       <BottomTab.Screen
@@ -84,6 +88,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
         name="Profile"
         component={Profile}
         options={{
+          title: '',
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => (
             <MaterialCommunityIcon

@@ -2,8 +2,9 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import PuzzleViewNavigator from './PuzzleViewNavigator';
 import PuzzleWritingNavigator from './PuzzleWritingNavigator';
-import LoginMain from '../../pages/LoginMain/LoginMain';
-import LoginHeaderLeft from '../../components/header/LoginHeaderLeft';
+import LoginRegisterNavigator from './LoginRegisterNavigator';
+import CharacterSettingNavigator from './CharacterSettingNavigator';
+import AccountSettingNavigator from './AccountSettingNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,14 +20,16 @@ const NoTabRootNavigator = (): JSX.Element => {
         component={PuzzleWritingNavigator}
       />
       <Stack.Screen
-        name="LoginMain"
-        component={LoginMain}
-        options={{
-          headerLeft: () => <LoginHeaderLeft />,
-          headerShown: true,
-          title: '',
-          headerShadowVisible: false,
-        }}
+        name="LoginRegisterNavigator"
+        component={LoginRegisterNavigator}
+      />
+      <Stack.Screen
+        name="CharacterSettingNavigator"
+        component={CharacterSettingNavigator}
+      />
+      <Stack.Screen
+        name="AccountSettingNavigator"
+        component={AccountSettingNavigator}
       />
     </Stack.Navigator>
   );

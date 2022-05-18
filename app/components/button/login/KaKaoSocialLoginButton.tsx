@@ -4,10 +4,10 @@ import axios from 'axios';
 import styles from './styles';
 import {KakaoOAuthToken, login} from '@react-native-seoul/kakao-login';
 import {useRecoilState} from 'recoil';
-import {userState} from '../../recoils/UserRecoil';
-import {authState} from '../../recoils/AuthRecoil';
+import {userState} from '../../../recoils/UserRecoil';
+import {authState} from '../../../recoils/AuthRecoil';
 import {useNavigation} from '@react-navigation/native';
-import {SERVER_HOST} from '../../constants/url.constants';
+import {SERVER_HOST} from '../../../constants/url.constants';
 
 const KaKaoSocialLoginButton = (): JSX.Element => {
   const navigation = useNavigation();
@@ -53,7 +53,7 @@ const KaKaoSocialLoginButton = (): JSX.Element => {
       onPress={signInWithKakao}
       style={styles.kakaoLoginButtonContainer}>
       <Image
-        source={require('../../assets/images/kakao-talk.png')}
+        source={require('../../../assets/images/kakao-talk.png')}
         style={styles.socialLoginIcon}
       />
       <Text style={styles.kakaoLoginFont}>카카오로 로그인/회원가입</Text>

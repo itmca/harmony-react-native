@@ -21,13 +21,13 @@ export const styles = StyleSheet.create({
     height: 48,
     marginBottom: 12,
   },
-  descText: {
+  registerText: {
     fontSize: 24,
     fontWeight: '600',
     color: '#000000',
     marginLeft: -8,
   },
-  buttonContainer: {
+  socialContainer: {
     flex: Platform.OS === 'ios' ? 1.6 : 1.3,
     alignItems: 'center',
     justifyContent: 'flex-start',

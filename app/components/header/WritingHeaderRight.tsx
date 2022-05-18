@@ -21,7 +21,7 @@ const WritingHeaderRight = ({
         if (typeof customAction === 'function') {
           customAction();
         } else {
-          navigation.navigate('NoTab', {
+          navigation.push('NoTab', {
             screen: 'PuzzleWritingNavigator',
             params: {
               screen: nextScreenName,
