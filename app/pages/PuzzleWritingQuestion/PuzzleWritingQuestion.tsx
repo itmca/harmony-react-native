@@ -3,15 +3,24 @@ import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import {useRecommendedQuestion} from '../../hooks/question';
 import {useRecoilState, useSetRecoilState} from 'recoil';
-import {helpQuestionOpenState, helpQuestionTextState,} from '../../recoils/HelpQuestionRecoil';
+import {
+  helpQuestionOpenState,
+  helpQuestionTextState,
+} from '../../recoils/HelpQuestionRecoil';
 import {useFocusEffect} from '@react-navigation/native';
 import {helpQuestionState} from '../../recoils/StoryWritingRecoil';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
-  const [question, setQuestion] = useState<string>('');
+  //const [question, setQuestion] = useState<string>('');
   const setInputValue = useSetRecoilState<string>(helpQuestionTextState);
   const setHelpQuestionOpen = useSetRecoilState(helpQuestionOpenState);
-  const [writingStoryQuestionInfo, setWritingStoryQuestionInfo] = useRecoilState(helpQuestionState);
+  const [writingStoryQuestionInfo, setWritingStoryQuestionInfo] =
+    useRecoilState(helpQuestionState);
+
+  const question =
+    writingStoryQuestionInfo?.helpQuestionText === undefined
+      ? ''
+      : writingStoryQuestionInfo?.helpQuestionText;
 
   useFocusEffect(() => {
     setHelpQuestionOpen(true);
@@ -34,11 +43,12 @@ const PuzzleWritingQuestion = (): JSX.Element => {
 
   useEffect(() => {
     if (recQuestion != '') {
-      setQuestion(recQuestion);
+      //setQuestion(recQuestion);
       setWritingStoryQuestionInfo({
         ...writingStoryQuestionInfo,
         recQuestionNo: recQuestionNo,
         recQuestionModified: false,
+        helpQuestionText: recQuestion,
       });
     }
   }, [recQuestion]);
@@ -64,8 +74,13 @@ const PuzzleWritingQuestion = (): JSX.Element => {
             '도움질문적기... \n도움질문은 더 풍성한 작성을 위한 보조 역할로 사용되며\n최종 컨텐츠에는 반영되지 않습니다.'
           }
           returnKeyType="done"
-          value={question}
-          onChangeText={setQuestion}
+          value={writingStoryQuestionInfo?.helpQuestionText}
+          onChangeText={text =>
+            setWritingStoryQuestionInfo({
+              ...writingStoryQuestionInfo,
+              helpQuestionText: text,
+            })
+          }
         />
       </View>
       <View>

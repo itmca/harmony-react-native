@@ -1,25 +1,137 @@
 import React, {useEffect} from 'react';
 
-import {ScrollView, TextInput, View, Text, Linking} from 'react-native';
+import {
+  ScrollView,
+  TextInput,
+  View,
+  Text,
+  PermissionsAndroid,
+  Platform,
+} from 'react-native';
 import {KeyboardAccessoryView} from 'react-native-keyboard-accessory';
 import Button from '@ant-design/react-native/lib/button';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import HelpQuestion from '../../components/help-question/HelpQuestion';
-import {useRecoilState} from 'recoil';
-import {storyTextState} from '../../recoils/StoryWritingRecoil';
+import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
+import {
+  recordFileState,
+  storyTextState,
+} from '../../recoils/StoryWritingRecoil';
+import {Avatar} from 'react-native-paper';
 
 const PuzzleWritingText = (): JSX.Element => {
   const navigation = useNavigation<any>();
   const inputRef = React.useRef<TextInput>(null);
   const [storyTextInfo, setStoryTextInfo] = useRecoilState(storyTextState);
+  const recordFileInfo = useRecoilValue(recordFileState);
+  const resetRecord = useResetRecoilState(recordFileState);
+
+  const initVoicePermission = async function () {
+    if (Platform.OS === 'android') {
+      const grants = await PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+      ]);
+    }
+  };
+
+  async function hasAndroidPermission() {
+    const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+
+    const hasPermission = await PermissionsAndroid.check(permission);
+    console.log(hasPermission);
+    return hasPermission;
+  }
 
   useEffect(() => {
+    void initVoicePermission();
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
+  console.log("Permission");
+  void hasAndroidPermission();
+  const setRecordComponent = function () {
+    if (isRecordFile()) {
+      return (
+        <>
+          <View style={{...styles.voiceBox, flex: 1, flexDirection: 'row'}}>
+            <View style={{flex: 1}}></View>
+            <View
+              style={{
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flex: 3,
+              }}>
+              <Avatar.Icon
+                style={{backgroundColor: 'black'}}
+                size={27}
+                icon="microphone"
+              />
+              <Text style={{fontSize: 7, marginTop: 4}}>
+                {getFileName()} | {getRecordTime()}
+              </Text>
+            </View>
+            <View style={{flex: 1, justifyContent: 'center'}}>
+              <Text
+                onPress={resetRecord}
+                style={{fontSize: 12, textAlign: 'right', padding: 14}}>
+                삭제하기
+              </Text>
+            </View>
+          </View>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Button
+            onPressOut={() => {
+              navigation.push('NoTab', {
+                screen: 'PuzzleWritingNavigator',
+                params: {
+                  screen: 'PuzzleWritingVoice',
+                },
+              });
+            }}
+            style={{
+              ...styles.voiceBox,
+              alignSelf: 'stretch',
+              height: '100%',
+              flexDirection: 'column',
+            }}>
+            <Icon name={'mic'} size={13}></Icon>
+            <Text style={{fontSize: 16}}> 음성 녹음하기</Text>
+          </Button>
+        </>
+      );
+    }
+  };
+
+  const isRecordFile = function () {
+    return recordFileInfo != undefined;
+  };
+
+  const getFileName = function () {
+    const recordPath = recordFileInfo?.filePath;
+    const isRecordFile = recordPath != undefined;
+    let recordName = '';
+
+    if (isRecordFile) {
+      const fileParts = recordPath?.split('/');
+      recordName = fileParts[fileParts?.length - 1];
+      recordName = decodeURI(recordName);
+    }
+
+    return recordName;
+  };
+
+  const getRecordTime = function () {
+    return recordFileInfo?.recordTime;
+  };
 
   return (
     <View style={styles.container}>
@@ -58,19 +170,7 @@ const PuzzleWritingText = (): JSX.Element => {
         hideBorder={true}
         androidAdjustResize={true}
         style={{backgroundColor: 'white'}}>
-        <Button
-          onPress={() => {
-            navigation.push('NoTab', {
-              screen: 'PuzzleWritingNavigator',
-              params: {
-                screen: 'PuzzleWritingVoice',
-              },
-            });
-          }}
-          style={styles.voiceBox}>
-          <Icon name={'mic'} size={14}></Icon>
-          <Text> 음성 녹음하기</Text>
-        </Button>
+        <View style={{height: 53}}>{setRecordComponent()}</View>
       </KeyboardAccessoryView>
     </View>
   );

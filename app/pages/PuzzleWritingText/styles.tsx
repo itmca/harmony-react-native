@@ -22,7 +22,9 @@ export default StyleSheet.create({
   voiceBox: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    borderBottomWidth: 1,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    borderWidth: 1,
     borderColor: '#dbdbdb',
   },
 });

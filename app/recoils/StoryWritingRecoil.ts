@@ -3,6 +3,7 @@ import {
   WritingStory,
   WritingStoryQuestionInfo,
   WritingStoryTextInfo,
+  VoiceRecordInfo,
 } from '../type/story';
 import {selectedPhotoState} from './SelectedPhotoRecoil';
 import {heroState} from './HeroRecoil';
@@ -17,6 +18,11 @@ export const storyTextState = atom<WritingStoryTextInfo | undefined>({
   default: undefined,
 });
 
+export const recordFileState = atom<VoiceRecordInfo | undefined>({
+  key: 'recordFileState',
+  default: undefined,
+});
+
 export const writingStoryState = selector<WritingStory | undefined>({
   key: 'writingStoryState',
   get: ({get}) => {
@@ -24,12 +30,14 @@ export const writingStoryState = selector<WritingStory | undefined>({
     const questionInfo = get(helpQuestionState);
     const photos = get(selectedPhotoState);
     const textInfo = get(storyTextState);
+    const recordFile = get(recordFileState);
 
     return {
       heroNo: hero?.heroNo,
       ...questionInfo,
       ...textInfo,
       photos,
+      voice: recordFile?.filePath,
     };
   },
 });

@@ -1,6 +1,7 @@
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import RNFetchBlob from 'rn-fetch-blob';
+import {recordFileState} from '../../recoils/StoryWritingRecoil';
 
 import {
   Image,
@@ -18,25 +19,26 @@ import AudioRecorderPlayer, {
   AVModeIOSOption,
 } from 'react-native-audio-recorder-player';
 import styles from './styles';
+import {useRecoilState} from 'recoil';
 
 const audioRecorderPlayer = new AudioRecorderPlayer();
 
 const PuzzleWritingVoice = (): JSX.Element => {
   const navigation = useNavigation();
+  const [recordFileInfo, setRecordFileInfo] = useRecoilState(recordFileState);
 
-  const [recordState, setRecordState] = useState({
-    recordSecs: 0,
-    recordTime: '00:00:00',
-  });
-
+  // TODO
+  // 권한이 없을 때 글 쓰기 화면으로 돌아가기.
   useEffect(() => {
+    navigation.goBack();
+    initVoiceRecordState();
     void initVoicePermission();
   }, []);
 
-  // TODO Android Voice Permission Code 추가
-  /*
-    권한을 허락하지 않은 경우 어떻게 할 것인가.(원래 화면으로 돌아가기)
-  */
+  const initVoiceRecordState = function () {
+    setRecordFileInfo({filePath: undefined, recordTime: '00:00:00'});
+  };
+
   const initVoicePermission = async function () {
     if (Platform.OS === 'android') {
       try {
@@ -45,9 +47,6 @@ const PuzzleWritingVoice = (): JSX.Element => {
           PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
           PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
         ]);
-
-        console.log('write external stroage', grants);
-
         if (
           grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
             PermissionsAndroid.RESULTS.GRANTED &&
@@ -59,9 +58,6 @@ const PuzzleWritingVoice = (): JSX.Element => {
           console.log('Permissions granted');
         } else {
           console.log('All required permissions not granted');
-          const a = void hasAndroidPermission();
-          console.log('permission chekc', a);
-          console.log(grants);
           return;
         }
       } catch (err) {
@@ -80,11 +76,11 @@ const PuzzleWritingVoice = (): JSX.Element => {
   }
 
   const onStartRecord = async function () {
-    // TODO Andrdid 및 IOS Path 설정 추가
+    const fileName = getFileName();
     const dirs = RNFetchBlob.fs.dirs;
     const path = Platform.select({
-      ios: 'hello.m4a',
-      android: `${dirs.CacheDir}/hello.mp3`,
+      ios: `${fileName}.m4a`,
+      android: `${dirs.CacheDir}/${fileName}.m4a`,
     });
     const audioSet = {
       AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
@@ -94,22 +90,34 @@ const PuzzleWritingVoice = (): JSX.Element => {
       AVNumberOfChannelsKeyIOS: 2,
       AVFormatIDKeyIOS: AVEncodingOption.aac,
     };
-    // const meteringEnabled = false;
 
     const uri = await audioRecorderPlayer.startRecorder(path, audioSet);
-    console.log(uri);
     audioRecorderPlayer.addRecordBackListener(e => {
-      console.log(e.currentPosition);
       const HourMinuteSeconds = getHourMinuteSeconds(
         Math.floor(e.currentPosition),
       );
+      console.log(e.currentPosition);
 
-      setRecordState({
-        ...recordState,
-        recordSecs: e.currentPosition,
+      setRecordFileInfo({
+        filePath: uri,
         recordTime: HourMinuteSeconds,
       });
     });
+  };
+
+  const getFileName = function () {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const minute = date.getMinutes();
+
+    const tempHour = date.getHours();
+    const hour = Math.floor(tempHour / 12) + (tempHour % 13);
+    const hourUnit = (tempHour < 12) ? 'AM' : 'PM';
+
+    const fileName = `${year}.${month}.${day} ${hour}:${minute}${hourUnit}`;
+    return fileName;
   };
 
   const getHourMinuteSeconds = function (mileSeconds: number) {
@@ -130,22 +138,16 @@ const PuzzleWritingVoice = (): JSX.Element => {
   const onStopRecord = async function () {
     await audioRecorderPlayer.stopRecorder();
     audioRecorderPlayer.removeRecordBackListener();
-
-    // TODO State 초기화는 해당 음성 녹음 화면에 진입할 때 처리하는 방식으로 변경하기
-    setRecordState({...recordState, recordSecs: 0});
-
-    // TODO Recoil 음성 녹음 데이터 저장하기
     navigation.goBack();
   };
 
   const isRecording = function () {
-    return recordState.recordSecs > 0;
+    return recordFileInfo?.filePath != undefined;
   };
 
   return (
-    <View
-      style={styles.container}>
-      <Text>{recordState.recordTime}</Text>
+    <View style={styles.container}>
+      <Text>{recordFileInfo?.recordTime}</Text>
       <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
         <Image source={require('../../assets/images/voice_frequency.png')} />
         <Image source={require('../../assets/images/voice_frequency.png')} />
