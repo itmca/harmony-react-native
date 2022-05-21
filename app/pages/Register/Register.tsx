@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import {TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { DatePickerInput } from 'react-native-paper-dates';
+import {DatePickerInput} from 'react-native-paper-dates';
 
 
 const Register = ({navigation}): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
+  const [name, setName] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [passwordConfirm, setPasswordConfrim] = useState<string>('');
   
+
   return (
     <View style={styles.mainContainer}>
       <ScrollView
@@ -22,21 +28,24 @@ const Register = ({navigation}): JSX.Element => {
           style={styles.formInput}
           mode="outlined"
           label="이름"
-          value={''}
+          value={name}
+          onChangeText={setName}
           placeholder="홍길동"
         />
         <TextInput
           style={styles.formInput}
           mode="outlined"
           label="닉네임"
-          value={''}
+          value={nickname}
+          onChangeText={setNickname}
           placeholder="공백 시 랜덤으로 설정"
         />
         <TextInput
           style={styles.formInput}
           mode="outlined"
           label="이메일"
-          value={''}
+          value={email}
+          onChangeText={setEmail}
           placeholder="user@domain.com"
         />
         <View style={styles.formVerificationPartContainer}>
@@ -57,7 +66,8 @@ const Register = ({navigation}): JSX.Element => {
           mode="outlined"
           secureTextEntry={true}
           label="비밀번호"
-          value={''}
+          value={password}
+          onChangeText={setPassword}
           placeholder="user@domain.com"
         />
         <TextInput
@@ -65,7 +75,8 @@ const Register = ({navigation}): JSX.Element => {
           mode="outlined"
           secureTextEntry={true}
           label="비밀번호 확인"
-          value={''}
+          value={passwordConfirm}
+          onChangeText={setPasswordConfrim}
           placeholder="user@domain.com"
         />
         <DatePickerInput
