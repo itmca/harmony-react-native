@@ -40,7 +40,7 @@ const KaKaoSocialLoginButton = (): JSX.Element => {
         setUser({
           loginMethod: 'kakao',
           userName: user.name,
-          userNickName: user.nickName,
+          userNickName: user.userNickName,
         });
 
         setAuthTokens(data.authTokens);

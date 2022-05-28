@@ -12,7 +12,7 @@ type Props = {
   navigation: any;
 };
 
-const Profile = ({navigation}: Props): JSX.Element => {
+const Profile = ({navigation}: Props): JSX.Element | null => {
   const isLoggedIn = useRecoilValue(isLoggedInState);
   useFocusEffect(() => {
     if (!isLoggedIn) {
