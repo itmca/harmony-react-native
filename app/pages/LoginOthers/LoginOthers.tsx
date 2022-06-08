@@ -6,6 +6,7 @@ import AppleSocialLoginButton from '../../components/button/login/AppleSocialLog
 import {styles} from './styles';
 import {TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
+import axios from 'axios';
 
 const LoginOthers = ({navigation}): JSX.Element => {
   const [email, setEmail] = useState('');
@@ -59,7 +60,9 @@ const LoginOthers = ({navigation}): JSX.Element => {
             <Text style={styles.passwordRegisterText}>회원가입</Text>
           </TouchableOpacity>
         </View>
-        <ColoredButton text="로그인" onPress={() => {}} />
+        <ColoredButton text="로그인" onPress={() => {
+           axios.post('')
+        }} />
       </View>
       <View style={styles.socialContainer}>
         <KaKaoSocialLoginButton />

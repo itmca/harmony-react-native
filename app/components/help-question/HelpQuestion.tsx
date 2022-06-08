@@ -26,7 +26,7 @@ const HelpQuestion = (): JSX.Element => {
               setOpen(true);
             }}>
             <Image
-              source={require('../../assets/images/puzzle_blue_piece.png')}
+              source={require('../../assets/images/puzzle_blue_piece.jpeg')}
               style={styles.smallSizePuzzle}
             />
           </TouchableOpacity>
@@ -39,7 +39,7 @@ const HelpQuestion = (): JSX.Element => {
     <View style={styles.container}>
       <View style={styles.bigSizeWrapper}>
         <Image
-          source={require('../../assets/images/puzzle_blue_piece.png')}
+          source={require('../../assets/images/puzzle_blue_piece.jpeg')}
           style={styles.bigSizePuzzle}
         />
         <View style={styles.verticalLine}></View>
