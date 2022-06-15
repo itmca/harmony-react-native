@@ -8,12 +8,14 @@ import {userState} from '../../../recoils/UserRecoil';
 import {authState} from '../../../recoils/AuthRecoil';
 import {useNavigation} from '@react-navigation/native';
 import {SERVER_HOST} from '../../../constants/url.constants';
+import {heroState} from '../../../recoils/HeroRecoil';
 
 const KaKaoSocialLoginButton = (): JSX.Element => {
   const navigation = useNavigation();
   const [accessToken, setAccessToken] = useState('');
   const [, setUser] = useRecoilState(userState);
   const [, setAuthTokens] = useRecoilState(authState);
+  const [, setHero] = useRecoilState(heroState);
   const signInWithKakao = async (): Promise<void> => {
     const tokens: KakaoOAuthToken = await login();
     setAccessToken(tokens.accessToken);
@@ -44,6 +46,7 @@ const KaKaoSocialLoginButton = (): JSX.Element => {
         });
 
         setAuthTokens(data.authTokens);
+        setHero(data.hero);
         navigation.goBack();
       });
   }, [accessToken]);

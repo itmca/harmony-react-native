@@ -2,6 +2,8 @@ import React from 'react';
 import {Image, TouchableOpacity, Text} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import styles from './styles';
+import {useRecoilState, useRecoilValue} from 'recoil';
+import {heroState} from '../../recoils/HeroRecoil';
 
 type Props = {
   imageURL: string;
@@ -13,8 +15,7 @@ const DefaultHeaderRight = ({
   imageURL,
   characterName
 }: Props): JSX.Element => {
-  const navigation = useNavigation<any>();
-  const route = useRoute();
+  const hero = useRecoilValue(heroState);
   return (
     <TouchableOpacity
         onPress={() => {}}
@@ -23,7 +24,7 @@ const DefaultHeaderRight = ({
             source={{uri : imageURL}}
             style={styles.headerProfileIcon}
         />
-        <Text style={styles.headerProfileName}>{characterName}</Text>
+        <Text style={styles.headerProfileName}>{hero?.heroNickName}</Text>
       
     </TouchableOpacity>
   );
