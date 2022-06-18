@@ -57,6 +57,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
         goHome();
       })
       .catch(error => {
+        console.log(error);
         // console.log(String(error).includes('timeout'));
         Alert.alert('파일 업로드가 실패했습니다. 재시도 부탁드립니다.');
       });
