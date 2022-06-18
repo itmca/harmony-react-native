@@ -20,5 +20,5 @@ export type WritingStoryTextInfo = Pick<WritingStory, 'title' | 'storyText'>;
 
 export type VoiceRecordInfo = {
   filePath: string | undefined;
-  recordTime: string;
+  recordTime: string | undefined;
 };

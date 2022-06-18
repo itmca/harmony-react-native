@@ -2,8 +2,10 @@ import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import RNFetchBlob from 'rn-fetch-blob';
 import {recordFileState} from '../../recoils/StoryWritingRecoil';
+import Permissions, {PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 import {
+  Alert,
   Image,
   PermissionsAndroid,
   Platform,
@@ -27,53 +29,47 @@ const PuzzleWritingVoice = (): JSX.Element => {
   const navigation = useNavigation();
   const [recordFileInfo, setRecordFileInfo] = useRecoilState(recordFileState);
 
-  // TODO
-  // 권한이 없을 때 글 쓰기 화면으로 돌아가기.
   useEffect(() => {
-    navigation.goBack();
-    initVoiceRecordState();
     void initVoicePermission();
+    void hasVoicePermission().then(permissionResults => {
+      const permissionNames = Object.keys(permissionResults);
+      permissionNames.forEach(permssionName => {
+        const permissionStatus = permissionResults[permssionName];
+        if (permissionStatus != RESULTS.GRANTED) {
+          navigation.goBack();
+        }
+      });
+    });
+    initVoiceRecordState();
   }, []);
 
   const initVoiceRecordState = function () {
-    setRecordFileInfo({filePath: undefined, recordTime: '00:00:00'});
+    setRecordFileInfo({filePath: undefined, recordTime: undefined});
   };
 
   const initVoicePermission = async function () {
     if (Platform.OS === 'android') {
-      try {
-        const grants = await PermissionsAndroid.requestMultiple([
-          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-          PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-        ]);
-        if (
-          grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
-            PermissionsAndroid.RESULTS.GRANTED &&
-          grants['android.permission.READ_EXTERNAL_STORAGE'] ===
-            PermissionsAndroid.RESULTS.GRANTED &&
-          grants['android.permission.RECORD_AUDIO'] ===
-            PermissionsAndroid.RESULTS.GRANTED
-        ) {
-          console.log('Permissions granted');
-        } else {
-          console.log('All required permissions not granted');
-          return;
-        }
-      } catch (err) {
-        console.warn(err);
-        return;
-      }
+      await Permissions.requestMultiple([
+        PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.RECORD_AUDIO,
+      ]);
+    } else {
+      await Permissions.request(PERMISSIONS.IOS.MICROPHONE);
     }
   };
 
-  async function hasAndroidPermission() {
-    const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
-
-    const hasPermission = await PermissionsAndroid.check(permission);
-    console.log(hasPermission);
-    return hasPermission;
-  }
+  const hasVoicePermission = async function (){
+    if (Platform.OS == 'android') {
+      return Permissions.checkMultiple([
+        PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.RECORD_AUDIO,
+      ]);
+    } else {
+      return Permissions.checkMultiple([PERMISSIONS.IOS.MICROPHONE]);
+    }
+  };
 
   const onStartRecord = async function () {
     const fileName = getFileName();
@@ -114,7 +110,7 @@ const PuzzleWritingVoice = (): JSX.Element => {
 
     const tempHour = date.getHours();
     const hour = Math.floor(tempHour / 12) + (tempHour % 13);
-    const hourUnit = (tempHour < 12) ? 'AM' : 'PM';
+    const hourUnit = tempHour < 12 ? 'AM' : 'PM';
 
     const fileName = `${year}.${month}.${day} ${hour}:${minute}${hourUnit}`;
     return fileName;

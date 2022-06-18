@@ -21,7 +21,7 @@ export default StyleSheet.create({
   },
 
   headerProfileName: {
-    fontFamily: 'Pretend Regular',
+    fontFamily: 'Pretendard Regular',
     fontWeight:'bold',
     fontSize: 12,
     color: '#FFFFFF',

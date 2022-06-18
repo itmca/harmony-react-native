@@ -45,7 +45,16 @@ const PuzzleWritingNavigator = (): JSX.Element => {
       url: `${SERVER_HOST}/story`,
       data: formData,
       headers: {'Content-Type': 'multipart/form-data'},
-    });
+      timeout: 5000,
+    })
+      .then(req => {
+        resetStoryRecoil();
+        goHome();
+      })
+      .catch(error => {
+        // console.log(String(error).includes('timeout'));
+        Alert.alert('파일 업로드가 실패했습니다. 재시도 부탁드립니다.');
+      });
   };
 
   const addStoryinfoInFormData = function (formData: FormData) {
@@ -159,8 +168,6 @@ const PuzzleWritingNavigator = (): JSX.Element => {
                   Alert.alert('제목을 입력해주세요.');
                 } else {
                   void handleSubmit();
-                  resetStoryRecoil();
-                  goHome();
                 }
               }}
             />

@@ -21,6 +21,10 @@ const PuzzleWritingQuestion = (): JSX.Element => {
     writingStoryQuestionInfo?.helpQuestionText === undefined
       ? ''
       : writingStoryQuestionInfo?.helpQuestionText;
+  const questionNo =
+    writingStoryQuestionInfo?.recQuestionNo === undefined
+      ? -1
+      : writingStoryQuestionInfo?.recQuestionNo;
 
   useFocusEffect(() => {
     setHelpQuestionOpen(true);
@@ -30,6 +34,7 @@ const PuzzleWritingQuestion = (): JSX.Element => {
     setInputValue(question);
     setWritingStoryQuestionInfo({
       ...writingStoryQuestionInfo,
+      recQuestionNo: questionNo,
       recQuestionModified: question === recQuestion,
       helpQuestionText: question,
     });
