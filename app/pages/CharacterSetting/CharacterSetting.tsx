@@ -9,24 +9,22 @@ import {useRecoilValue} from 'recoil';
 import {useAxiosPromise} from '../../hooks/network.hooks';
 import {Hero} from '../../type/hero';
 import {heroState} from '../../recoils/HeroRecoil';
-import {useFocusEffect} from '@react-navigation/native';
 
 type Props = {
   navigation: any;
+  route: any;
 };
 
-const CharacterSetting = ({navigation}: Props): JSX.Element => {
+const CharacterSetting = ({navigation, route}: Props): JSX.Element => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
   const currentHero = useRecoilValue(heroState);
   const [heroes, setHeroes] = useState<Hero[]>([]);
 
-  const {response, refetch} = useAxiosPromise<Hero[]>(
-    {
-      url: '/heroes',
-    },
-  );
+  const {response, refetch} = useAxiosPromise<Hero[]>({
+    url: '/heroes',
+  });
 
   useEffect(() => {
     void response
@@ -36,9 +34,9 @@ const CharacterSetting = ({navigation}: Props): JSX.Element => {
       });
   }, [response]);
 
-  useFocusEffect(() => {
-    console.log('focusEffect is called');
-  });
+  useEffect(() => {
+    refetch({});
+  }, [route.params?.event]);
 
   return (
     <View style={styles.mainContainer}>
