@@ -51,7 +51,7 @@ export const useAxiosPromise = <R>(
     void fetchData({
       timeout: 5000,
       ...axiosParams,
-      url: url.startsWith('http') ? SERVER_HOST + url : url,
+      url: url.startsWith('http') ? url : SERVER_HOST + url,
       headers: {
         Authorization: tokens.accessToken && `Bearer ${tokens.accessToken}`,
         ...axiosParams.headers,
@@ -68,7 +68,7 @@ export const useAxiosPromise = <R>(
       void fetchData({
         timeout: 5000,
         ...axiosParams,
-        url: newUrl || url.startsWith('http') ? SERVER_HOST + url : url,
+        url: newUrl || url.startsWith('http') ? url : SERVER_HOST + url,
         headers: {
           Authorization: tokens.accessToken && `Bearer ${tokens.accessToken}`,
           ...axiosParams.headers,
