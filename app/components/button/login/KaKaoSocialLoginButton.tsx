@@ -7,7 +7,7 @@ import {userState} from '../../../recoils/UserRecoil';
 import {authState} from '../../../recoils/AuthRecoil';
 import {useNavigation} from '@react-navigation/native';
 import {heroState} from '../../../recoils/HeroRecoil';
-import {useAxiosPromise} from '../../../hooks/network';
+import {useAxiosPromise} from '../../../hooks/network.hooks';
 import {User} from '../../../type/user';
 import {AuthTokens} from '../../../type/auth';
 import {Hero} from '../../../type/hero';

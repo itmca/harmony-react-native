@@ -9,8 +9,8 @@ type AxiosOption = {
   disableInitialRequest: boolean;
 };
 
-export const useAxios = async <R>(axiosParams: AxiosRequestConfig) => {
-  const {response, error, loading} = useAxiosPromise<R>(axiosParams);
+export const useAxios = async <R>(requestConfig: AxiosRequestConfig) => {
+  const {response, error, loading} = useAxiosPromise<R>(requestConfig);
 
   return {
     response: await response,
@@ -20,7 +20,7 @@ export const useAxios = async <R>(axiosParams: AxiosRequestConfig) => {
 };
 
 export const useAxiosPromise = <R>(
-  axiosParams: AxiosRequestConfig,
+  paramAxiosConfig: AxiosRequestConfig,
   options: AxiosOption = {
     disableInitialRequest: false,
   },
@@ -30,11 +30,21 @@ export const useAxiosPromise = <R>(
   const [loading, setLoading] = useState(true);
 
   const tokens = useRecoilValue<AuthTokens>(authState);
-  const url = axiosParams.url || '';
 
-  const fetchData = (params: AxiosRequestConfig) => {
+  const fetchData = (axiosConfig: AxiosRequestConfig) => {
+    const url = axiosConfig.url || '';
+
+    axiosConfig.url = url.startsWith('http') ? url : SERVER_HOST + url;
+
     try {
-      const result = axios.request(params);
+      const result = axios.request({
+        timeout: 5000,
+        ...axiosConfig,
+        headers: {
+          Authorization: tokens.accessToken && `Bearer ${tokens.accessToken}`,
+          ...axiosConfig.headers,
+        },
+      });
       setResponse(result);
     } catch (err) {
       setError(err);
@@ -48,15 +58,7 @@ export const useAxiosPromise = <R>(
       return;
     }
 
-    void fetchData({
-      timeout: 5000,
-      ...axiosParams,
-      url: url.startsWith('http') ? url : SERVER_HOST + url,
-      headers: {
-        Authorization: tokens.accessToken && `Bearer ${tokens.accessToken}`,
-        ...axiosParams.headers,
-      },
-    });
+    void fetchData(paramAxiosConfig);
   }, []);
 
   return {
@@ -64,15 +66,9 @@ export const useAxiosPromise = <R>(
     error,
     loading,
     refetch: (newRequestConfig: Partial<AxiosRequestConfig>) => {
-      const newUrl = newRequestConfig.url || '';
       void fetchData({
-        timeout: 5000,
-        ...axiosParams,
-        url: newUrl || url.startsWith('http') ? url : SERVER_HOST + url,
-        headers: {
-          Authorization: tokens.accessToken && `Bearer ${tokens.accessToken}`,
-          ...axiosParams.headers,
-        },
+        ...paramAxiosConfig,
+        ...newRequestConfig,
       });
     },
   };
