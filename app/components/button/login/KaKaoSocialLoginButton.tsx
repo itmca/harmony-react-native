@@ -1,14 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import {Image, Text, TouchableOpacity} from 'react-native';
-import axios from 'axios';
 import styles from './styles';
 import {KakaoOAuthToken, login} from '@react-native-seoul/kakao-login';
 import {useRecoilState} from 'recoil';
 import {userState} from '../../../recoils/UserRecoil';
 import {authState} from '../../../recoils/AuthRecoil';
 import {useNavigation} from '@react-navigation/native';
-import {SERVER_HOST} from '../../../constants/url.constants';
 import {heroState} from '../../../recoils/HeroRecoil';
+import {useAxiosPromise} from '../../../hooks/network';
+import {User} from '../../../type/user';
+import {AuthTokens} from '../../../type/auth';
+import {Hero} from '../../../type/hero';
+
+type LoginResponse = {
+  user: {
+    userName: string;
+    userNickName: string;
+  };
+  tokens: AuthTokens;
+  hero: Hero;
+};
 
 const KaKaoSocialLoginButton = (): JSX.Element => {
   const navigation = useNavigation();
@@ -21,35 +32,50 @@ const KaKaoSocialLoginButton = (): JSX.Element => {
     setAccessToken(tokens.accessToken);
   };
 
+  const {response, error, loading, refetch} = useAxiosPromise<LoginResponse>(
+    {
+      method: 'post',
+      url: '/auth/social/kakao',
+      headers: {
+        'kakao-access-token': accessToken,
+      },
+    },
+    {disableInitialRequest: true},
+  );
+
   useEffect(() => {
     if (!accessToken) {
       return;
     }
 
-    void axios
-      .post(
-        `${SERVER_HOST}/auth/social/kakao`,
-        {},
-        {
-          headers: {
-            'kakao-access-token': accessToken,
-          },
-        },
-      )
-      .then(res => res.data)
-      .then((data: any) => {
-        const user = data.user;
+    refetch({
+      headers: {
+        'kakao-access-token': accessToken,
+      },
+    });
+  }, [accessToken]);
+
+  useEffect(() => {
+    if (!response) {
+      return;
+    }
+
+    void response
+      .then(r => r.data)
+      .then(data => {
+        const {user, tokens, hero} = data;
+
         setUser({
           loginMethod: 'kakao',
-          userName: user.name,
+          userName: user.userName,
           userNickName: user.userNickName,
         });
+        setAuthTokens(tokens);
+        setHero(hero);
 
-        setAuthTokens(data.authTokens);
-        setHero(data.hero);
         navigation.goBack();
       });
-  }, [accessToken]);
+  }, [response]);
 
   return (
     <TouchableOpacity

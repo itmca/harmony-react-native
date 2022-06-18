@@ -24,7 +24,7 @@ const DefaultHeaderRight = ({
             source={{uri : imageURL}}
             style={styles.headerProfileIcon}
         />
-        <Text style={styles.headerProfileName}>{hero?.heroNickName}</Text>
+        <Text style={styles.headerProfileName}>{hero?.heroNo}</Text>
       
     </TouchableOpacity>
   );
