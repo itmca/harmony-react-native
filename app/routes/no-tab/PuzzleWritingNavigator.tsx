@@ -20,6 +20,8 @@ import {useNavigation} from '@react-navigation/native';
 import {SERVER_HOST} from '../../constants/url.constants';
 import {AUDIO_TYPE, IMG_TYPE} from '../../constants/uploadFileType.constants';
 import {Alert} from 'react-native';
+import { AuthTokens } from '../../type/auth';
+import { authState } from '../../recoils/AuthRecoil';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +33,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
   const resetHelpQuestion = useResetRecoilState(helpQuestionState);
   const resetSelectedPhoto = useResetRecoilState(selectedPhotoState);
   const resetRecord = useResetRecoilState(recordFileState);
+  const tokens = useRecoilValue<AuthTokens>(authState);
 
   const handleSubmit = async function () {
     const formData = new FormData();
@@ -38,14 +41,26 @@ const PuzzleWritingNavigator = (): JSX.Element => {
     addImagesInFormData(formData);
     addVoiceInFormData(formData);
 
-    // TODO
-    // 응답 TimeOut 5초 - 200(go home) , else(다시 시도해주세요 alter. 문제가 계속 될 경우 문의 해주세요.)
+    // TODO 이후 network useAxios 사용으로 수정
     await axios({
       method: 'post',
       url: `${SERVER_HOST}/story`,
       data: formData,
-      headers: {'Content-Type': 'multipart/form-data'},
-    });
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: tokens.accessToken && `Bearer ${tokens.accessToken}`,
+      },
+      timeout: 5000,
+    })
+      .then(req => {
+        resetStoryRecoil();
+        goHome();
+      })
+      .catch(error => {
+        console.log(error);
+        // console.log(String(error).includes('timeout'));
+        Alert.alert('파일 업로드가 실패했습니다. 재시도 부탁드립니다.');
+      });
   };
 
   const addStoryinfoInFormData = function (formData: FormData) {
@@ -159,8 +174,6 @@ const PuzzleWritingNavigator = (): JSX.Element => {
                   Alert.alert('제목을 입력해주세요.');
                 } else {
                   void handleSubmit();
-                  resetStoryRecoil();
-                  goHome();
                 }
               }}
             />
