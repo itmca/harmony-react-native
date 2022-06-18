@@ -5,6 +5,7 @@ import {HelperText, TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DatePickerInput} from 'react-native-paper-dates';
+import ValidatedTextInput from '../../components/form/ValidatedTextInput';
 
 const Register = ({navigation}): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
@@ -15,30 +16,16 @@ const Register = ({navigation}): JSX.Element => {
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
   const isChecked = false;
 
-  const [nameError, setNameError] = useState<string>('');
   const [nicknameError, setNicknameError] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
   const [passwordConfirmError, setPasswordConfirmError] = useState<string>('');
 
-  const [hasNameError, setHasNameError] = useState<boolean>(false);
   const [hasNicknameError, setHasNicknameError] = useState<boolean>(false);
   const [hasEmailError, setHasEmailError] = useState<boolean>(false);
   const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
-  const [hasPasswordConfirmError, setHasPasswordConfirmError] = useState<boolean>(false);
-
-  const onChangeName = (inputName: string) => {
-    setName(inputName);
-    if (inputName.length == 0) {
-      setNameError('이름을 입력해주세요.');
-      setHasNameError(true);
-    } else if (inputName?.length < 2 || inputName?.length > 30) {
-      setNameError('2자 이상 31자 미만으로 입력해주세요.');
-      setHasNameError(true);
-    } else {
-      setNameError('');
-    }
-  };
+  const [hasPasswordConfirmError, setHasPasswordConfirmError] =
+    useState<boolean>(false);
 
   const onChangeNickname = (inputNickname: string) => {
     setNickname(inputNickname);
@@ -67,7 +54,8 @@ const Register = ({navigation}): JSX.Element => {
 
   const onChangePassword = (inputPassword: string) => {
     setPassword(inputPassword);
-    const regex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+    const regex =
+      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
     if (inputPassword.length == 0) {
       setPasswordError('비밀번호를 입력해주세요.');
       setHasPasswordError(true);
@@ -87,12 +75,9 @@ const Register = ({navigation}): JSX.Element => {
     } else {
       setHasPasswordConfirmError(false);
     }
-  }
+  };
 
-  const onVerificationSend = () => {
-
-  }
-
+  const onVerificationSend = () => {};
 
   return (
     <View style={styles.mainContainer}>
@@ -100,6 +85,19 @@ const Register = ({navigation}): JSX.Element => {
         <View style={styles.titleContainer}>
           <Text style={styles.registerText}>회원가입</Text>
         </View>
+        <ValidatedTextInput
+          label={'이름'}
+          value={name}
+          onChangeText={setName}
+          errorTextProvider={name => {
+            if (name.length === 0) {
+              return '이름을 입력해주세요.';
+            } else if (name?.length < 2 || name?.length > 30) {
+              return '2자 이상 31자 미만으로 입력해주세요.';
+            }
+            return '';
+          }}
+        />
         <TextInput
           style={styles.formInput}
           mode="outlined"
@@ -108,11 +106,7 @@ const Register = ({navigation}): JSX.Element => {
           onChangeText={onChangeName}
           placeholder="홍길동"
         />
-        {nameError ? (
-          <HelperText type="error">
-            {nameError}
-          </HelperText>
-        ) : null}
+        {nameError ? <HelperText type="error">{nameError}</HelperText> : null}
         <TextInput
           style={styles.formInput}
           mode="outlined"
