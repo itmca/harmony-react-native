@@ -34,6 +34,9 @@ const CharacterCard = ({
               screen: 'CharacterSettingNavigator',
               params: {
                 screen: 'CharacterModification',
+                params: {
+                  heroNo: characterNo,
+                },
               },
             });
           }}>

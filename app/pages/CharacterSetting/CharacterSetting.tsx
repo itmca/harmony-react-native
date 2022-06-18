@@ -5,12 +5,11 @@ import {styles} from './styles';
 import Carousel from 'react-native-snap-carousel';
 import CharacterCard from '../../components/card/CharacterCard';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useRecoilState, useRecoilValue} from 'recoil';
-import {authState} from '../../recoils/AuthRecoil';
-import axios from 'axios';
-import {SERVER_HOST} from '../../constants/url.constants';
-import {useAxios} from '../../hooks/network';
+import {useRecoilValue} from 'recoil';
+import {useAxiosPromise} from '../../hooks/network.hooks';
 import {Hero} from '../../type/hero';
+import {heroState} from '../../recoils/HeroRecoil';
+import {useFocusEffect} from '@react-navigation/native';
 
 type Props = {
   navigation: any;
@@ -20,44 +19,46 @@ const CharacterSetting = ({navigation}: Props): JSX.Element => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
-  const tokens = useRecoilValue(authState);
-  const [characters, setCharacters] = useState([]);
-  
-  useEffect(() => {
-    console.log(tokens);
+  const currentHero = useRecoilValue(heroState);
+  const [heroes, setHeroes] = useState<Hero[]>([]);
 
-    void axios
-      .get(`${SERVER_HOST}/characters`, {
-        headers: {
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          Authorization: `Bearer ${tokens?.accessToken}`,
-        },
-      })
-      .then(r => r.data)
-      .then(data => {
-        setCharacters(data);
+  const {response, refetch} = useAxiosPromise<Hero[]>(
+    {
+      url: '/heroes',
+    },
+  );
+
+  useEffect(() => {
+    void response
+      ?.then(r => r.data)
+      .then(heroes => {
+        setHeroes(heroes);
       });
-  }, []);
+  }, [response]);
+
+  useFocusEffect(() => {
+    console.log('focusEffect is called');
+  });
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.carouselContainer}>
         <Carousel
-          data={characters}
+          data={heroes}
           sliderWidth={windowWidth}
           sliderHeight={windowHeight}
           itemWidth={windowWidth * 0.8}
           itemHeight={windowHeight}
           layout={'default'}
-          renderItem={({item: story, index}: any) => {
+          renderItem={({item: hero, index}: any) => {
             return (
               <CharacterCard
-                characterNo={story.characterNo}
-                characterName={story.characterName}
-                characterNickName={story.characterNickName}
-                title={story.title}
-                imageURL={story.imageURL}
-                selected={index === 1}
+                characterNo={hero.heroNo}
+                characterName={hero.heroName}
+                characterNickName={hero.heroNickName}
+                title={hero.title}
+                imageURL={hero.imageURL}
+                selected={hero.heroNo && hero.heroNo === currentHero?.heroNo}
               />
             );
           }}

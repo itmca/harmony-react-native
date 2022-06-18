@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
-import {useRecommendedQuestion} from '../../hooks/question';
+import {useRecommendedQuestion} from '../../hooks/question.hooks';
 import {useRecoilState, useSetRecoilState} from 'recoil';
 import {
   helpQuestionOpenState,
