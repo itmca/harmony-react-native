@@ -37,6 +37,8 @@ export const useAxiosPromise = <R>(
     axiosConfig.url = url.startsWith('http') ? url : SERVER_HOST + url;
 
     try {
+      setLoading(true);
+
       const result = axios.request({
         timeout: 5000,
         ...axiosConfig,
@@ -45,6 +47,7 @@ export const useAxiosPromise = <R>(
           ...axiosConfig.headers,
         },
       });
+
       setResponse(result);
     } catch (err) {
       setError(err);

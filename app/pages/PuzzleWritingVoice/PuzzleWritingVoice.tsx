@@ -50,7 +50,7 @@ const PuzzleWritingVoice = (): JSX.Element => {
   }, []);
 
   const initVoiceRecordState = function () {
-    setRecordFileInfo({filePath: undefined, recordTime: '00:00:00'});
+    setRecordFileInfo({filePath: undefined, recordTime: undefined});
   };
 
   const initVoicePermission = async function () {

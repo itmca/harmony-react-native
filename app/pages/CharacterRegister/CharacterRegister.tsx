@@ -40,7 +40,13 @@ const CharacterRegister = ({navigation}): JSX.Element => {
       ?.then(r => r.data)
       .then(() => {
         Alert.alert('주인공이 생성되었습니다.');
-        navigation.goBack();
+        navigation.navigate({
+          name: 'CharacterSetting',
+          params: {
+            event: 'create',
+          },
+          merge: true,
+        });
       });
   }, [response]);
 

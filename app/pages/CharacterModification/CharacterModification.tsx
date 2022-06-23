@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity, Alert} from 'react-native';
+import {Alert, ScrollView, View} from 'react-native';
 import {styles} from './styles';
 import {TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DatePickerInput} from 'react-native-paper-dates';
 import {useAxiosPromise} from '../../hooks/network.hooks';
 import {Hero} from '../../type/hero';
@@ -25,7 +24,7 @@ const CharacterModification = ({navigation, route}): JSX.Element => {
       .then(hero => {
         setName(hero.heroName);
         setNickName(hero.heroNickName);
-        setBirthday(hero.birthday);
+        setBirthday(hero.birthday ? new Date(hero.birthday) : new Date());
         setTitle(hero.title || '');
       });
   }, [heroResponse]);
@@ -59,7 +58,13 @@ const CharacterModification = ({navigation, route}): JSX.Element => {
       ?.then(r => r.data)
       .then(() => {
         Alert.alert('주인공이 수정되었습니다.');
-        navigation.goBack();
+        navigation.navigate({
+          name: 'CharacterSetting',
+          params: {
+            event: 'modify',
+          },
+          merge: true,
+        });
       });
   }, [response]);
 
