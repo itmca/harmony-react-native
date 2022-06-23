@@ -30,36 +30,42 @@ const PuzzleWritingVoice = (): JSX.Element => {
   const [recordFileInfo, setRecordFileInfo] = useRecoilState(recordFileState);
 
   useEffect(() => {
-    void initVoicePermission();
-    void hasVoicePermission().then(permissionResults => {
-      const permissionNames = Object.keys(permissionResults);
-      permissionNames.forEach(permssionName => {
-        const permissionStatus = permissionResults[permssionName];
-        if (permissionStatus != RESULTS.GRANTED) {
-          navigation.goBack();
-        }
+    void initVoicePermission().then(() => {
+      void hasVoicePermission().then(permissionResults => {
+        const permissionNames = Object.keys(permissionResults);
+        permissionNames.forEach(permssionName => {
+          const permissionStatus = permissionResults[permssionName];
+          if (permissionStatus != RESULTS.GRANTED) {
+            Alert.alert('마이크 권한이 없습니다.', '', [
+              {
+                text: '확인',
+                onPress: () => navigation.goBack(),
+              },
+            ]);
+          }
+        });
       });
     });
     initVoiceRecordState();
   }, []);
 
   const initVoiceRecordState = function () {
-    setRecordFileInfo({filePath: undefined, recordTime: undefined});
+    setRecordFileInfo({filePath: undefined, recordTime: '00:00:00'});
   };
 
   const initVoicePermission = async function () {
     if (Platform.OS === 'android') {
-      await Permissions.requestMultiple([
+      return Permissions.requestMultiple([
         PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
         PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
         PERMISSIONS.ANDROID.RECORD_AUDIO,
       ]);
     } else {
-      await Permissions.request(PERMISSIONS.IOS.MICROPHONE);
+      return Permissions.request(PERMISSIONS.IOS.MICROPHONE);
     }
   };
 
-  const hasVoicePermission = async function (){
+  const hasVoicePermission = async function () {
     if (Platform.OS == 'android') {
       return Permissions.checkMultiple([
         PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
@@ -76,7 +82,7 @@ const PuzzleWritingVoice = (): JSX.Element => {
     const dirs = RNFetchBlob.fs.dirs;
     const path = Platform.select({
       ios: `${fileName}.m4a`,
-      android: `${dirs.CacheDir}/${fileName}.m4a`,
+      android: `${dirs.CacheDir}/${fileName}.mp4`,
     });
     const audioSet = {
       AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
@@ -92,7 +98,6 @@ const PuzzleWritingVoice = (): JSX.Element => {
       const HourMinuteSeconds = getHourMinuteSeconds(
         Math.floor(e.currentPosition),
       );
-      console.log(e.currentPosition);
 
       setRecordFileInfo({
         filePath: uri,
@@ -144,12 +149,6 @@ const PuzzleWritingVoice = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Text>{recordFileInfo?.recordTime}</Text>
-      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-      </View>
       <View>
         <Pressable
           style={styles.recordContainer}

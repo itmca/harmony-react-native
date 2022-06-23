@@ -37,9 +37,9 @@ const PuzzleWritingNavigator = (): JSX.Element => {
 
   const handleSubmit = async function () {
     const formData = new FormData();
-    addStoryinfoInFormData(formData);
     addImagesInFormData(formData);
     addVoiceInFormData(formData);
+    addStoryinfoInFormData(formData);
 
     // TODO 이후 network useAxios 사용으로 수정
     await axios({
@@ -52,7 +52,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
       },
       timeout: 5000,
     })
-      .then(req => {
+      .then(() => {
         resetStoryRecoil();
         goHome();
       })
@@ -81,13 +81,12 @@ const PuzzleWritingNavigator = (): JSX.Element => {
 
   const addImagesInFormData = function (formData: FormData) {
     const selectedImages = writingStory?.photos;
-    //console.log(selectedImages);
 
     selectedImages?.forEach((image, index) => {
       const uri = image.node.image.uri;
-      console.log(uri);
       const type = IMG_TYPE;
-      const fileName = image.node.image.filename;
+      const fileParts = uri?.split('/');
+      const fileName = fileParts[fileParts?.length - 1];
       formData.append('photos', {
         uri: uri,
         type: type,
