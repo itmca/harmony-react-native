@@ -45,10 +45,6 @@ export const NumberInput = ({
     onChangeNumber(number);
   }, [number]);
 
-  useEffect(() => {
-    console.log(`rangeEnd : ${rangeEnd}`)
-  }, [rangeEnd]);
-
   function isOutOfRange(newNumber: number) {
     return (
       (rangeStart !== undefined && rangeStart > newNumber) ||
