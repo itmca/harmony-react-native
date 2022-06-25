@@ -18,6 +18,11 @@ export const storyTextState = atom<WritingStoryTextInfo | undefined>({
   default: undefined,
 });
 
+export const storyDateState = atom<Date | undefined>({
+  key: 'storyDateState',
+  default: undefined,
+});
+
 export const recordFileState = atom<VoiceRecordInfo | undefined>({
   key: 'recordFileState',
   default: undefined,
@@ -28,14 +33,16 @@ export const writingStoryState = selector<WritingStory | undefined>({
   get: ({get}) => {
     const hero = get(heroState);
     const questionInfo = get(helpQuestionState);
-    const photos = get(selectedPhotoState);
     const textInfo = get(storyTextState);
+    const date = get(storyDateState);
+    const photos = get(selectedPhotoState);
     const recordFile = get(recordFileState);
 
     return {
       heroNo: hero?.heroNo,
       ...questionInfo,
       ...textInfo,
+      date,
       photos,
       voice: recordFile?.filePath,
     };

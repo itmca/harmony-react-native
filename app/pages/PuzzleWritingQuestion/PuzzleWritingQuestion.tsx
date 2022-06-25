@@ -9,6 +9,7 @@ import {
 } from '../../recoils/HelpQuestionRecoil';
 import {useFocusEffect} from '@react-navigation/native';
 import {helpQuestionState} from '../../recoils/StoryWritingRecoil';
+import SelectableChips from '../../components/chips/SelectableChips';
 
 const PuzzleWritingQuestion = (): JSX.Element => {
   //const [question, setQuestion] = useState<string>('');

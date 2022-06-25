@@ -79,7 +79,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
           headerRight: () => (
             <WritingHeaderRight
               text="다음"
-              nextScreenName="PuzzleWritingPhoto"
+              nextScreenName="PuzzleWritingDate"
             />
           ),
         }}

@@ -9,11 +9,21 @@ type AxiosOption = {
   disableInitialRequest: boolean;
 };
 
-export const useAxios = async <R>(requestConfig: AxiosRequestConfig) => {
-  const {response, error, loading} = useAxiosPromise<R>(requestConfig);
+export const useAxios = <R>(requestConfig: AxiosRequestConfig) => {
+  const [response, setResponse] = useState<R>();
+
+  const {
+    response: promiseResponse,
+    error,
+    loading,
+  } = useAxiosPromise<R>(requestConfig);
+
+  void promiseResponse?.then(r => {
+    setResponse(r.data);
+  });
 
   return {
-    response: await response,
+    response,
     error,
     loading,
   };

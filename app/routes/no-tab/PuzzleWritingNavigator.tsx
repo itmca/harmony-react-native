@@ -22,6 +22,7 @@ import {AUDIO_TYPE, IMG_TYPE} from '../../constants/uploadFileType.constants';
 import {Alert} from 'react-native';
 import { AuthTokens } from '../../type/auth';
 import { authState } from '../../recoils/AuthRecoil';
+import PuzzleWritingDate from '../../pages/PuzzleWritingDate/PuzzleWritingDate';
 
 const Stack = createNativeStackNavigator();
 
@@ -129,10 +130,10 @@ const PuzzleWritingNavigator = (): JSX.Element => {
       initialRouteName="PuzzleWritingQuestion"
       screenOptions={{headerShadowVisible: false, headerTitleAlign: 'center'}}>
       <Stack.Screen
-        name="PuzzleWritingQuestion"
-        component={PuzzleWritingQuestion}
+        name="PuzzleWritingDate"
+        component={PuzzleWritingDate}
         options={{
-          headerLeft: () => <WritingHeaderLeft type="cancel" />,
+          headerLeft: () => <WritingHeaderLeft type="before" />,
           title: '조각 맞추기',
           headerRight: () => (
             <WritingHeaderRight
