@@ -4,6 +4,7 @@ import {styles} from './styles';
 import {TextInput, Button} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {DatePickerInput} from 'react-native-paper-dates';
 
 const AccountModification = (): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
@@ -48,16 +49,16 @@ const AccountModification = (): JSX.Element => {
           locale="en"
           label="태어난 날"
           value={inputDate}
-          onChange={(d) => setInputDate(d)}
+          onChange={d => setInputDate(d)}
           inputMode="start"
           mode="outlined"
-        /> 
-        <ColoredButton text="저장" onPress={() => {
-
-        }} />
-        <ColoredButton text="비밀번호 변경" onPress={() => {
-
-        }} style={{marginTop:8}}/>
+        />
+        <ColoredButton text="저장" onPress={() => {}} />
+        <ColoredButton
+          text="비밀번호 변경"
+          onPress={() => {}}
+          style={{marginTop: 8}}
+        />
       </ScrollView>
     </View>
   );

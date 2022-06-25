@@ -1,4 +1,4 @@
-package com.harmony_app;
+package com.harmony.app;
 
 import android.app.Application;
 import android.content.Context;
