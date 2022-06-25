@@ -39,7 +39,7 @@ export const writingStoryState = selector<WritingStory | undefined>({
     const recordFile = get(recordFileState);
 
     return {
-      heroNo: hero?.heroNo,
+      heroNo: hero.heroNo,
       ...questionInfo,
       ...textInfo,
       date,

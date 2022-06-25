@@ -1,7 +1,11 @@
 import {atom} from 'recoil';
 import {Hero} from '../type/hero';
 
-export const heroState = atom<Hero | undefined>({
+export const heroState = atom<Hero>({
   key: 'heroState',
-  default: undefined,
+  default: {
+    heroNo: -1,
+    heroName: '',
+    heroNickName: '',
+  },
 });

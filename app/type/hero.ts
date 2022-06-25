@@ -1,7 +1,8 @@
 export type Hero = {
-  heroNo: string;
+  heroNo: number;
   heroName: string;
   heroNickName: string;
+  imageURL?: string;
   birthday?: Date;
   title?: string;
 };

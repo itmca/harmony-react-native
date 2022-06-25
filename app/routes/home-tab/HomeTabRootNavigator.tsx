@@ -5,7 +5,7 @@ import styles from '../styles';
 import Home from '../../pages/Home/Home';
 import Profile from '../../pages/Profile/Profile';
 import DefaultHeaderLeft from '../../components/header/DefaultHeaderLeft';
-import DefaultHeaderRight from '../../components/header/DefaultHeaderRight';
+import HeroBadgeHeader from '../../components/header/HeroBadgeHeader';
 import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
@@ -14,11 +14,13 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {useRecoilValue} from 'recoil';
 import {isLoggedInState} from '../../recoils/UserRecoil';
 import StoryList from '../../pages/StoryList/StoryList';
+import {heroState} from '../../recoils/HeroRecoil';
 
 const BottomTab = createBottomTabNavigator();
 
 const HomeTabRootNavigator = (): JSX.Element => {
   const isLoggedIn = useRecoilValue(isLoggedInState);
+  const hero = useRecoilValue(heroState);
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -37,7 +39,6 @@ const HomeTabRootNavigator = (): JSX.Element => {
           paddingRight: 16,
         },
         tabBarHideOnKeyboard: true,
-
       }}>
       <BottomTab.Screen
         name="Home"
@@ -58,9 +59,13 @@ const HomeTabRootNavigator = (): JSX.Element => {
             ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
-          headerRight: () => (
-            <DefaultHeaderRight imageURL="../../assets/images/profile_image_sample.png" characterName="김영옥"/>
-          ), 
+          headerRight: () =>
+            isLoggedIn && (
+              <HeroBadgeHeader
+                imageURL={hero?.imageURL || ''}
+                characterName={hero.heroNickName}
+              />
+            ),
         }}
       />
       <BottomTab.Screen
