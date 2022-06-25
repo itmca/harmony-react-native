@@ -31,7 +31,6 @@ const PuzzleWritingText = (): JSX.Element => {
   const writingStory = useRecoilValue(writingStoryState);
 
   useEffect(() => {
-    console.log(writingStory?.helpQuestionText);
     if (inputRef.current) {
       inputRef.current.focus();
     }
