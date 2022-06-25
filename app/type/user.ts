@@ -1,5 +1,5 @@
 export type User = {
   userName: string;
   userNickName: string;
-  loginMethod: 'general' | 'kakao' | 'apple';
+  loginMethod: 'general' | 'kakao' | 'apple' | 'none';
 };

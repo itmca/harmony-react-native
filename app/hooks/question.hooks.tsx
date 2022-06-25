@@ -1,6 +1,5 @@
-import NetworkUtil from '../utils/network/NetworkUtil';
 import {useEffect, useState} from 'react';
-import {SERVER_HOST} from '../constants/url.constants';
+import {useAxios} from './network.hooks';
 
 type Param = {
   characterNo: number;
@@ -8,31 +7,34 @@ type Param = {
   defaultQuestion?: string;
 };
 
+export type Question = {
+  questionNo: number;
+  catetory: string;
+  question: string;
+};
+
 const useRecommendedQuestion = ({
   characterNo,
   defaultQuestion = '',
 }: Param): [string, () => void, number] => {
-  const REC_QUESTION_URL = `${SERVER_HOST}/question/recommend?characterNo=${characterNo}`;
-
   const [questionNo, setQuestionNo] = useState(0);
   const [question, setQuestion] = useState(defaultQuestion);
-  const [questions, setQuestions] = useState(
-    new Array<Record<string, string>>(),
-  );
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const [questions, setQuestions] = useState<Question[]>([]);
+
+  const {response: responseQuestions} = useAxios<Question[]>({
+    url: '/question/recommend?characterNo=${characterNo}',
+  });
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    NetworkUtil.getResponseDataAsArray(REC_QUESTION_URL).then(
-      responseQuestions => {
-        setQuestions(responseQuestions);
-      },
-    );
-  }, []);
+    setQuestions(responseQuestions ?? []);
+    setQuestionIndex(0);
+  }, [responseQuestions]);
+
+  const [questionIndex, setQuestionIndex] = useState(-1);
 
   useEffect(() => {
     setQuestion(questions[questionIndex]?.question);
-    setQuestionNo(parseInt(questions[questionIndex]?.questionNo));
+    setQuestionNo(questions[questionIndex]?.questionNo);
   }, [questionIndex]);
 
   const changer = () => {

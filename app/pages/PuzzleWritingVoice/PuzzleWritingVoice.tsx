@@ -2,8 +2,10 @@ import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import RNFetchBlob from 'rn-fetch-blob';
 import {recordFileState} from '../../recoils/StoryWritingRecoil';
+import Permissions, {PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 import {
+  Alert,
   Image,
   PermissionsAndroid,
   Platform,
@@ -27,60 +29,60 @@ const PuzzleWritingVoice = (): JSX.Element => {
   const navigation = useNavigation();
   const [recordFileInfo, setRecordFileInfo] = useRecoilState(recordFileState);
 
-  // TODO
-  // 권한이 없을 때 글 쓰기 화면으로 돌아가기.
   useEffect(() => {
-    navigation.goBack();
+    void initVoicePermission().then(() => {
+      void hasVoicePermission().then(permissionResults => {
+        const permissionNames = Object.keys(permissionResults);
+        permissionNames.forEach(permssionName => {
+          const permissionStatus = permissionResults[permssionName];
+          if (permissionStatus != RESULTS.GRANTED) {
+            Alert.alert('마이크 권한이 없습니다.', '', [
+              {
+                text: '확인',
+                onPress: () => navigation.goBack(),
+              },
+            ]);
+          }
+        });
+      });
+    });
     initVoiceRecordState();
-    void initVoicePermission();
   }, []);
 
   const initVoiceRecordState = function () {
-    setRecordFileInfo({filePath: undefined, recordTime: '00:00:00'});
+    setRecordFileInfo({filePath: undefined, recordTime: undefined});
   };
 
   const initVoicePermission = async function () {
     if (Platform.OS === 'android') {
-      try {
-        const grants = await PermissionsAndroid.requestMultiple([
-          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-          PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-        ]);
-        if (
-          grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
-            PermissionsAndroid.RESULTS.GRANTED &&
-          grants['android.permission.READ_EXTERNAL_STORAGE'] ===
-            PermissionsAndroid.RESULTS.GRANTED &&
-          grants['android.permission.RECORD_AUDIO'] ===
-            PermissionsAndroid.RESULTS.GRANTED
-        ) {
-          console.log('Permissions granted');
-        } else {
-          console.log('All required permissions not granted');
-          return;
-        }
-      } catch (err) {
-        console.warn(err);
-        return;
-      }
+      return Permissions.requestMultiple([
+        PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.RECORD_AUDIO,
+      ]);
+    } else {
+      return Permissions.request(PERMISSIONS.IOS.MICROPHONE);
     }
   };
 
-  async function hasAndroidPermission() {
-    const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
-
-    const hasPermission = await PermissionsAndroid.check(permission);
-    console.log(hasPermission);
-    return hasPermission;
-  }
+  const hasVoicePermission = async function () {
+    if (Platform.OS == 'android') {
+      return Permissions.checkMultiple([
+        PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
+        PERMISSIONS.ANDROID.RECORD_AUDIO,
+      ]);
+    } else {
+      return Permissions.checkMultiple([PERMISSIONS.IOS.MICROPHONE]);
+    }
+  };
 
   const onStartRecord = async function () {
     const fileName = getFileName();
     const dirs = RNFetchBlob.fs.dirs;
     const path = Platform.select({
       ios: `${fileName}.m4a`,
-      android: `${dirs.CacheDir}/${fileName}.m4a`,
+      android: `${dirs.CacheDir}/${fileName}.mp4`,
     });
     const audioSet = {
       AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
@@ -96,7 +98,6 @@ const PuzzleWritingVoice = (): JSX.Element => {
       const HourMinuteSeconds = getHourMinuteSeconds(
         Math.floor(e.currentPosition),
       );
-      console.log(e.currentPosition);
 
       setRecordFileInfo({
         filePath: uri,
@@ -114,7 +115,7 @@ const PuzzleWritingVoice = (): JSX.Element => {
 
     const tempHour = date.getHours();
     const hour = Math.floor(tempHour / 12) + (tempHour % 13);
-    const hourUnit = (tempHour < 12) ? 'AM' : 'PM';
+    const hourUnit = tempHour < 12 ? 'AM' : 'PM';
 
     const fileName = `${year}.${month}.${day} ${hour}:${minute}${hourUnit}`;
     return fileName;
@@ -148,12 +149,6 @@ const PuzzleWritingVoice = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Text>{recordFileInfo?.recordTime}</Text>
-      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-        <Image source={require('../../assets/images/voice_frequency.png')} />
-      </View>
       <View>
         <Pressable
           style={styles.recordContainer}

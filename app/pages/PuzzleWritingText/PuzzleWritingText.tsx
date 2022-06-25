@@ -18,6 +18,7 @@ import {useRecoilState, useRecoilValue, useResetRecoilState} from 'recoil';
 import {
   recordFileState,
   storyTextState,
+  writingStoryState,
 } from '../../recoils/StoryWritingRecoil';
 import {Avatar} from 'react-native-paper';
 
@@ -27,32 +28,14 @@ const PuzzleWritingText = (): JSX.Element => {
   const [storyTextInfo, setStoryTextInfo] = useRecoilState(storyTextState);
   const recordFileInfo = useRecoilValue(recordFileState);
   const resetRecord = useResetRecoilState(recordFileState);
-
-  const initVoicePermission = async function () {
-    if (Platform.OS === 'android') {
-      const grants = await PermissionsAndroid.requestMultiple([
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      ]);
-    }
-  };
-
-  async function hasAndroidPermission() {
-    const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
-
-    const hasPermission = await PermissionsAndroid.check(permission);
-    console.log(hasPermission);
-    return hasPermission;
-  }
+  const writingStory = useRecoilValue(writingStoryState);
 
   useEffect(() => {
-    void initVoicePermission();
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
-  console.log("Permission");
-  void hasAndroidPermission();
+
   const setRecordComponent = function () {
     if (isRecordFile()) {
       return (
@@ -112,15 +95,14 @@ const PuzzleWritingText = (): JSX.Element => {
   };
 
   const isRecordFile = function () {
-    return recordFileInfo != undefined;
+    return recordFileInfo != undefined && recordFileInfo?.filePath != undefined;
   };
 
   const getFileName = function () {
     const recordPath = recordFileInfo?.filePath;
-    const isRecordFile = recordPath != undefined;
     let recordName = '';
 
-    if (isRecordFile) {
+    if (isRecordFile()) {
       const fileParts = recordPath?.split('/');
       recordName = fileParts[fileParts?.length - 1];
       recordName = decodeURI(recordName);

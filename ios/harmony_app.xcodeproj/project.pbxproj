@@ -10,18 +10,18 @@
 		00E356F31AD99517003FC87E /* harmony_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* harmony_appTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		27B8EBF5F188196E304D8672 /* libPods-harmony_app-harmony_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DBDAE011701072238A251A /* libPods-harmony_app-harmony_appTests.a */; };
 		326FAEAC51894724A1443F61 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E4451416690468CB75F39CC /* Pretendard-Medium.ttf */; };
 		3D1E8FC43BD84DCB9951C27A /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F08C87618D74764A09BB1A6 /* Pretendard-Black.ttf */; };
 		40DA894F832747D59C37771C /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09DDBE252FA7491FA202E28F /* Pretendard-ExtraLight.ttf */; };
 		4DFEAC3D96154DBCB90860A5 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E70E0642E344F88816115E5 /* Pretendard-SemiBold.ttf */; };
-		6172F2D35A4C3AA820D92908 /* libPods-harmony_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-harmony_app.a */; };
 		62ADB70915C14DC59224D2B9 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AACA515445B74041BA72A0D8 /* Pretendard-Light.ttf */; };
 		7673179AD29043598EF9F377 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CFDAD4FD6D6407BA9648064 /* Pretendard-Regular.ttf */; };
-		7EF68E3733C33B6898317E18 /* libPods-harmony_app-harmony_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-harmony_app-harmony_appTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9F2C946B273E9C60003FCD78 /* libreact-native-cameraroll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F2C946A273E9C60003FCD78 /* libreact-native-cameraroll.a */; };
 		ACA6D731FE574D88A91856E8 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EF38BF24BE64B489F478146 /* Pretendard-ExtraBold.ttf */; };
 		ADE92CC4023B45D6BDD31E85 /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2923A70558E477088AEF8C1 /* Pretendard-Thin.ttf */; };
+		C499F44958D62D0DAEE58B3E /* libPods-harmony_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F81AC1B46CBA19D209633833 /* libPods-harmony_app.a */; };
 		CA0FD8DE2B00428AA76D8987 /* antoutline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D52326624464B7C8A918496 /* antoutline.ttf */; };
 		D9B3CC4AEBB74E84A5A0DC6E /* antfill.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9FB3E1241FE14B859270A6EF /* antfill.ttf */; };
 		E0B373334C6A4DFCA0153338 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E5294DF6F43F98CAE8739 /* Pretendard-Bold.ttf */; };
@@ -49,7 +49,8 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* harmony_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = harmony_appTests.m; sourceTree = "<group>"; };
 		0863052315A84755951DE8B2 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
-		09DDBE252FA7491FA202E28F /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.ttf"; path = "../app/assets/fonts/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
+		09DDBE252FA7491FA202E28F /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.ttf"; path = "../app/assets/fonts/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
+		0AD81CDD2F7B1C3A74D20BB9 /* Pods-harmony_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app.debug.xcconfig"; path = "Target Support Files/Pods-harmony_app/Pods-harmony_app.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* harmony_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harmony_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = harmony_app/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = harmony_app/AppDelegate.m; sourceTree = "<group>"; };
@@ -57,40 +58,39 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = harmony_app/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = harmony_app/main.m; sourceTree = "<group>"; };
 		15736A1714D14A2FA915FECD /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		161AB9951F0E90FE201CC181 /* Pods-harmony_app-harmony_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app-harmony_appTests.debug.xcconfig"; path = "Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		19DBDAE011701072238A251A /* libPods-harmony_app-harmony_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harmony_app-harmony_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A689C5174C74B059C637AD4 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		1D0AE47A65C8663E3B452821 /* Pods-harmony_app-harmony_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app-harmony_appTests.release.xcconfig"; path = "Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests.release.xcconfig"; sourceTree = "<group>"; };
-		1E4451416690468CB75F39CC /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.ttf"; path = "../app/assets/fonts/Pretendard-Medium.ttf"; sourceTree = "<group>"; };
+		1E4451416690468CB75F39CC /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.ttf"; path = "../app/assets/fonts/Pretendard-Medium.ttf"; sourceTree = "<group>"; };
 		34C5FAF82B724024952D8FD2 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		3576D5D8171B46268719751A /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		4D52326624464B7C8A918496 /* antoutline.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = antoutline.ttf; path = "../node_modules/@ant-design/icons-react-native/fonts/antoutline.ttf"; sourceTree = "<group>"; };
 		51AF3D0BDD5E4D758DBE27CB /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		6423831EA8574132BED9D8CC /* libPods-harmony_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harmony_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C97AB639B58BBB4B15BBE30 /* Pods-harmony_app-harmony_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app-harmony_appTests.debug.xcconfig"; path = "Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71692E98FCAB4DB4A5A0C23B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		79972E569744461BAB401C39 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		79A6F27FBC6E4C94A17C5006 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		7C843D864E6E4FBB812D1351 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		7D1E5294DF6F43F98CAE8739 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.ttf"; path = "../app/assets/fonts/Pretendard-Bold.ttf"; sourceTree = "<group>"; };
-		7F08C87618D74764A09BB1A6 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Black.ttf"; path = "../app/assets/fonts/Pretendard-Black.ttf"; sourceTree = "<group>"; };
+		7D1E5294DF6F43F98CAE8739 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.ttf"; path = "../app/assets/fonts/Pretendard-Bold.ttf"; sourceTree = "<group>"; };
+		7F08C87618D74764A09BB1A6 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Black.ttf"; path = "../app/assets/fonts/Pretendard-Black.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = harmony_app/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91DA8247853B49FB836284BD /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		9CFDAD4FD6D6407BA9648064 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.ttf"; path = "../app/assets/fonts/Pretendard-Regular.ttf"; sourceTree = "<group>"; };
-		9E70E0642E344F88816115E5 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.ttf"; path = "../app/assets/fonts/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
-		9EF38BF24BE64B489F478146 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.ttf"; path = "../app/assets/fonts/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
+		9CFDAD4FD6D6407BA9648064 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.ttf"; path = "../app/assets/fonts/Pretendard-Regular.ttf"; sourceTree = "<group>"; };
+		9E70E0642E344F88816115E5 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.ttf"; path = "../app/assets/fonts/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
+		9EF38BF24BE64B489F478146 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.ttf"; path = "../app/assets/fonts/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
 		9F2C9413273E9892003FCD78 /* RNCCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCCameraRoll.xcodeproj; path = "../node_modules/@react-native-community/cameraroll/ios/RNCCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		9F2C946A273E9C60003FCD78 /* libreact-native-cameraroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-cameraroll.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB3E1241FE14B859270A6EF /* antfill.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = antfill.ttf; path = "../node_modules/@ant-design/icons-react-native/fonts/antfill.ttf"; sourceTree = "<group>"; };
-		AACA515445B74041BA72A0D8 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.ttf"; path = "../app/assets/fonts/Pretendard-Light.ttf"; sourceTree = "<group>"; };
-		ABFE59519B596E51CEFDCCC0 /* libPods-harmony_app-harmony_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harmony_app-harmony_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AACA515445B74041BA72A0D8 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.ttf"; path = "../app/assets/fonts/Pretendard-Light.ttf"; sourceTree = "<group>"; };
 		AC050B5741884E6893BA2192 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		B5F35BA2E9332253EC20A544 /* Pods-harmony_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app.release.xcconfig"; path = "Target Support Files/Pods-harmony_app/Pods-harmony_app.release.xcconfig"; sourceTree = "<group>"; };
 		B89499F471E44C06B8EE4ACE /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		C0A881CF5CF3F2B244570E2A /* Pods-harmony_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app.debug.xcconfig"; path = "Target Support Files/Pods-harmony_app/Pods-harmony_app.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2CCCA5A358422690E2C6DC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		D00AAFFCFCFDA5787532823F /* Pods-harmony_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app.release.xcconfig"; path = "Target Support Files/Pods-harmony_app/Pods-harmony_app.release.xcconfig"; sourceTree = "<group>"; };
 		D1E8E2A833734458A37FDAC5 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		E055C30CCFEC42E69F7B1EFB /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F2923A70558E477088AEF8C1 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.ttf"; path = "../app/assets/fonts/Pretendard-Thin.ttf"; sourceTree = "<group>"; };
+		F2923A70558E477088AEF8C1 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.ttf"; path = "../app/assets/fonts/Pretendard-Thin.ttf"; sourceTree = "<group>"; };
+		F81AC1B46CBA19D209633833 /* libPods-harmony_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harmony_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FACA897DDADEBBC1C0B83D11 /* Pods-harmony_app-harmony_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harmony_app-harmony_appTests.release.xcconfig"; path = "Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EF68E3733C33B6898317E18 /* libPods-harmony_app-harmony_appTests.a in Frameworks */,
+				27B8EBF5F188196E304D8672 /* libPods-harmony_app-harmony_appTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F2C946B273E9C60003FCD78 /* libreact-native-cameraroll.a in Frameworks */,
-				6172F2D35A4C3AA820D92908 /* libPods-harmony_app.a in Frameworks */,
+				C499F44958D62D0DAEE58B3E /* libPods-harmony_app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,8 +183,8 @@
 			children = (
 				9F2C946A273E9C60003FCD78 /* libreact-native-cameraroll.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6423831EA8574132BED9D8CC /* libPods-harmony_app.a */,
-				ABFE59519B596E51CEFDCCC0 /* libPods-harmony_app-harmony_appTests.a */,
+				F81AC1B46CBA19D209633833 /* libPods-harmony_app.a */,
+				19DBDAE011701072238A251A /* libPods-harmony_app-harmony_appTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -233,10 +233,10 @@
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C0A881CF5CF3F2B244570E2A /* Pods-harmony_app.debug.xcconfig */,
-				D00AAFFCFCFDA5787532823F /* Pods-harmony_app.release.xcconfig */,
-				6C97AB639B58BBB4B15BBE30 /* Pods-harmony_app-harmony_appTests.debug.xcconfig */,
-				1D0AE47A65C8663E3B452821 /* Pods-harmony_app-harmony_appTests.release.xcconfig */,
+				0AD81CDD2F7B1C3A74D20BB9 /* Pods-harmony_app.debug.xcconfig */,
+				B5F35BA2E9332253EC20A544 /* Pods-harmony_app.release.xcconfig */,
+				161AB9951F0E90FE201CC181 /* Pods-harmony_app-harmony_appTests.debug.xcconfig */,
+				FACA897DDADEBBC1C0B83D11 /* Pods-harmony_app-harmony_appTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -248,12 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "harmony_appTests" */;
 			buildPhases = (
-				A130D646172E58E1D159D8F2 /* [CP] Check Pods Manifest.lock */,
+				06B1F92755B49470E2707621 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				077E01280D4B4AD18B2E1770 /* [CP] Embed Pods Frameworks */,
-				4E62BDF20514810D028A5FBF /* [CP] Copy Pods Resources */,
+				3DC0B9D2B30CA234E943DDB5 /* [CP] Embed Pods Frameworks */,
+				E0AE910763BDF61EE0ACF4E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,14 +269,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "harmony_app" */;
 			buildPhases = (
-				3E482C27206C4DEF2FE45063 /* [CP] Check Pods Manifest.lock */,
+				F1F27AD62349EB8FC8292421 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				C8AC78B0264D0F9F6F6D630E /* [CP] Embed Pods Frameworks */,
-				ADC9DDC32298B72B3CF5DC8E /* [CP] Copy Pods Resources */,
+				95723777355CC9E1A2FE9E76 /* [CP] Embed Pods Frameworks */,
+				8D6F5C88F5882639C0A5AF80 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -383,63 +383,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		077E01280D4B4AD18B2E1770 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3E482C27206C4DEF2FE45063 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-harmony_app-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4E62BDF20514810D028A5FBF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A130D646172E58E1D159D8F2 /* [CP] Check Pods Manifest.lock */ = {
+		06B1F92755B49470E2707621 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -461,7 +405,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ADC9DDC32298B72B3CF5DC8E /* [CP] Copy Pods Resources */ = {
+		3DC0B9D2B30CA234E943DDB5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D6F5C88F5882639C0A5AF80 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -478,7 +439,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-harmony_app/Pods-harmony_app-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C8AC78B0264D0F9F6F6D630E /* [CP] Embed Pods Frameworks */ = {
+		95723777355CC9E1A2FE9E76 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -493,6 +454,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-harmony_app/Pods-harmony_app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0AE910763BDF61EE0ACF4E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-harmony_app-harmony_appTests/Pods-harmony_app-harmony_appTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1F27AD62349EB8FC8292421 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-harmony_app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -547,7 +547,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C97AB639B58BBB4B15BBE30 /* Pods-harmony_app-harmony_appTests.debug.xcconfig */;
+			baseConfigurationReference = 161AB9951F0E90FE201CC181 /* Pods-harmony_app-harmony_appTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -574,7 +574,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D0AE47A65C8663E3B452821 /* Pods-harmony_app-harmony_appTests.release.xcconfig */;
+			baseConfigurationReference = FACA897DDADEBBC1C0B83D11 /* Pods-harmony_app-harmony_appTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -598,7 +598,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0A881CF5CF3F2B244570E2A /* Pods-harmony_app.debug.xcconfig */;
+			baseConfigurationReference = 0AD81CDD2F7B1C3A74D20BB9 /* Pods-harmony_app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -625,7 +625,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D00AAFFCFCFDA5787532823F /* Pods-harmony_app.release.xcconfig */;
+			baseConfigurationReference = B5F35BA2E9332253EC20A544 /* Pods-harmony_app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -681,7 +681,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -747,7 +747,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
