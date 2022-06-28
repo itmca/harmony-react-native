@@ -1,11 +1,11 @@
 import React from 'react';
-
 import {Text, View} from 'react-native';
 import {useRecoilValue} from 'recoil';
 import {isLoggedInState} from '../../recoils/UserRecoil';
-import {useFocusEffect} from '@react-navigation/native';
+// import { route } from '@react-navigation/native';
 
-const Story = (): JSX.Element => {
+const Story = ({ route, navigation }): JSX.Element => {
+  // const { id } = route.params;
   return (
     <View
       style={{
@@ -14,6 +14,7 @@ const Story = (): JSX.Element => {
         alignItems: 'center',
       }}>
       <Text>Story</Text>
+      {/* <Text>{id}</Text> */}
     </View>
   );
 };

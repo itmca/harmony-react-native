@@ -26,8 +26,8 @@ const StoryListItem = ({data}: props): JSX.Element => {
   const navigation = useNavigation<any>();
 
   const onPress = (id: ItemData['id']) => {
-    console.log(id);
-    navigation.push('NoTab', {
+    // console.log(id);
+    navigation.navigate('NoTab', {
       screen: StoryViewNavigator,
       id: id,
     });
