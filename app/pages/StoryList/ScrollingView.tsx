@@ -77,26 +77,23 @@ const ScrollingView = (): JSX.Element => {
 
   return (
     <SafeAreaView style={styles.scrollViewContainer}>
-      <ScrollView onScroll={handleScroll} contentOffset={{y:scrollPositionY}} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        onScroll={handleScroll}
+        contentOffset={{y:scrollPositionY}} 
+        showsVerticalScrollIndicator={false}>
         {storyViewData.map((item:ItemData, index: number) =>
-            <StoryListItem data={item} key={index} />
+          <StoryListItem data={item} key={index} />
         )}
-        {/* <FlatList
-          data={storyViewData}
-          renderItem={renderListItem}
-          keyExtractor={item => item.id}
-        /> */}
       </ScrollView>
-      {
-        scrollPositionY >= 10 ? (<TouchableOpacity 
+      {scrollPositionY >= 10 ? (
+        <TouchableOpacity
           style={styles.floatingBtBox}
-          onPress={onPressTopButton}
-        >
-            <Icon
-              name="chevron-up-sharp"
-              size={34} color={'#000000'} 
-              style={styles.floatingBtTop}
-              />
+          onPress={onPressTopButton}>
+          <Icon
+            name="chevron-up-sharp"
+            size={34} color={'#000000'} 
+            style={styles.floatingBtTop}
+            />
         </TouchableOpacity>) : null
       }
   </SafeAreaView>

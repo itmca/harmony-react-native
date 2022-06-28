@@ -1,9 +1,11 @@
 import React from 'react';
 // import {useFocusEffect} from '@react-navigation/native';
-// import { NavigationContainer } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Story from '../../pages/Story/Story';
 import {styles} from './styles';
+import StoryViewNavigator from '../../routes/no-tab/StoryViewNavigator';
 
 export type ItemData = {
   id: string;
@@ -20,43 +22,40 @@ type props = {
   index?: number;
 };
 
-const StoryListItem = ({data}: props, {navigation}): JSX.Element => {
-  // useFocusEffect(() => {
-  //   if (!isLoggedIn) {
-  //     navigation.push('NoTab', {
-  //       screen: 'LoginMain',
-  //     });
-  //   }
-  // });
+const StoryListItem = ({data}: props): JSX.Element => {
+  const navigation = useNavigation<any>();
 
   const onPress = (id: ItemData['id']) => {
     console.log(id);
-    // navigation.navigate('Story');
+    navigation.push('NoTab', {
+      screen: StoryViewNavigator,
+      id: id,
+    });
   };
 
   const listItem = (
     <View style={styles.listItemContainer}>
-        <TouchableOpacity onPress={() => onPress(data.id)}>
-          <View style={styles.textBox}>
-            <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
-              {data.title}
-            </Text>
-            <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
-              {data.description}
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.bottomRowBox}>
-          <View>
-            <Text style={styles.dateText}>{data.createdAt}</Text>
-          </View>
-          {data.voiceData ? (
-            <View style={styles.micIconBox}>
-              <Icon name="mic" size={14} color={'#010440'} />
-            </View>
-          ) : null}
+      <TouchableOpacity onPress={() => onPress(data.id)}>
+        <View style={styles.textBox}>
+          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
+            {data.title}
+          </Text>
+          <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
+            {data.description}
+          </Text>
         </View>
+      </TouchableOpacity>
+      <View style={styles.bottomRowBox}>
+        <View>
+          {/* <Text style={styles.dateText}>{data.createdAt}</Text> */}
+        </View>
+        {data.voiceData ? (
+          <View style={styles.micIconBox}>
+            <Icon name="mic" size={14} color={'#010440'} />
+          </View>
+        ) : null}
       </View>
+    </View>
   );
 
   const thumbnailListItem = (

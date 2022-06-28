@@ -4,12 +4,14 @@ import PuzzleViewNavigator from './PuzzleViewNavigator';
 import PuzzleWritingNavigator from './PuzzleWritingNavigator';
 import LoginMain from '../../pages/LoginMain/LoginMain';
 import LoginHeaderLeft from '../../components/header/LoginHeaderLeft';
+import StoryViewNavigator from './StoryViewNavigator';
 
 const Stack = createNativeStackNavigator();
 
 const NoTabRootNavigator = (): JSX.Element => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="StoryViewNavigator" component={StoryViewNavigator} />
       <Stack.Screen
         name="PuzzleViewNavigator"
         component={PuzzleViewNavigator}
