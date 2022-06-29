@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
-import ProfileSection from '../../components/story-list/ProfileSection';
-import ChipList, {ChipMenu} from '../../components/story-list/ChipList';
-import {styles} from './styles';
+import ProfileSection from './ProfileSection';
+import ChipList, {ChipMenu} from './ChipList';
+import {styles} from '../../pages/StoryList/styles';
 
 const profileData = {
-  name: "할부지",
-  id: "profile-001"
+  name: '할부지',
+  id: 'profile-001',
 };
 
 const chipData: ChipMenu[] = [

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import ScrollingView from './ScrollingView';
-import TopFixed from './TopFixed';
+import ScrollingView from '../../components/story-list/ScrollingView';
+import TopFixed from '../../components/story-list/TopFixed';
 import {styles} from './styles';
 
 const StoryList = (): JSX.Element => {

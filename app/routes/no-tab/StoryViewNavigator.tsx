@@ -13,7 +13,11 @@ const StoryViewNavigator = (): JSX.Element => {
   return (
     <Stack.Navigator
       initialRouteName="Story"
-      screenOptions={{headerShadowVisible: true, headerTitleAlign: 'center'}}>
+      screenOptions={{
+        headerShadowVisible: true,
+        headerTransparent: true,
+        headerTitleAlign: 'center'
+        }}>
       <Stack.Screen
         name="Story"
         component={Story}

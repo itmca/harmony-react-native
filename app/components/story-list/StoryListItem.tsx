@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Story from '../../pages/Story/Story';
 import {styles} from './styles';
 import StoryViewNavigator from '../../routes/no-tab/StoryViewNavigator';
+import { useSetRecoilState } from 'recoil';
+import { SelectedStoryIdState } from '../../recoils/SelectedStoryIdRecoil';
 
 export type ItemData = {
   id: string;
@@ -14,6 +16,7 @@ export type ItemData = {
   thumbnailUrl?: string;
   totalImage: number;
   voiceData: boolean;
+  category: string;
   createdAt: string;
 };
 
@@ -24,13 +27,11 @@ type props = {
 
 const StoryListItem = ({data}: props): JSX.Element => {
   const navigation = useNavigation<any>();
+  const storyId = useSetRecoilState(SelectedStoryIdState);
 
   const onPress = (id: ItemData['id']) => {
-    // console.log(id);
-    navigation.navigate('NoTab', {
-      screen: StoryViewNavigator,
-      id: id,
-    });
+    storyId(id);
+    navigation.navigate('NoTab', StoryViewNavigator);
   };
 
   const listItem = (

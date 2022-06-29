@@ -11,7 +11,10 @@ const Stack = createNativeStackNavigator();
 const NoTabRootNavigator = (): JSX.Element => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="StoryViewNavigator" component={StoryViewNavigator} />
+      <Stack.Screen 
+        name="StoryViewNavigator" 
+        component={StoryViewNavigator} 
+      />
       <Stack.Screen
         name="PuzzleViewNavigator"
         component={PuzzleViewNavigator}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {View, Text, FlatList, SafeAreaView, TouchableOpacity} from 'react-native';
+import { useRecoilState } from 'recoil';
+import { SelectedCategoryState } from '../../recoils/SelectedCategoryRecoil';
 import ChipItem from './ChipItem';
 import {styles} from './styles';
 
@@ -14,7 +16,7 @@ type Props = {
 };
 
 const ChipList = ({data}: Props): JSX.Element => {
-  const [selectedKey, setSelectedKey] = useState('all');
+  const [selectedKey, setSelectedKey] = useRecoilState(SelectedCategoryState);
 
   function renderItem({item}) {
     const backgroundColor = item.key === selectedKey ? '#010440' : '#E5E5E5';
