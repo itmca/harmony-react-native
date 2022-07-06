@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-// import {Carousel} from '@ant-design/react-native';
+import React, {useState, useRef} from 'react';
+import {Carousel} from '@ant-design/react-native';
 import {Image, Text, View, FlatList} from 'react-native';
 import {styles} from './styles';
 
@@ -14,43 +14,60 @@ type CarouselProps = {
 };
 
 const ImageCarousel = ({data}: CarouselProps): JSX.Element => {
-  const [page, setPage] = useState<number>(0);
+  // const [page, setPage] = useState<number>(0);
+  const carousel = useRef(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-  const Item = ({url, id}: CarouselData): JSX.Element => (
-    <>
-      <Image
-        style={styles.carouselImage}
-        source={{ uri: url}}
-      />
-    </>
-  );
-
-  const carouselItem = ({item}) => {
-    return (
-      <View>
-        <Item url={item.url} id={item.id} />
-      </View>
-    );
+  // const carouselItem = ({item}): JSX.Element => (
+  //        <Image
+  //           style={styles.carouselImage}
+  //           resizeMode="cover"
+  //           source={{uri: item.url}}
+  //           />
+  //           // {/* <Item url={item.url} id={item.id} /> */}
+  //         )
+  const onHorizontalSelectedIndexChange = (index: number) => {
+    console.log('horizontal change to', index);
+    setSelectedIndex(index);
   };
 
   return (
     <>
       <View style={styles.carouselImageWrapper}>
-        <FlatList
+        <Carousel
+          style={styles.carouselImageWrapper}
+          selectedIndex={selectedIndex}
+          autoplay
+          infinite
+          afterChange={onHorizontalSelectedIndexChange}
+          // ref={(ref) => (carousel = ref)}
+        >
+          <View style={[styles.containerHorizontal, {backgroundColor: 'red'}]}>
+            <Text>Carousel 1</Text>
+          </View>
+          <View style={[styles.containerHorizontal, {backgroundColor: 'blue'}]}>
+            <Text>Carousel 2</Text>
+          </View>
+          <View
+            style={[styles.containerHorizontal, {backgroundColor: 'yellow'}]}>
+            <Text>Carousel 3</Text>
+          </View>
+          <View style={[styles.containerHorizontal, {backgroundColor: 'aqua'}]}>
+            <Text>Carousel 4</Text>
+          </View>
+          <View
+            style={[styles.containerHorizontal, {backgroundColor: 'fuchsia'}]}>
+            <Text>Carousel 5</Text>
+          </View>
+        </Carousel>
+        {/* <FlatList
           data={data}
-          // onScroll={onScroll}
           horizontal
           pagingEnabled
           renderItem={carouselItem}
           snapToAlignment="start"
           showsHorizontalScrollIndicator={false}
-        />
-            {/* {carouselItem} */}
-            {/* <Image style={styles.carouselImage} resizeMode="cover" source={{ uri: data[0].url }} />
-            <Image style={styles.carouselImage} resizeMode="cover" source={{ uri: data[1].url }} />
-            <Image style={styles.carouselImage} resizeMode="cover" source={{ uri: data[2].url }} />
-            <Image style={styles.carouselImage} resizeMode="cover" source={{ uri: data[3].url }} /> */}
-            {/* {data.map((item) => carouselItem(item))} */}
+        /> */}
       </View>
     </>
   );

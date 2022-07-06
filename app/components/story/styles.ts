@@ -14,6 +14,23 @@ export const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: '#FFFFFF',
+    height: '100vw',
+  },
+  containerHorizontal: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 150,
+  },
+  containerVertical: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 150,
+  },
+  text: {
+    color: '#fff',
+    fontSize: 36,
   },
   carouselImage: {
     flex: 1,

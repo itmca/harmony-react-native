@@ -1,12 +1,14 @@
+import { CarouselProps } from 'antd';
 import React, {useState} from 'react';
-import {Text, View, SafeAreaView} from 'react-native';
+import {Text, View, SafeAreaView, Image} from 'react-native';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import ImageCarousel, {
   CarouselData,
 } from '../../components/story/ImageCarousel';
+import StoryCarousel from '../../components/story/StoryCarousel';
 import {SelectedStoryIdState} from '../../recoils/SelectedStoryIdRecoil';
 import {styles} from './styles';
-// import { route } from '@react-navigation/native';
+
 
 const data: CarouselData[] = [
   {
@@ -29,13 +31,19 @@ const data: CarouselData[] = [
 
 const Story = (): JSX.Element => {
   const [storyId, setStoryId] = useRecoilState(SelectedStoryIdState);
-  const [page, setPage] = useState<number>(1);
   // const { id } = route.params;
   return (
     <SafeAreaView style={styles.scrollViewContainer}>
-      <ImageCarousel data={data} />
+       <StoryCarousel
+        data={data}
+      />
       <Text>Story</Text>
       <Text>{storyId}</Text>
+      <Image
+        source={{
+          uri: 'https://images.unsplash.com/photo-1559744801-dc539b55737e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80'
+        }}
+      />
     </SafeAreaView>
   );
 };
