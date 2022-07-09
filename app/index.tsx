@@ -30,6 +30,7 @@ const index = (): JSX.Element => {
   return (
     <RecoilRoot>
       <PaperProvider theme={theme}>
+        {console.log('test')}
         <NavigationContainer>
           <RootNavigator />
         </NavigationContainer>

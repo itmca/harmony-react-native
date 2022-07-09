@@ -1,9 +1,25 @@
-import React from 'react';
-import {Image, SafeAreaView, Text, View,} from 'react-native';
+import {ConstructionOutlined} from '@mui/icons-material';
+import React, {useEffect} from 'react';
+import {Image, Platform, SafeAreaView, Text, View} from 'react-native';
+import {useEvent} from 'react-native-reanimated';
+import {useRecoilState} from 'recoil';
 import FingerBounceAnimation from '../../components/animation/FingerBounceAnimation';
+import {authState} from '../../recoils/AuthRecoil';
+import {heroState} from '../../recoils/HeroRecoil';
+import {userState} from '../../recoils/UserRecoil';
+import {LocalStorage} from '../../storage/local.storage';
 import {styles} from './styles';
 
 const Home = (): JSX.Element => {
+  const [user, setUser] = useRecoilState(userState);
+  const [authToken, setAuthTokens] = useRecoilState(authState);
+  const [hero, setHero] = useRecoilState(heroState);
+
+  useEffect(() => {
+    console.log('User', user);
+    console.log('authToken', authToken);
+    console.log('hero', hero);
+  }, []);
   return (
     <View
       style={{
@@ -50,7 +66,5 @@ const Home = (): JSX.Element => {
     </View>
   );
 };
-
-
 
 export default Home;
