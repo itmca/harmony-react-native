@@ -61,7 +61,7 @@ const CharacterRegister = ({navigation}): JSX.Element => {
           label="이름"
           value={name}
           onChangeText={setName}
-          placeholder="홍길동"
+          placeholder="홍il길동"
         />
         <TextInput
           style={styles.formInput}

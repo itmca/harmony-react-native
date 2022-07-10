@@ -1,8 +1,7 @@
 import {Platform} from 'react-native';
+import Config from 'react-native-config';
 
 export const SERVER_HOST =
-  process.env.NODE_ENV !== 'production'
-    ? Platform.OS === 'ios'
-      ? 'http://127.0.0.1:5001'
-      : 'http://10.0.2.2:5001'
-    : 'http://domain.com';
+  Platform.OS === 'android' && Config.API_URL_ANDROID
+    ? Config.API_URL_ANDROID
+    : Config.API_URL;

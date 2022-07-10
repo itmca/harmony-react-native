@@ -1,4 +1,4 @@
-package com.harmony_app;
+package com.harmony.app;
 
 import com.facebook.react.ReactActivity;
 
