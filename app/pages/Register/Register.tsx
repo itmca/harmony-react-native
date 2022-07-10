@@ -14,68 +14,7 @@ const Register = ({navigation}): JSX.Element => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
-  const isChecked = false;
-
-  const [nicknameError, setNicknameError] = useState<string>('');
-  const [emailError, setEmailError] = useState<string>('');
-  const [passwordError, setPasswordError] = useState<string>('');
-  const [passwordConfirmError, setPasswordConfirmError] = useState<string>('');
-
-  const [hasNicknameError, setHasNicknameError] = useState<boolean>(false);
-  const [hasEmailError, setHasEmailError] = useState<boolean>(false);
-  const [hasPasswordError, setHasPasswordError] = useState<boolean>(false);
-  const [hasPasswordConfirmError, setHasPasswordConfirmError] =
-    useState<boolean>(false);
-
-  const onChangeNickname = (inputNickname: string) => {
-    setNickname(inputNickname);
-    if (inputNickname.length > 32) {
-      setNicknameError('닉네임은 32자 미만으로 입력해주세요.');
-      setHasNicknameError(true);
-    } else {
-      setHasNicknameError(false);
-    }
-  };
-
-  const onChangeEmail = (inputEmail: string) => {
-    setEmail(inputEmail);
-    const regex =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    if (inputEmail.length == 0) {
-      setEmailError('이메일을 입력해주세요.');
-      setHasEmailError(true);
-    } else if (!regex.test(inputEmail)) {
-      setEmailError('올바른 이메일 형식을 입력해주세요.');
-      setHasEmailError(true);
-    } else {
-      setHasEmailError(false);
-    }
-  };
-
-  const onChangePassword = (inputPassword: string) => {
-    setPassword(inputPassword);
-    const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
-    if (inputPassword.length == 0) {
-      setPasswordError('비밀번호를 입력해주세요.');
-      setHasPasswordError(true);
-    } else if (!regex.test(inputPassword)) {
-      setPasswordError('8 ~ 16자 영문, 숫자, 특수문자를 사용해주세요.');
-      setHasPasswordError(true);
-    } else {
-      setHasPasswordError(false);
-    }
-  };
-
-  const onConfirmPassword = (inputPassword: string) => {
-    setPasswordConfirm(inputPassword);
-    if (!(password == inputPassword)) {
-      setPasswordConfirmError('비밀번호를 확인해주세요.');
-      setHasPasswordConfirmError(true);
-    } else {
-      setHasPasswordConfirmError(false);
-    }
-  };
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const onVerificationSend = () => {};
 
@@ -89,6 +28,7 @@ const Register = ({navigation}): JSX.Element => {
           label={'이름'}
           value={name}
           onChangeText={setName}
+          placeholder={'홍길동'}
           errorTextProvider={name => {
             if (name.length === 0) {
               return '이름을 입력해주세요.';
@@ -98,41 +38,34 @@ const Register = ({navigation}): JSX.Element => {
             return '';
           }}
         />
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
-          label="이름"
-          value={name}
-          onChangeText={onChangeName}
-          placeholder="홍길동"
-        />
-        {nameError ? <HelperText type="error">{nameError}</HelperText> : null}
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
+        <ValidatedTextInput
           label="닉네임"
           value={nickname}
-          onChangeText={onChangeNickname}
+          onChangeText={setNickname}
           placeholder="공백 시 랜덤으로 설정"
+          errorTextProvider={nickname => {
+            if (nickname.length > 32) {
+              return '닉네임은 32자 미만으로 입력해주세요.';
+            }
+            return '';
+          }}
         />
-        {hasNicknameError ? (
-          <HelperText type="error" visible={hasNicknameError}>
-            {nicknameError}
-          </HelperText>
-        ) : null}
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
+        <ValidatedTextInput
           label="이메일"
           value={email}
-          onChangeText={onChangeEmail}
+          onChangeText={setEmail}
           placeholder="user@domain.com"
+          errorTextProvider={email => {
+            const regex =
+              /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+            if (email.length == 0) {
+              return '이메일을 입력해주세요.';
+            } else if (!regex.test(email)) {
+              return '올바른 이메일 형식을 입력해주세요.';
+            }
+            return '';
+          }}
         />
-        {hasEmailError ? (
-          <HelperText type="error" visible={hasEmailError}>
-            {emailError}
-          </HelperText>
-        ) : null}
         <View style={styles.formVerificationPartContainer}>
           <TextInput
             style={styles.formVerificationInput}
@@ -146,34 +79,36 @@ const Register = ({navigation}): JSX.Element => {
             onPress={() => {}}
           />
         </View>
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
+        <ValidatedTextInput
           secureTextEntry={true}
           label="비밀번호"
           value={password}
-          onChangeText={onChangePassword}
+          onChangeText={setPassword}
           placeholder="8~16자 영문+숫자+특수문자"
+          errorTextProvider={password => {
+            const regex =
+              /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+            if (password.length == 0) {
+              return '비밀번호를 입력해주세요.';
+            } else if (!regex.test(password)) {
+              return '8 ~ 16자 영문, 숫자, 특수문자를 사용해주세요.';
+            }
+            return '';
+          }}
         />
-        {hasPasswordError ? (
-          <HelperText type="error" visible={hasPasswordError}>
-            {passwordError}
-          </HelperText>
-        ) : null}
-        <TextInput
-          style={styles.formInput}
-          mode="outlined"
+        <ValidatedTextInput
           secureTextEntry={true}
           label="비밀번호 확인"
           value={passwordConfirm}
-          onChangeText={onConfirmPassword}
+          onChangeText={setPasswordConfirm}
           placeholder="8~16자 영문+숫자+특수문자"
+          errorTextProvider={passwordConfirm => {
+            if (!(password == passwordConfirm)) {
+              return '비밀번호를 확인해주세요.';
+            }
+            return '';
+          }}
         />
-        {hasPasswordConfirmError ? (
-          <HelperText type="error" visible={hasPasswordConfirmError}>
-            {passwordConfirmError}
-          </HelperText>
-        ) : null}
         <DatePickerInput
           style={styles.dateInput}
           locale="en"
@@ -196,7 +131,7 @@ const Register = ({navigation}): JSX.Element => {
             size={18}
             iconStyle={{borderColor: '#343666', borderRadius: 4}}
             fillColor={'#343666'}
-            onPress={() => !isChecked}
+            onPress={() => setIsChecked(!isChecked)}
           />
           <Text style={{marginLeft: -8}}>이용 약관 동의합니다.</Text>
         </TouchableOpacity>

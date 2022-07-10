@@ -7,6 +7,8 @@ type Props = {
   value: string;
   onChangeText: (text: string) => void;
   errorTextProvider: (text: string) => string;
+  placeholder: string;
+  secureTextEntry: boolean;
 };
 
 const ValidatedTextInput = ({
@@ -14,6 +16,8 @@ const ValidatedTextInput = ({
   value,
   onChangeText,
   errorTextProvider,
+  placeholder,
+  secureTextEntry,
 }: Props): JSX.Element => {
   const [errorText, setErrorText] = useState<string>();
 
@@ -28,7 +32,8 @@ const ValidatedTextInput = ({
           onChangeText(text);
           setErrorText(errorTextProvider(text));
         }}
-        placeholder="홍길동"
+        placeholder={placeholder}
+        secureTextEntry={secureTextEntry}
       />
       {errorText ? <HelperText type="error">{errorText}</HelperText> : null}
     </>
