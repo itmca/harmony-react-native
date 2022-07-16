@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Alert, View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
-import {HelperText, TextInput} from 'react-native-paper';
+import {TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DatePickerInput} from 'react-native-paper-dates';
 import ValidatedTextInput from '../../components/form/ValidatedTextInput';
+import {useAxiosPromise} from '../../hooks/network.hooks';
 
 const Register = ({navigation}): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
@@ -15,8 +16,53 @@ const Register = ({navigation}): JSX.Element => {
   const [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const {response, refetch} = useAxiosPromise(
+    {
+      url: '/user',
+      method: 'post',
+    },
+    {disableInitialRequest: false},
+  );
 
-  const onVerificationSend = () => {};
+  const onSubmit = () => {
+    if (
+      !name ||
+      !nickname ||
+      !inputDate ||
+      !email ||
+      !password ||
+      !passwordConfirm
+    ) {
+      Alert.alert('누락된 값이 있습니다.');
+      return;
+    }
+
+    refetch({
+      data: {
+        name: name,
+        nickName: nickname,
+        email: email,
+        verificationCode: '12345',
+        birthday: inputDate,
+        password: password,
+      },
+    });
+  };
+
+  useEffect(() => {
+    void response
+      ?.then(r => r.data)
+      .then(() => {
+        Alert.alert('주인공이 생성되었습니다.');
+        navigation.navigate({
+          name: 'CharacterSetting',
+          params: {
+            event: 'create',
+          },
+          merge: true,
+        });
+      });
+  }, [response]);
 
   return (
     <View style={styles.mainContainer}>
@@ -135,7 +181,7 @@ const Register = ({navigation}): JSX.Element => {
           />
           <Text style={{marginLeft: -8}}>이용 약관 동의합니다.</Text>
         </TouchableOpacity>
-        <ColoredButton text="회원가입" onPress={() => {}} />
+        <ColoredButton text="회원가입" onPress={onSubmit} />
       </ScrollView>
     </View>
   );
