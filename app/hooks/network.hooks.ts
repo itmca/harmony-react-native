@@ -16,6 +16,7 @@ export const useAxios = <R>(requestConfig: AxiosRequestConfig) => {
     response: promiseResponse,
     error,
     loading,
+    refetch,
   } = useAxiosPromise<R>(requestConfig);
 
   void promiseResponse?.then(r => {
@@ -26,6 +27,7 @@ export const useAxios = <R>(requestConfig: AxiosRequestConfig) => {
     response,
     error,
     loading,
+    refetch,
   };
 };
 

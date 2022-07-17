@@ -82,15 +82,17 @@ const PuzzleWritingQuestion = ({navigation}): JSX.Element => {
     });
   }, [question]);
 
-  const [recQuestion, fetchRecQuestion, recQuestionNo] = useRecommendedQuestion(
-    {
-      characterNo: 1,
-    },
-  );
+  useEffect(() => {
+    refetchRecommend();
+  }, [hero.heroNo]);
+
+  const [recQuestion, fetchRecQuestion, recQuestionNo, refetchRecommend] =
+    useRecommendedQuestion({
+      heroNo: hero.heroNo,
+    });
 
   useEffect(() => {
     if (recQuestion != '') {
-      //setQuestion(recQuestion);
       setStoryQuestion({
         ...storyQuestion,
         recQuestionNo: recQuestionNo,
