@@ -30,8 +30,7 @@ const PuzzleWritingQuestion = ({navigation}): JSX.Element => {
   const isLoggedIn = useRecoilValue<boolean>(isLoggedInState);
   const recoilUser = useRecoilValue<User | undefined>(userState);
   const user = isLoggedIn ? recoilUser : dummyUser;
-  const recoilHero = useRecoilValue<Hero>(heroState);
-  const hero = isLoggedIn ? recoilHero : dummyHero;
+  const hero = useRecoilValue<Hero>(heroState);
 
   const question =
     storyQuestion?.helpQuestionText === undefined

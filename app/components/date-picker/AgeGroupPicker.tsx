@@ -14,7 +14,7 @@ export const AgeGroupPicker = ({
   initialAge,
   onChangeAgeGroup,
 }: Props): JSX.Element => {
-  const [ageGroup, setAgeGroup] = useState<number>(initialAge);
+  const [ageGroup, setAgeGroup] = useState<number>(Math.floor(initialAge / 10));
 
   useEffect(() => {
     onChangeAgeGroup(ageGroup * 10);
