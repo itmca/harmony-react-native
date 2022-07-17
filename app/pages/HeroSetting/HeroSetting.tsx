@@ -3,23 +3,20 @@ import React, {useEffect, useState} from 'react';
 import {Dimensions, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import Carousel from 'react-native-snap-carousel';
-import CharacterCard from '../../components/card/CharacterCard';
+import HeroCard from '../../components/card/HeroCard';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useRecoilValue} from 'recoil';
 import {useAxiosPromise} from '../../hooks/network.hooks';
 import {Hero} from '../../type/hero';
-import {heroState} from '../../recoils/HeroRecoil';
 
 type Props = {
   navigation: any;
   route: any;
 };
 
-const CharacterSetting = ({navigation, route}: Props): JSX.Element => {
+const HeroSetting = ({navigation, route}: Props): JSX.Element => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
-  const currentHero = useRecoilValue(heroState);
   const [heroes, setHeroes] = useState<Hero[]>([]);
 
   const {response, refetch} = useAxiosPromise<Hero[]>({
@@ -49,16 +46,7 @@ const CharacterSetting = ({navigation, route}: Props): JSX.Element => {
           itemHeight={windowHeight}
           layout={'default'}
           renderItem={({item: hero, index}: any) => {
-            return (
-              <CharacterCard
-                characterNo={hero.heroNo}
-                characterName={hero.heroName}
-                characterNickName={hero.heroNickName}
-                title={hero.title}
-                imageURL={hero.imageURL}
-                selected={hero.heroNo && hero.heroNo === currentHero?.heroNo}
-              />
-            );
+            return <HeroCard hero={hero} />;
           }}
         />
       </View>
@@ -79,4 +67,4 @@ const CharacterSetting = ({navigation, route}: Props): JSX.Element => {
     </View>
   );
 };
-export default CharacterSetting;
+export default HeroSetting;

@@ -77,7 +77,7 @@ const PuzzleWritingQuestion = ({navigation}): JSX.Element => {
     setStoryQuestion({
       ...storyQuestion,
       recQuestionNo: questionNo,
-      recQuestionModified: question === recQuestion,
+      recQuestionModified: question !== recQuestion,
       helpQuestionText: question,
     });
   }, [question]);

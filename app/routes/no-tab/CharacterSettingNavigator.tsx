@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import CharacterSetting from '../../pages/CharacterSetting/CharacterSetting';
+import HeroSetting from '../../pages/HeroSetting/HeroSetting';
 import GoBackHeaderLeft from '../../components/header/GoBackHeaderLeft';
-import CharacterRegister from '../../pages/CharacterRegister/CharacterRegister';
-import CharacterModification from '../../pages/CharacterModification/CharacterModification';
+import HeroRegister from '../../pages/HeroRegister/HeroRegister';
+import HeroModification from '../../pages/HeroModification/HeroModification';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +14,7 @@ const CharacterSettingNavigator = (): JSX.Element => {
       screenOptions={{headerShadowVisible: false, headerTitleAlign: 'center'}}>
       <Stack.Screen
         name="CharacterSetting"
-        component={CharacterSetting}
+        component={HeroSetting}
         options={{
           headerLeft: () => <GoBackHeaderLeft />,
           title: '주인공 관리',
@@ -22,7 +22,7 @@ const CharacterSettingNavigator = (): JSX.Element => {
       />
       <Stack.Screen
         name="CharacterRegister"
-        component={CharacterRegister}
+        component={HeroRegister}
         options={{
           headerLeft: () => <GoBackHeaderLeft />,
           title: '주인공 추가',
@@ -30,7 +30,7 @@ const CharacterSettingNavigator = (): JSX.Element => {
       />
       <Stack.Screen
         name="CharacterModification"
-        component={CharacterModification}
+        component={HeroModification}
         options={{
           headerLeft: () => <GoBackHeaderLeft />,
           title: '주인공 정보 수정',
