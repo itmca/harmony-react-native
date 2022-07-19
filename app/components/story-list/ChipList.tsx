@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import {View, Text, FlatList, SafeAreaView, TouchableOpacity} from 'react-native';
-import { useRecoilState } from 'recoil';
-import { SelectedCategoryState } from '../../recoils/SelectedCategoryRecoil';
+import React from 'react';
+import {FlatList, SafeAreaView} from 'react-native';
+
+import {useRecoilState} from 'recoil';
+import {SelectedCategoryState} from '../../recoils/SelectedCategoryRecoil';
+
 import ChipItem from './ChipItem';
 import {styles} from './styles';
 

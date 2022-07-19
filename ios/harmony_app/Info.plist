@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>harmony_app</string>
+	<string>인생퍼즐</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -36,7 +36,7 @@
 	<key>KAKAO_APP_KEY</key>
 	<string>21bd0800813c75c36b6025aba2291959</string>
 	<key>LSApplicationCategoryType</key>
-	<string/>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakao21bd0800813c75c36b6025aba2291959</string>
@@ -59,7 +59,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>음성 녹음을 위해 권한을 허용해주세요.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>가족 사진을 등록하기 위해 권한을 허용해주세요.</string>
 	<key>UIAppFonts</key>
@@ -98,8 +100,6 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>음성 녹음을 위해 권한을 허용해주세요.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

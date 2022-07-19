@@ -5,7 +5,7 @@ import {ChipMenu} from './ChipList';
 
 type Props = {
   item: ChipMenu;
-  onPress: Function;
+  onPress: () => void;
   backgroundColor: string;
   textColor: string;
   marginLeft: string | number;
@@ -25,7 +25,7 @@ const ChipItem = ({
         styles.chipItem,
         {marginLeft: marginLeft, backgroundColor: backgroundColor},
       ]}>
-      <Text style={[styles.chipText, { color: textColor }]}>{item.name}</Text>
+      <Text style={[styles.chipText, {color: textColor}]}>{item.name}</Text>
     </TouchableOpacity>
   </>
 );

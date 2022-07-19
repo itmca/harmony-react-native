@@ -1,11 +1,11 @@
 import {atom} from 'recoil';
 
-export const HelpQuestionTextState = atom<string>({
-  key: 'HelpQuestionText',
+export const helpQuestionTextState = atom<string>({
+  key: 'helpQuestionText',
   default: '',
 });
 
-export const HelpQuestionOpenState = atom<boolean>({
-  key: 'HelpQuestionOpen',
+export const helpQuestionOpenState = atom<boolean>({
+  key: 'helpQuestionOpen',
   default: true,
 });

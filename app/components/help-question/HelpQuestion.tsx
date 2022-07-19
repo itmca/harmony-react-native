@@ -5,13 +5,13 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import {
-  HelpQuestionOpenState,
-  HelpQuestionTextState,
+  helpQuestionOpenState,
+  helpQuestionTextState,
 } from '../../recoils/HelpQuestionRecoil';
 
 const HelpQuestion = (): JSX.Element => {
-  const helpQuestion = useRecoilValue(HelpQuestionTextState);
-  const [open, setOpen] = useRecoilState(HelpQuestionOpenState);
+  const helpQuestion = useRecoilValue(helpQuestionTextState);
+  const [open, setOpen] = useRecoilState(helpQuestionOpenState);
 
   if (!helpQuestion) {
     return <></>;
@@ -26,7 +26,7 @@ const HelpQuestion = (): JSX.Element => {
               setOpen(true);
             }}>
             <Image
-              source={require('../../assets/images/puzzle_blue_piece.png')}
+              source={require('../../assets/images/puzzle_blue_piece.jpeg')}
               style={styles.smallSizePuzzle}
             />
           </TouchableOpacity>
@@ -39,7 +39,7 @@ const HelpQuestion = (): JSX.Element => {
     <View style={styles.container}>
       <View style={styles.bigSizeWrapper}>
         <Image
-          source={require('../../assets/images/puzzle_blue_piece.png')}
+          source={require('../../assets/images/puzzle_blue_piece.jpeg')}
           style={styles.bigSizePuzzle}
         />
         <View style={styles.verticalLine}></View>

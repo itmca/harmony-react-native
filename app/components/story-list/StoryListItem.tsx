@@ -1,13 +1,11 @@
 import React from 'react';
-// import {useFocusEffect} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Story from '../../pages/Story/Story';
 import {styles} from './styles';
 import StoryViewNavigator from '../../routes/no-tab/StoryViewNavigator';
-import { useSetRecoilState } from 'recoil';
-import { SelectedStoryIdState } from '../../recoils/SelectedStoryIdRecoil';
+import {useSetRecoilState} from 'recoil';
+import {SelectedStoryIdState} from '../../recoils/SelectedStoryIdRecoil';
 
 export type ItemData = {
   id: string;
@@ -41,7 +39,10 @@ const StoryListItem = ({data}: props): JSX.Element => {
           <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
             {data.title}
           </Text>
-          <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
+          <Text
+            numberOfLines={3}
+            ellipsizeMode="tail"
+            style={styles.description}>
             {data.description}
           </Text>
         </View>
@@ -66,7 +67,10 @@ const StoryListItem = ({data}: props): JSX.Element => {
           <Text numberOfLines={1} ellipsizeMode="tail" style={styles.listTitle}>
             {data.title}
           </Text>
-          <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
+          <Text
+            numberOfLines={3}
+            ellipsizeMode="tail"
+            style={styles.description}>
             {data.description}
           </Text>
         </View>
@@ -96,9 +100,9 @@ const StoryListItem = ({data}: props): JSX.Element => {
   );
 
   return (
-  <View style={styles.container}>
-    {data.thumbnailUrl != null ? thumbnailListItem : listItem}
-  </View>
+    <View style={styles.container}>
+      {data.thumbnailUrl != null ? thumbnailListItem : listItem}
+    </View>
   );
 };
 
