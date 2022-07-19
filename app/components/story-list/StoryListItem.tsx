@@ -1,9 +1,11 @@
 import React from 'react';
-// import {useFocusEffect} from '@react-navigation/native';
-// import { NavigationContainer } from '@react-navigation/native';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
+import StoryViewNavigator from '../../routes/no-tab/StoryViewNavigator';
+import {useSetRecoilState} from 'recoil';
+import {SelectedStoryIdState} from '../../recoils/SelectedStoryIdRecoil';
 
 export type ItemData = {
   id: string;
@@ -12,6 +14,7 @@ export type ItemData = {
   thumbnailUrl?: string;
   totalImage: number;
   voiceData: boolean;
+  category: string;
   createdAt: string;
 };
 
@@ -20,43 +23,41 @@ type props = {
   index?: number;
 };
 
-const StoryListItem = ({data}: props, {navigation}): JSX.Element => {
-  // useFocusEffect(() => {
-  //   if (!isLoggedIn) {
-  //     navigation.push('NoTab', {
-  //       screen: 'LoginMain',
-  //     });
-  //   }
-  // });
+const StoryListItem = ({data}: props): JSX.Element => {
+  const navigation = useNavigation<any>();
+  const storyId = useSetRecoilState(SelectedStoryIdState);
 
   const onPress = (id: ItemData['id']) => {
-    console.log(id);
-    // navigation.navigate('Story');
+    storyId(id);
+    navigation.navigate('NoTab', StoryViewNavigator);
   };
 
   const listItem = (
     <View style={styles.listItemContainer}>
-        <TouchableOpacity onPress={() => onPress(data.id)}>
-          <View style={styles.textBox}>
-            <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
-              {data.title}
-            </Text>
-            <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
-              {data.description}
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.bottomRowBox}>
-          <View>
-            <Text style={styles.dateText}>{data.createdAt}</Text>
-          </View>
-          {data.voiceData ? (
-            <View style={styles.micIconBox}>
-              <Icon name="mic" size={14} color={'#010440'} />
-            </View>
-          ) : null}
+      <TouchableOpacity onPress={() => onPress(data.id)}>
+        <View style={styles.textBox}>
+          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.listTitle}>
+            {data.title}
+          </Text>
+          <Text
+            numberOfLines={3}
+            ellipsizeMode="tail"
+            style={styles.description}>
+            {data.description}
+          </Text>
         </View>
+      </TouchableOpacity>
+      <View style={styles.bottomRowBox}>
+        <View>
+          {/* <Text style={styles.dateText}>{data.createdAt}</Text> */}
+        </View>
+        {data.voiceData ? (
+          <View style={styles.micIconBox}>
+            <Icon name="mic" size={14} color={'#010440'} />
+          </View>
+        ) : null}
       </View>
+    </View>
   );
 
   const thumbnailListItem = (
@@ -66,7 +67,10 @@ const StoryListItem = ({data}: props, {navigation}): JSX.Element => {
           <Text numberOfLines={1} ellipsizeMode="tail" style={styles.listTitle}>
             {data.title}
           </Text>
-          <Text numberOfLines={3} ellipsizeMode="tail" style={styles.description}>
+          <Text
+            numberOfLines={3}
+            ellipsizeMode="tail"
+            style={styles.description}>
             {data.description}
           </Text>
         </View>
@@ -96,9 +100,9 @@ const StoryListItem = ({data}: props, {navigation}): JSX.Element => {
   );
 
   return (
-  <View style={styles.container}>
-    {data.thumbnailUrl != null ? thumbnailListItem : listItem}
-  </View>
+    <View style={styles.container}>
+      {data.thumbnailUrl != null ? thumbnailListItem : listItem}
+    </View>
   );
 };
 
