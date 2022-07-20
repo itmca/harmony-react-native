@@ -25,7 +25,7 @@ const data: CarouselData[] = [
   },
 ];
 
-const Story = (): JSX.Element => {
+const StoryDetail = (): JSX.Element => {
   const [storyId, setStoryId] = useRecoilState(SelectedStoryIdState);
   // const { id } = route.params;
   return (
@@ -41,4 +41,4 @@ const Story = (): JSX.Element => {
     </SafeAreaView>
   );
 };
-export default Story;
+export default StoryDetail;

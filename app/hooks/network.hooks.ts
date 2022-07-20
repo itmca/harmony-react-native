@@ -19,9 +19,12 @@ export const useAxios = <R>(requestConfig: AxiosRequestConfig) => {
     refetch,
   } = useAxiosPromise<R>(requestConfig);
 
-  void promiseResponse?.then(r => {
-    setResponse(r.data);
-  });
+  useEffect(() => {
+    void promiseResponse?.then(r => {
+      console.log(r.data);
+      setResponse(r.data);
+    });
+  }, [promiseResponse]);
 
   return {
     response,
@@ -44,6 +47,7 @@ export const useAxiosPromise = <R>(
   const tokens = useRecoilValue<AuthTokens>(authState);
 
   const fetchData = (axiosConfig: AxiosRequestConfig) => {
+    console.log(axiosConfig);
     const url = axiosConfig.url || '';
 
     axiosConfig.url = url.startsWith('http') ? url : SERVER_HOST + url;

@@ -1,18 +1,18 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
-import {ChipMenu} from './ChipList';
+import {StoryTag} from '../../type/story';
 
 type Props = {
-  item: ChipMenu;
+  tag: StoryTag;
   onPress: () => void;
   backgroundColor: string;
   textColor: string;
   marginLeft: string | number;
 };
 
-const ChipItem = ({
-  item,
+const StoryTagChip = ({
+  tag,
   onPress,
   backgroundColor,
   textColor,
@@ -25,9 +25,11 @@ const ChipItem = ({
         styles.chipItem,
         {marginLeft: marginLeft, backgroundColor: backgroundColor},
       ]}>
-      <Text style={[styles.chipText, {color: textColor}]}>{item.name}</Text>
+      <Text style={[styles.chipText, {color: textColor}]}>
+        {tag.displayName}
+      </Text>
     </TouchableOpacity>
   </>
 );
 
-export default ChipItem;
+export default StoryTagChip;

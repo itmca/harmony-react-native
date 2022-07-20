@@ -1,13 +1,13 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  topFixedContainer: {
-    flex: 0.3,
+  container: {
+    flexWrap: 'wrap',
     backgroundColor: '#FFFFFF',
+    paddingBottom: 8,
   },
   scrollViewContainer: {
     width: '100%',
-    flex: 0.7,
     position: 'relative',
   },
   floatingBtBox: {

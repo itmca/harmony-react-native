@@ -91,10 +91,7 @@ export const styles = StyleSheet.create({
     height: 20,
     lineHeight: 20,
   },
-  chipContainer: {
-    position: 'absolute',
-    bottom: 28,
-  },
+  chipContainer: {},
   chipItem: {
     height: 26,
     borderRadius: 16,

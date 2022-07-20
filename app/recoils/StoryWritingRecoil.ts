@@ -1,10 +1,10 @@
 import {atom, selector} from 'recoil';
 import {
+  VoiceRecordInfo,
   WritingStory,
   WritingStoryQuestionInfo,
   WritingStoryTextInfo,
-  VoiceRecordInfo,
-} from '../type/story';
+} from '../type/writing-story';
 import {selectedPhotoState} from './SelectedPhotoRecoil';
 import {heroState} from './HeroRecoil';
 
