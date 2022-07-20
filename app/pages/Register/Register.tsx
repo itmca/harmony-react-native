@@ -6,13 +6,14 @@ import ColoredButton from '../../components/button/ColoredButton';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DatePickerInput} from 'react-native-paper-dates';
 import ValidatedTextInput from '../../components/form/ValidatedTextInput';
-import {useAxiosPromise} from '../../hooks/network.hooks';
+import {useAxiosPromise, useAxios} from '../../hooks/network.hooks';
 
 const Register = ({navigation}): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
   const [name, setName] = useState<string>('');
   const [nickname, setNickname] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+  const [verificationCode, setVerificationCode] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -21,19 +22,23 @@ const Register = ({navigation}): JSX.Element => {
       url: '/user',
       method: 'post',
     },
-    {disableInitialRequest: false},
+    {disableInitialRequest: true},
   );
+  const {response: verificationResponse, refetch: verificationRefetch} =
+    useAxiosPromise(
+      {
+        url: '/user/email/verification',
+        method: 'post',
+      },
+      {disableInitialRequest: true},
+    );
 
   const onSubmit = () => {
-    if (
-      !name ||
-      !nickname ||
-      !inputDate ||
-      !email ||
-      !password ||
-      !passwordConfirm
-    ) {
+    if (!name || !nickname || !email || !password || !passwordConfirm) {
       Alert.alert('누락된 값이 있습니다.');
+      return;
+    } else if (!isChecked) {
+      Alert.alert('이용 약관에 동의하여 주세요.');
       return;
     }
 
@@ -42,7 +47,7 @@ const Register = ({navigation}): JSX.Element => {
         name: name,
         nickName: nickname,
         email: email,
-        verificationCode: '12345',
+        verificationCode: verificationCode,
         birthday: inputDate,
         password: password,
       },
@@ -53,16 +58,50 @@ const Register = ({navigation}): JSX.Element => {
     void response
       ?.then(r => r.data)
       .then(() => {
-        Alert.alert('주인공이 생성되었습니다.');
-        navigation.navigate({
-          name: 'CharacterSetting',
-          params: {
-            event: 'create',
+        Alert.alert(
+          '회원가입이 완료되었습니다.',
+          '',
+          [
+            {
+              text: '로그인하러가기',
+              style: 'default',
+              onPress: () => {
+                navigation.push('NoTab', {
+                  screen: 'LoginRegisterNavigator',
+                  params: {
+                    screen: 'LoginMain',
+                  },
+                });
+              },
+            },
+          ],
+          {
+            cancelable: false,
           },
-          merge: true,
-        });
+        );
       });
   }, [response]);
+
+  const onVerificationSend = () => {
+    if (!email) {
+      Alert.alert('이메일을 입력해주세요.');
+      return;
+    }
+
+    verificationRefetch({
+      data: {
+        email: email,
+      },
+    });
+  };
+
+  useEffect(() => {
+    void verificationResponse
+      ?.then(r => r.data)
+      .then(() => {
+        Alert.alert('인증번호가 전송 되었습니다.');
+      });
+  }, [verificationResponse]);
 
   return (
     <View style={styles.mainContainer}>
@@ -116,13 +155,14 @@ const Register = ({navigation}): JSX.Element => {
           <TextInput
             style={styles.formVerificationInput}
             mode="outlined"
-            value={''}
+            value={verificationCode}
+            onChangeText={setVerificationCode}
             placeholder="인증코드"
           />
           <ColoredButton
             style={styles.formVerificationSendButton}
             text="인증코드 전송"
-            onPress={() => {}}
+            onPress={onVerificationSend}
           />
         </View>
         <ValidatedTextInput
