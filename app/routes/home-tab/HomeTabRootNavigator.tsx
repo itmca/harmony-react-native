@@ -12,7 +12,7 @@ import WritingHeaderRight from '../../components/header/WritingHeaderRight';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {useRecoilValue} from 'recoil';
-import {isLoggedInState} from '../../recoils/UserRecoil';
+import {isLoggedInState} from '../../recoils/AuthRecoil';
 import StoryList from '../../pages/StoryList/StoryList';
 import {heroState} from '../../recoils/HeroRecoil';
 

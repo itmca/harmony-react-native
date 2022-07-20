@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, SafeAreaView, Text, View,} from 'react-native';
+import {Image, SafeAreaView, Text, View} from 'react-native';
 import FingerBounceAnimation from '../../components/animation/FingerBounceAnimation';
 import {styles} from './styles';
 
@@ -50,7 +50,5 @@ const Home = (): JSX.Element => {
     </View>
   );
 };
-
-
 
 export default Home;
