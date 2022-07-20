@@ -7,7 +7,7 @@ import {DatePickerInput} from 'react-native-paper-dates';
 import {useAxiosPromise} from '../../hooks/network.hooks';
 import {Hero} from '../../type/hero';
 
-const CharacterModification = ({navigation, route}): JSX.Element => {
+const HeroModification = ({navigation, route}): JSX.Element => {
   const heroNo = route?.params?.heroNo;
   const [name, setName] = useState<string>('');
   const [nickName, setNickName] = useState<string>('');
@@ -22,6 +22,7 @@ const CharacterModification = ({navigation, route}): JSX.Element => {
     void heroResponse
       ?.then(r => r.data)
       .then(hero => {
+        console.log(hero);
         setName(hero.heroName);
         setNickName(hero.heroNickName);
         setBirthday(hero.birthday ? new Date(hero.birthday) : new Date());
@@ -68,6 +69,7 @@ const CharacterModification = ({navigation, route}): JSX.Element => {
       });
   }, [response]);
 
+  console.log(birthday);
   return (
     <View style={styles.mainContainer}>
       <ScrollView
@@ -111,4 +113,4 @@ const CharacterModification = ({navigation, route}): JSX.Element => {
     </View>
   );
 };
-export default CharacterModification;
+export default HeroModification;

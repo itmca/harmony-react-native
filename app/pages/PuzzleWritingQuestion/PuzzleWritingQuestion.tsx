@@ -31,8 +31,7 @@ const PuzzleWritingQuestion = ({navigation}): JSX.Element => {
   const isLoggedIn = useRecoilValue<boolean>(isLoggedInState);
   const recoilUser = useRecoilValue<User | undefined>(userState);
   const user = isLoggedIn ? recoilUser : dummyUser;
-  const recoilHero = useRecoilValue<Hero>(heroState);
-  const hero = isLoggedIn ? recoilHero : dummyHero;
+  const hero = useRecoilValue<Hero>(heroState);
 
   const question =
     storyQuestion?.helpQuestionText === undefined
@@ -79,20 +78,22 @@ const PuzzleWritingQuestion = ({navigation}): JSX.Element => {
     setStoryQuestion({
       ...storyQuestion,
       recQuestionNo: questionNo,
-      recQuestionModified: question === recQuestion,
+      recQuestionModified: question !== recQuestion,
       helpQuestionText: question,
     });
   }, [question]);
 
-  const [recQuestion, fetchRecQuestion, recQuestionNo] = useRecommendedQuestion(
-    {
-      characterNo: 1,
-    },
-  );
+  useEffect(() => {
+    refetchRecommend();
+  }, [hero.heroNo]);
+
+  const [recQuestion, fetchRecQuestion, recQuestionNo, refetchRecommend] =
+    useRecommendedQuestion({
+      heroNo: hero.heroNo,
+    });
 
   useEffect(() => {
     if (recQuestion != '') {
-      //setQuestion(recQuestion);
       setStoryQuestion({
         ...storyQuestion,
         recQuestionNo: recQuestionNo,

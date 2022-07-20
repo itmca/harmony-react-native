@@ -17,7 +17,7 @@ export const MonthPicker = ({initialDate, onChange}: Props): JSX.Element => {
       return;
     }
 
-    const date = new Date(year, month, 0);
+    const date = new Date(year, month, 1);
     onChange(date);
   }, [year, month]);
 
