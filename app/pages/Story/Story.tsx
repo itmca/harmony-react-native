@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Text, View} from 'react-native';
 import {useRecoilValue} from 'recoil';
-import {isLoggedInState} from '../../recoils/UserRecoil';
+import {isLoggedInState} from '../../recoils/AuthRecoil';
 import {useFocusEffect} from '@react-navigation/native';
 
 const Story = ({navigation}): JSX.Element => {

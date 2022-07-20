@@ -11,6 +11,7 @@ import {useAxiosPromise} from '../../../hooks/network.hooks';
 import {User} from '../../../type/user';
 import {AuthTokens} from '../../../type/auth';
 import {Hero} from '../../../type/hero';
+import { LocalStorage } from '../../../storage/local.storage';
 
 type LoginResponse = {
   user: {
@@ -72,6 +73,9 @@ const KaKaoSocialLoginButton = (): JSX.Element => {
         });
         setAuthTokens(tokens);
         setHero(hero);
+
+        LocalStorage.set('authToken', JSON.stringify(tokens));
+        LocalStorage.set('userNo', user.userNo);
 
         navigation.goBack();
       });

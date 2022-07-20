@@ -9,11 +9,13 @@ import {heroState} from '../../../recoils/HeroRecoil';
 import {useAxiosPromise} from '../../../hooks/network.hooks';
 import {AuthTokens} from '../../../type/auth';
 import {Hero} from '../../../type/hero';
+import {LocalStorage} from '../../../storage/local.storage';
 
 type LoginResponse = {
   user: {
     userName: string;
     userNickName: string;
+    userNo: number;
   };
   tokens: AuthTokens;
   hero: Hero;
@@ -56,8 +58,11 @@ const GeneralLoginButton = (props: {
         });
         setAuthTokens(tokens);
         if (hero != undefined) setHero(hero);
+        console.log(data);
+        LocalStorage.set('authToken', JSON.stringify(tokens));
+        LocalStorage.set('userNo', user.userNo);
 
-        navigation.navigate('Home');
+        navigation.goBack();
       })
       .catch(() =>
         Alert.alert('로그인 실패', '아이디와 패스워드 확인 부탁드립니다.'),

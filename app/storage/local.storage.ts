@@ -1,6 +1,6 @@
 import {MMKV} from 'react-native-mmkv';
 
-type ValueType = 'string' | 'number' | 'boolean';
+type ValueType = 'string' | 'number' | 'boolean' | 'json';
 
 export class LocalStorage {
   private static storage = new MMKV();
@@ -13,7 +13,10 @@ export class LocalStorage {
     if (valueType == 'string') return this.storage.getString(key);
     else if (valueType == 'number') return this.storage.getNumber(key);
     else if (valueType == 'boolean') return this.storage.getBoolean(key);
-    else throw Error('Undefined Value Type');
+    else if (valueType == 'json') {
+      const jsonString = this.storage.getString(key);
+      return (jsonString != undefined) ? JSON.parse(jsonString) : jsonString;
+    } else throw Error('Undefined Value Type');
   }
 
   static isKey(key: string) {
