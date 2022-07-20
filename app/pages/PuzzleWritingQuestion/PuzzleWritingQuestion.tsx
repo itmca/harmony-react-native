@@ -16,7 +16,8 @@ import {
 } from '../../recoils/HelpQuestionRecoil';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {helpQuestionState} from '../../recoils/StoryWritingRecoil';
-import {isLoggedInState, userState} from '../../recoils/UserRecoil';
+import {userState} from '../../recoils/UserRecoil';
+import {isLoggedInState} from '../../recoils/AuthRecoil';
 import {Hero} from '../../type/hero';
 import {heroState} from '../../recoils/HeroRecoil';
 import {dummyHero, dummyUser} from '../../utils/dummy.util';

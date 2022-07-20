@@ -2,7 +2,8 @@ import React from 'react';
 
 import {Text, TouchableOpacity, View} from 'react-native';
 import {useRecoilValue} from 'recoil';
-import {isLoggedInState, userState} from '../../recoils/UserRecoil';
+import {userState} from '../../recoils/UserRecoil';
+import {isLoggedInState} from '../../recoils/AuthRecoil';
 import {useFocusEffect} from '@react-navigation/native';
 import {Avatar, Divider, List} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';

@@ -11,29 +11,20 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import RootNavigator from './routes/RootNavigator';
+import App from './app';
+import {LocalStorage} from './storage/local.storage';
 import {RecoilRoot} from 'recoil';
-import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import {authState} from './recoils/AuthRecoil';
 
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: '#343666',
-    accent: 'yellow',
-    background: '#ffffff',
-  },
-};
+function initializeRecoilState({set}): void {
+  const authToken = LocalStorage.get('authToken', 'json');
+  if (authToken) set(authState, authToken);
+}
 
 const index = (): JSX.Element => {
   return (
-    <RecoilRoot>
-      <PaperProvider theme={theme}>
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-      </PaperProvider>
+    <RecoilRoot initializeState={initializeRecoilState}>
+      <App />
     </RecoilRoot>
   );
 };
