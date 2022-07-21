@@ -1,25 +1,17 @@
-import {PhotoIdentifier} from '@react-native-community/cameraroll';
-
-export type WritingStory = {
-  heroNo?: number;
-  recQuestionNo?: number;
-  recQuestionModified?: boolean;
-  helpQuestionText?: string;
-  title?: string;
-  storyText?: string;
-  date?: Date;
-  photos?: PhotoIdentifier[];
-  voice?: string;
+export type Story = {
+  id: string;
+  heroNo: number;
+  title: string;
+  content: string;
+  photos: string[];
+  audios: string[];
+  tags: StoryTag[];
+  date: Date;
+  createdAt: Date;
 };
 
-export type WritingStoryQuestionInfo = Pick<
-  WritingStory,
-  'recQuestionNo' | 'recQuestionModified' | 'helpQuestionText'
->;
-
-export type WritingStoryTextInfo = Pick<WritingStory, 'title' | 'storyText'>;
-
-export type VoiceRecordInfo = {
-  filePath: string | undefined;
-  recordTime: string | undefined;
+export type StoryTag = {
+  key: string;
+  displayName: string;
+  priority: number;
 };

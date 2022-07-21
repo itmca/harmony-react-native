@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import {View} from 'react-native';
 import HelpQuestion from '../../components/help-question/HelpQuestion';
@@ -28,6 +28,11 @@ const PuzzleWritingDate = (): JSX.Element => {
   const [_, setStoryDate] = useRecoilState<Date | undefined>(storyDateState);
   const hero = useRecoilValue<Hero | undefined>(heroState) || dummyHero;
 
+  const birthday =
+    hero?.birthday && typeof hero?.birthday === 'string'
+      ? new Date(hero?.birthday)
+      : hero?.birthday;
+
   return (
     <View style={styles.container}>
       <HelpQuestion />
@@ -43,7 +48,7 @@ const PuzzleWritingDate = (): JSX.Element => {
         containerStyle={styles.chipsContainer}
       />
       <StoryDatePicker
-        birthday={hero?.birthday || new Date()}
+        birthday={birthday || new Date()}
         dateType={dateType}
         heroName={hero?.heroNickName || ''}
         initialDate={new Date()}

@@ -10,13 +10,9 @@ export const styles = StyleSheet.create({
     borderBottomColor: '#979797',
     position: 'relative',
   },
-  listItemContainer: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: '#FFFFFF',
-  },
   thumbnailListItemContainer: {
     flex: 1,
+    flexWrap: 'nowrap',
     width: '100%',
     flexDirection: 'row',
     backgroundColor: '#FFFFFF',
@@ -28,7 +24,6 @@ export const styles = StyleSheet.create({
   },
   thumbnailTextBox: {
     textAlign: 'left',
-    maxWidth: '70%',
   },
   listTitle: {
     fontSize: 16,
@@ -42,9 +37,10 @@ export const styles = StyleSheet.create({
     opacity: 0.8,
   },
   thumbnailBox: {
-    // flex: 0.3,
+    flex: 0.3,
     width: 94,
     height: 94,
+    marginRight: 16,
   },
   thumbnailImage: {
     width: 94,
@@ -67,9 +63,8 @@ export const styles = StyleSheet.create({
     paddingTop: 5,
   },
   profileContainer: {
-    width: '100%',
-    paddingTop: 13,
-    paddingBottom: 22,
+    paddingTop: 24,
+    paddingBottom: 16,
     alignItems: 'center',
   },
   profileImage: {
@@ -91,10 +86,7 @@ export const styles = StyleSheet.create({
     height: 20,
     lineHeight: 20,
   },
-  chipContainer: {
-    position: 'absolute',
-    bottom: 28,
-  },
+  chipContainer: {},
   chipItem: {
     height: 26,
     borderRadius: 16,

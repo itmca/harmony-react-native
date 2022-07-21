@@ -19,9 +19,9 @@ export const DayPicker = ({initialDate, onChange}: Props): JSX.Element => {
       return;
     }
 
-    const date = new Date(year, month, day);
+    const date = new Date(year, month - 1, day);
     onChange(date);
-  }, [year, month]);
+  }, [year, month, day]);
 
   useEffect(() => {
     const date = new Date(year, month, 0);

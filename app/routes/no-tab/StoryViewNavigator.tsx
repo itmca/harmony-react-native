@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Story from '../../pages/Story/Story';
+import StoryDetail from '../../pages/StoryDetail/StoryDetail';
 import {Pressable} from 'react-native';
 // import StoryList from '../../pages/StoryList/StoryList';
 
@@ -12,15 +12,15 @@ const StoryViewNavigator = (): JSX.Element => {
   const navigation = useNavigation();
   return (
     <Stack.Navigator
-      initialRouteName="Story"
+      initialRouteName="StoryDetail"
       screenOptions={{
         headerShadowVisible: true,
         headerTransparent: true,
-        headerTitleAlign: 'center'
-        }}>
+        headerTitleAlign: 'center',
+      }}>
       <Stack.Screen
         name="Story"
-        component={Story}
+        component={StoryDetail}
         options={{
           title: '',
           headerLeft: () => (
