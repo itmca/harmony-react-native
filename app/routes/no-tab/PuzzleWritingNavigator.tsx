@@ -52,7 +52,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
     })
       .then(() => {
         resetStoryRecoil();
-        goHome();
+        goHome(String(Date.now()));
       })
       .catch(error => {
         console.log(error);
@@ -67,6 +67,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
       recQuestionNo: writingStory?.recQuestionNo,
       recQuestionModified: writingStory?.recQuestionModified,
       helpQuestionText: writingStory?.helpQuestionText,
+      date: writingStory?.date,
       title: writingStory?.title,
       storyText: writingStory?.storyText,
     };
@@ -116,8 +117,12 @@ const PuzzleWritingNavigator = (): JSX.Element => {
     resetRecord();
   };
 
-  const goHome = function () {
-    navigation.navigate('Home');
+  const goHome = function (key: string) {
+    navigation.navigate('Home', {
+      params: {
+        event: `${key}-created`,
+      },
+    });
   };
 
   return (

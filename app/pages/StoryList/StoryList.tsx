@@ -14,7 +14,11 @@ type HeroStorySet = {
   tags: StoryTag[];
 };
 
-const StoryList = (): JSX.Element => {
+type Props = {
+  route: any;
+};
+
+const StoryList = ({route}: Props): JSX.Element => {
   const hero = useRecoilValue<Hero>(heroState);
 
   const {response: heroStorySet, refetch} = useAxios<HeroStorySet>({
@@ -38,7 +42,7 @@ const StoryList = (): JSX.Element => {
         heroNo: hero.heroNo,
       },
     });
-  }, [hero.heroNo]);
+  }, [hero.heroNo, route.params?.event]);
 
   useEffect(() => {
     if (!stories || stories.length === 0) return;
