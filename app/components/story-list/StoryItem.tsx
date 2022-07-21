@@ -21,10 +21,17 @@ const StoryItem = ({story}: props): JSX.Element => {
     navigation.navigate('NoTab', StoryViewNavigator);
   };
 
+  function getDisplayDate() {
+    const date = new Date(story.date);
+    return `${date.getFullYear()}년 ${
+      date.getMonth() + 1
+    }월 ${date.getDate()}일`;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.thumbnailListItemContainer}>
-        <TouchableOpacity onPress={() => onPress(story.id)}>
+        <TouchableOpacity onPress={() => onPress(story.id)} style={{flex: 1}}>
           <View style={styles.thumbnailTextBox}>
             <Text
               numberOfLines={1}
@@ -55,7 +62,7 @@ const StoryItem = ({story}: props): JSX.Element => {
         )}
         <View style={styles.bottomRowBox}>
           <View>
-            <Text style={styles.dateText}>{story.createdAt}</Text>
+            <Text style={styles.dateText}>{getDisplayDate()}</Text>
           </View>
           {story.audios.length > 0 && (
             <View style={styles.micIconBox}>

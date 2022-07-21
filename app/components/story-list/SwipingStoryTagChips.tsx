@@ -43,7 +43,14 @@ const SwipingStoryTagChips = ({tags, onSelect}: Props): JSX.Element => {
     <SafeAreaView style={styles.chipContainer}>
       <FlatList
         showsHorizontalScrollIndicator={false}
-        data={tags}
+        data={[
+          {
+            key: 'all',
+            displayName: '전체',
+            priority: 0,
+          },
+          ...tags,
+        ]}
         renderItem={renderSingleStoryTag}
         keyExtractor={item => item.key}
         horizontal={true}

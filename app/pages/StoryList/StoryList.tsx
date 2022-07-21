@@ -55,8 +55,10 @@ const StoryList = ({route}: Props): JSX.Element => {
     if (!selectedTagKey) return;
 
     setDisplayStories(
-      stories.filter(story =>
-        story.tags.some(tag => tag.key === selectedTagKey),
+      stories.filter(
+        story =>
+          selectedTagKey === 'all' ||
+          story.tags.some(tag => tag.key === selectedTagKey),
       ),
     );
   }, [selectedTagKey]);

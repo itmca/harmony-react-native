@@ -6,10 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     paddingBottom: 8,
   },
-  scrollViewContainer: {
-    width: '100%',
-    position: 'relative',
-  },
+  scrollViewContainer: {},
   floatingBtBox: {
     width: 39,
     height: 39,
