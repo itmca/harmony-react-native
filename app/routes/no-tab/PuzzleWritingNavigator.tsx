@@ -119,9 +119,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
 
   const goHome = function (key: string) {
     navigation.navigate('Home', {
-      params: {
-        event: `${key}-created`,
-      },
+      event: `${key}-created`,
     });
   };
 
