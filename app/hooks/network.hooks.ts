@@ -27,7 +27,6 @@ export const useAxios = <R>(requestConfig: AxiosRequestConfig) => {
 
   useEffect(() => {
     void promiseResponse?.then(r => {
-      console.log(r.data);
       setResponse(r.data);
     });
   }, [promiseResponse]);
@@ -111,7 +110,7 @@ export const useAxiosPromise = <R>(
 
   useEffect(() => {
     if (currentAxiosConfig == undefined) return;
-    const tokenState = getTokenState(tokens);;
+    const tokenState = getTokenState(tokens);
 
     if (tokenState == 'Use') {
       void fetchData(currentAxiosConfig);

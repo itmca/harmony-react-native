@@ -16,7 +16,6 @@ export const useRefreshLogic = () => {
   const {refreshResponse, refreshError, refreshRefetch} =
     useRefreshPromise<AuthTokens>(isExpire);
 
-  console.log(isExpire);
   useEffect(() => {
     if (!refreshResponse) return;
 

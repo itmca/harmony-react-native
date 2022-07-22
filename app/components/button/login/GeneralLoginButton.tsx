@@ -58,7 +58,6 @@ const GeneralLoginButton = (props: {
         });
         setAuthTokens(tokens);
         if (hero != undefined) setHero(hero);
-        console.log(data);
         LocalStorage.set('authToken', JSON.stringify(tokens));
         LocalStorage.set('userNo', user.userNo);
 

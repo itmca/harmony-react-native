@@ -22,7 +22,6 @@ const HeroModification = ({navigation, route}): JSX.Element => {
     void heroResponse
       ?.then(r => r.data)
       .then(hero => {
-        console.log(hero);
         setName(hero.heroName);
         setNickName(hero.heroNickName);
         setBirthday(hero.birthday ? new Date(hero.birthday) : new Date());
@@ -69,7 +68,6 @@ const HeroModification = ({navigation, route}): JSX.Element => {
       });
   }, [response]);
 
-  console.log(birthday);
   return (
     <View style={styles.mainContainer}>
       <ScrollView
