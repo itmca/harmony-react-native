@@ -5,9 +5,16 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  textContainer: {
+  contentMainContainer: {
     marginTop: 16,
     paddingLeft: 16,
     paddingRight: 16,
+  },
+  contentTopPartContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
   },
 });
