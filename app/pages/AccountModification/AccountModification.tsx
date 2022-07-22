@@ -4,7 +4,7 @@ import {styles} from './styles';
 import {TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
 import {DatePickerInput} from 'react-native-paper-dates';
-import {useResetRecoilState} from 'recoil';
+import {useRecoilValue, useResetRecoilState} from 'recoil';
 import {authState} from '../../recoils/AuthRecoil';
 import {userState} from '../../recoils/UserRecoil';
 import {
@@ -21,6 +21,7 @@ import {
   helpQuestionOpenState,
 } from '../../recoils/HelpQuestionRecoil';
 import {useNavigation} from '@react-navigation/native';
+import { LocalStorage } from '../../storage/local.storage';
 
 const AccountModification = (): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
@@ -52,6 +53,11 @@ const AccountModification = (): JSX.Element => {
     storyTextReset();
     storyDateReset();
     recordFileReset();
+  };
+
+  const removeLocalStroage = () => {
+    LocalStorage.delete('authToken');
+    LocalStorage.delete('useNo');
   };
 
   return (
@@ -108,6 +114,7 @@ const AccountModification = (): JSX.Element => {
           text="로그아웃"
           onPress={() => {
             recoilAllReset();
+            removeLocalStroage();
             navigation.navigate('Home');
           }}
           style={{marginTop: 32, backgroundColor: '#FF5A5A'}}
