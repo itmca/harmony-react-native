@@ -21,8 +21,8 @@ const ColoredButton = ({
       onPress={onPress}
       style={{
         ...styles.coloredButtonContainer,
-        ...style,
         backgroundColor,
+        ...style,
       }}>
       <Text style={styles.coloredButtonFont}>{text}</Text>
     </TouchableOpacity>

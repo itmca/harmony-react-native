@@ -1,13 +1,58 @@
 import React from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import {styles} from './styles';
-import {TextInput, Button} from 'react-native-paper';
+import {TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DatePickerInput} from 'react-native-paper-dates';
+import {useResetRecoilState} from 'recoil';
+import {authState} from '../../recoils/AuthRecoil';
+import {userState} from '../../recoils/UserRecoil';
+import {
+  helpQuestionState,
+  storyTextState,
+  storyDateState,
+  recordFileState,
+} from '../../recoils/StoryWritingRecoil';
+import {SelectedCategoryState} from '../../recoils/SelectedCategoryRecoil';
+import {selectedPhotoState} from '../../recoils/SelectedPhotoRecoil';
+import {SelectedStoryKeyState} from '../../recoils/SelectedStoryIdRecoil';
+import {
+  helpQuestionTextState,
+  helpQuestionOpenState,
+} from '../../recoils/HelpQuestionRecoil';
+import {useNavigation} from '@react-navigation/native';
 
 const AccountModification = (): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
+  const navigation = useNavigation();
+
+  const authReset = useResetRecoilState(authState);
+  const userReset = useResetRecoilState(userState);
+  const heroReset = useResetRecoilState(userState);
+  const questionTextReset = useResetRecoilState(helpQuestionTextState);
+  const questionOpenReset = useResetRecoilState(helpQuestionOpenState);
+  const selectedCategoryReset = useResetRecoilState(SelectedCategoryState);
+  const selectedPhotoReset = useResetRecoilState(selectedPhotoState);
+  const selectedStoryReset = useResetRecoilState(SelectedStoryKeyState);
+  const questionReset = useResetRecoilState(helpQuestionState);
+  const storyTextReset = useResetRecoilState(storyTextState);
+  const storyDateReset = useResetRecoilState(storyDateState);
+  const recordFileReset = useResetRecoilState(recordFileState);
+
+  const recoilAllReset = () => {
+    authReset();
+    userReset();
+    heroReset();
+    questionTextReset();
+    questionOpenReset();
+    selectedCategoryReset();
+    selectedPhotoReset();
+    selectedStoryReset();
+    questionReset();
+    storyTextReset();
+    storyDateReset();
+    recordFileReset();
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -58,6 +103,14 @@ const AccountModification = (): JSX.Element => {
           text="비밀번호 변경"
           onPress={() => {}}
           style={{marginTop: 8}}
+        />
+        <ColoredButton
+          text="로그아웃"
+          onPress={() => {
+            recoilAllReset();
+            navigation.navigate('Home');
+          }}
+          style={{marginTop: 32, backgroundColor: '#FF5A5A'}}
         />
       </ScrollView>
     </View>
