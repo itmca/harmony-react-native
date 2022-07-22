@@ -15,7 +15,7 @@ const HeroOverview = ({hero, storyCount}: Props): JSX.Element => {
       <HeroAvatar hero={hero} size={72} />
       <Text style={styles.profileTitle}>{hero.title}</Text>
       <Text style={styles.profileText}>
-        {hero.heroNickName} 님의 퍼즐 {storyCount}조각이 맞춰졌습니다.
+        "{hero.heroNickName}"님의 퍼즐 {storyCount}조각이 맞춰졌습니다.
         {storyCount > 0 ? '👏'.repeat(Math.min(storyCount, 3)) : ''}
       </Text>
     </View>

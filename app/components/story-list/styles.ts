@@ -65,6 +65,7 @@ export const styles = StyleSheet.create({
   profileContainer: {
     paddingTop: 24,
     paddingBottom: 16,
+    width: '100%',
     alignItems: 'center',
   },
   profileImage: {

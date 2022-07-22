@@ -64,7 +64,11 @@ const StoryList = ({route}: Props): JSX.Element => {
   }, [selectedTagKey]);
 
   return (
-    <View style={{flex: 1}}>
+    <View
+      style={{
+        flex: 1,
+        height: '100%',
+      }}>
       <HeroStoryOverview
         hero={hero}
         storyCount={stories.length}
