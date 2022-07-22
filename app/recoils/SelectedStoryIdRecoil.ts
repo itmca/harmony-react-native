@@ -1,6 +1,6 @@
 import {atom} from 'recoil';
 
-export const SelectedStoryIdState = atom<String>({
-  key: 'SelectedStoryIdState',
+export const SelectedStoryKeyState = atom<string>({
+  key: 'SelectedStoryKeyState',
   default: '',
 });

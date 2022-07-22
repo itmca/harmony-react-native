@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import StoryDetail from '../../pages/StoryDetail/StoryDetail';
-import {Pressable} from 'react-native';
-// import StoryList from '../../pages/StoryList/StoryList';
+import GoBackHeaderLeft from '../../components/header/GoBackHeaderLeft';
+import HeroBadgeHeader from '../../components/header/HeroBadgeHeader';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +14,6 @@ const StoryViewNavigator = (): JSX.Element => {
       initialRouteName="StoryDetail"
       screenOptions={{
         headerShadowVisible: true,
-        headerTransparent: true,
         headerTitleAlign: 'center',
       }}>
       <Stack.Screen
@@ -24,14 +22,13 @@ const StoryViewNavigator = (): JSX.Element => {
         options={{
           title: '',
           headerLeft: () => (
-            <Pressable
-              onPress={() => {
-                navigation.goBack();
-              }}>
-              <Icon name={'chevron-left'} size={24} />
-            </Pressable>
+            <GoBackHeaderLeft
+              iconType={'chevron-left'}
+              iconSize={32}
+              containerStyle={{marginLeft: -8}}
+            />
           ),
-          headerRight: () => <Icon name={'menu'} size={24} />,
+          headerRight: () => <HeroBadgeHeader />,
         }}
       />
     </Stack.Navigator>

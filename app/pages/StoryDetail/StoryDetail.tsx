@@ -1,43 +1,56 @@
-import React from 'react';
-import {Image, SafeAreaView, Text} from 'react-native';
-import {useRecoilState} from 'recoil';
-import {CarouselData} from '../../components/story/ImageCarousel';
-import StoryCarousel from '../../components/story/StoryCarousel';
-import {SelectedStoryIdState} from '../../recoils/SelectedStoryIdRecoil';
+import React, {useEffect, useState} from 'react';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {useRecoilValue} from 'recoil';
+import StoryPhotoCarousel from '../../components/story/StoryPhotoCarousel';
+import {SelectedStoryKeyState} from '../../recoils/SelectedStoryIdRecoil';
 import {styles} from './styles';
-
-const data: CarouselData[] = [
-  {
-    id: 'image_url_00',
-    url: 'https://images.unsplash.com/photo-1504004030892-d06adf9ffbcf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-  },
-  {
-    id: 'image_url_01',
-    url: 'https://images.unsplash.com/photo-1595254310342-ac5cabb1ddc5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-  },
-  {
-    id: 'image_url_02',
-    url: 'https://images.unsplash.com/photo-1612633201772-9a8f3df6bbf6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
-  },
-  {
-    id: 'image_url_03',
-    url: 'https://images.unsplash.com/photo-1624537046903-1e4acee0487f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80',
-  },
-];
+import {useAxios} from '../../hooks/network.hooks';
+import {Story} from '../../type/story';
+import {getStoryDisplayTagsDate} from '../../utils/story.display.util';
 
 const StoryDetail = (): JSX.Element => {
-  const [storyId, setStoryId] = useRecoilState(SelectedStoryIdState);
-  // const { id } = route.params;
+  const storyKey = useRecoilValue(SelectedStoryKeyState);
+  const [story, setStory] = useState<Story>();
+
+  const {response, refetch} = useAxios<Story>({
+    url: `/stories/${storyKey}`,
+  });
+
+  useEffect(() => {
+    setStory(undefined);
+
+    refetch({
+      url: `/stories/${storyKey}`,
+    });
+  }, [storyKey]);
+
+  useEffect(() => {
+    if (!response) return;
+
+    setStory(response);
+  }, [response]);
+
+  if (!story) {
+    return <></>;
+  }
+
   return (
-    <SafeAreaView style={styles.scrollViewContainer}>
-      <StoryCarousel data={data} />
-      <Text>Story</Text>
-      <Text>{storyId}</Text>
-      <Image
-        source={{
-          uri: 'https://images.unsplash.com/photo-1559744801-dc539b55737e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80',
-        }}
-      />
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <StoryPhotoCarousel
+          photos={story?.photos}
+          containerStyle={{
+            height: 360,
+          }}
+        />
+        <View style={styles.textContainer}>
+          <View style={{marginBottom: 16}}>
+            <Text style={{fontSize: 24}}>{story.title}</Text>
+            <Text style={{fontSize: 12}}>{getStoryDisplayTagsDate(story)}</Text>
+          </View>
+          <Text>{story.content}</Text>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

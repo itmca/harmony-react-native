@@ -5,8 +5,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './styles';
 import StoryViewNavigator from '../../routes/no-tab/StoryViewNavigator';
 import {useSetRecoilState} from 'recoil';
-import {SelectedStoryIdState} from '../../recoils/SelectedStoryIdRecoil';
+import {SelectedStoryKeyState} from '../../recoils/SelectedStoryIdRecoil';
 import {Story} from '../../type/story';
+import {getStoryDisplayTagsDate} from '../../utils/story.display.util';
 
 type props = {
   story: Story;
@@ -14,7 +15,7 @@ type props = {
 
 const StoryItem = ({story}: props): JSX.Element => {
   const navigation = useNavigation<any>();
-  const storyId = useSetRecoilState(SelectedStoryIdState);
+  const storyId = useSetRecoilState(SelectedStoryKeyState);
 
   const onPress = (id: Story['id']) => {
     storyId(id);
@@ -32,7 +33,7 @@ const StoryItem = ({story}: props): JSX.Element => {
     <View style={styles.container}>
       <View style={styles.thumbnailListItemContainer}>
         <TouchableOpacity onPress={() => onPress(story.id)} style={{flex: 1}}>
-          <View style={styles.thumbnailTextBox}>
+          <View>
             <Text
               numberOfLines={1}
               ellipsizeMode="tail"
@@ -63,8 +64,7 @@ const StoryItem = ({story}: props): JSX.Element => {
         <View style={styles.bottomRowBox}>
           <View>
             <Text style={styles.dateText}>
-              {getDisplayDate()} -{' '}
-              {story.tags.map(tag => tag.displayName).join(' ')}
+              {getStoryDisplayTagsDate(story)}
             </Text>
           </View>
           {story.audios.length > 0 && (
