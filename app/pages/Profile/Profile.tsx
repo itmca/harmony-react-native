@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Text, TouchableOpacity, View} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {useRecoilValue} from 'recoil';
 import {userState} from '../../recoils/UserRecoil';
 import {isLoggedInState} from '../../recoils/AuthRecoil';
@@ -33,7 +33,7 @@ const Profile = ({navigation}: Props): JSX.Element | null => {
   }
 
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
       <View style={styles.accountInfoContainer}>
         <Avatar.Text
           style={styles.accountAvatar}
@@ -84,7 +84,7 @@ const Profile = ({navigation}: Props): JSX.Element | null => {
         />
         <Divider />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 export default Profile;

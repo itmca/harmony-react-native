@@ -13,7 +13,7 @@ import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
-import {authState, isLoggedInState} from './recoils/AuthRecoil';
+import {authState} from './recoils/AuthRecoil';
 import {LocalStorage} from './storage/local.storage';
 import {userState} from './recoils/UserRecoil';
 import {heroState} from './recoils/HeroRecoil';
@@ -25,7 +25,6 @@ import RootNavigator from './routes/RootNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {User} from './type/user';
 import {Hero} from './type/hero';
-import { QrCodeScannerOutlined } from '@mui/icons-material';
 
 type IsRefreshInErrorType = 'UnSelect' | 'SelectRefresh' | 'CancleRefresh';
 
@@ -61,7 +60,7 @@ const App = (): JSX.Element => {
 
     if (tokenState == 'Use') {
       const userNo: number = LocalStorage.get('userNo', 'number');
-      refetchUser({url: `/user/${userNo.toString()}`});
+      refetchUser({url: `/users/${userNo.toString()}`});
     }
     if (tokenState == 'Expire') {
       resetLoginStatus();
@@ -144,7 +143,7 @@ const App = (): JSX.Element => {
     const tokenState = getTokenState(tokens);
     const userNo: number = LocalStorage.get('userNo', 'number');
     if (tokenState == 'Use' && userNo) {
-      refetchUser({url: `/user/${userNo.toString()}`});
+      refetchUser({url: `/users/${userNo.toString()}`});
     }
   }, [tokens]);
 

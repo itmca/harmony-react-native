@@ -1,4 +1,4 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   mainContainer: {
@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     flex: 1,
     justifyContent: 'flex-start',
+    paddingTop: 8,
   },
   accountInfoContainer: {
     flexDirection: 'row',
