@@ -4,3 +4,5 @@ export type AuthTokens = {
   refreshToken: string;
   refreshTokenExpireAt: Date;
 };
+
+export type TokenState = 'Use' | 'Refresh' | 'Expire';

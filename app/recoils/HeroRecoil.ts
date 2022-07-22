@@ -1,4 +1,4 @@
-import {atom} from 'recoil';
+import {atom, noWait} from 'recoil';
 import {Hero} from '../type/hero';
 
 export const heroState = atom<Hero>({
@@ -7,5 +7,8 @@ export const heroState = atom<Hero>({
     heroNo: -1,
     heroName: '',
     heroNickName: '',
+    imageURL: undefined,
+    birthday: undefined,
+    title: undefined,
   },
 });

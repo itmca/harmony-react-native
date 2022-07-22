@@ -62,7 +62,7 @@ const GeneralLoginButton = (props: {
         LocalStorage.set('authToken', JSON.stringify(tokens));
         LocalStorage.set('userNo', user.userNo);
 
-        navigation.goBack();
+        navigation.navigate('Home');
       })
       .catch(() =>
         Alert.alert('로그인 실패', '아이디와 패스워드 확인 부탁드립니다.'),
