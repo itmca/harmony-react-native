@@ -10,7 +10,6 @@ import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWriti
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {useRecoilValue} from 'recoil';
 import {isLoggedInState} from '../../recoils/AuthRecoil';
 import StoryList from '../../pages/StoryList/StoryList';
@@ -47,8 +46,8 @@ const HomeTabRootNavigator = (): JSX.Element => {
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) =>
             isLoggedIn ? (
-              <MaterialIcon
-                name={focused ? 'menu-book' : 'menu-book'}
+              <MaterialCommunityIcon
+                name={focused ? 'book-open-page-variant' : 'book-outline'}
                 size={24}
               />
             ) : (
