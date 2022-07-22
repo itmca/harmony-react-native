@@ -67,7 +67,6 @@ const StoryList = ({route}: Props): JSX.Element => {
     <View
       style={{
         flex: 1,
-        height: '100%',
       }}>
       <HeroStoryOverview
         hero={hero}
