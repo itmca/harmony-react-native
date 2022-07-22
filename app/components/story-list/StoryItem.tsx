@@ -62,7 +62,10 @@ const StoryItem = ({story}: props): JSX.Element => {
         )}
         <View style={styles.bottomRowBox}>
           <View>
-            <Text style={styles.dateText}>{getDisplayDate()}</Text>
+            <Text style={styles.dateText}>
+              {getDisplayDate()} -{' '}
+              {story.tags.map(tag => tag.displayName).join(' ')}
+            </Text>
           </View>
           {story.audios.length > 0 && (
             <View style={styles.micIconBox}>
