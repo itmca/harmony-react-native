@@ -21,6 +21,8 @@ import {
   writingStoryState,
 } from '../../recoils/StoryWritingRecoil';
 import {Avatar} from 'react-native-paper';
+import { userState } from '../../recoils/UserRecoil';
+import { heroState } from '../../recoils/HeroRecoil';
 
 const PuzzleWritingText = (): JSX.Element => {
   const navigation = useNavigation<any>();
@@ -29,11 +31,15 @@ const PuzzleWritingText = (): JSX.Element => {
   const recordFileInfo = useRecoilValue(recordFileState);
   const resetRecord = useResetRecoilState(recordFileState);
   const writingStory = useRecoilValue(writingStoryState);
+  const user = useRecoilState(userState);
+  const hero = useRecoilState(heroState);
 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
+    console.log(user);
+    console.log(hero);
   }, []);
 
   const setRecordComponent = function () {

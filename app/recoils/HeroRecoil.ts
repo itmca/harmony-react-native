@@ -1,4 +1,4 @@
-import {atom} from 'recoil';
+import {atom, noWait} from 'recoil';
 import {Hero} from '../type/hero';
 import {dummyHero} from '../utils/dummy.util';
 

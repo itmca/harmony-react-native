@@ -1,5 +1,5 @@
 import {atom, selector} from 'recoil';
-import {AuthTokens} from '../type/auth';
+import {AuthTokens, TokenState} from '../type/auth';
 
 export const authState = atom<AuthTokens>({
   key: 'authState',
@@ -20,26 +20,10 @@ export const isLoggedInState = selector({
       const refreshTokenExpireAt = Date.parse(auth.refreshTokenExpireAt);
       const current = Date.now();
       const isLogged =
-        accessTokenExpireAt >= current || refreshTokenExpireAt >= current;
+
+        refreshTokenExpireAt >= current || accessTokenExpireAt >= current;
       return isLogged;
     } else return false;
   },
 });
 
-export const isExpireState = selector({
-  key: 'refreshState',
-  get: ({get}) => {
-    return true;
-    const auth = get(authState);
-    if (auth && auth.accessToken != '') {
-      const accessTokenExpireAt = Date.parse(auth.accessTokenExpireAt);
-      const refreshTokenExpireAt = Date.parse(auth.refreshTokenExpireAt);
-      const current = Date.now();
-
-      const isExpire =
-        accessTokenExpireAt < current && refreshTokenExpireAt < current;
-
-      return isExpire;
-    } else return false;
-  },
-});
