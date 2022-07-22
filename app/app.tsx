@@ -24,7 +24,8 @@ import {AuthTokens} from './type/auth';
 import RootNavigator from './routes/RootNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {User} from './type/user';
-import { Hero } from './type/hero';
+import {Hero} from './type/hero';
+import { QrCodeScannerOutlined } from '@mui/icons-material';
 
 type IsRefreshInErrorType = 'UnSelect' | 'SelectRefresh' | 'CancleRefresh';
 
@@ -46,7 +47,6 @@ const App = (): JSX.Element => {
   const setUser = useSetRecoilState(userState);
   const setHero = useSetRecoilState(heroState);
   const {refreshRefetch} = useRefreshPromise<AuthTokens>();
-  const isLoggined = useRecoilValue(isLoggedInState);
   const {response: userResponse, refetch: refetchUser} = useAxiosPromise<User>(
     {},
     {disableInitialRequest: true},
@@ -142,8 +142,8 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const tokenState = getTokenState(tokens);
-    if (tokenState == 'Use') {
-      const userNo: number = LocalStorage.get('userNo', 'number');
+    const userNo: number = LocalStorage.get('userNo', 'number');
+    if (tokenState == 'Use' && userNo) {
       refetchUser({url: `/user/${userNo.toString()}`});
     }
   }, [tokens]);

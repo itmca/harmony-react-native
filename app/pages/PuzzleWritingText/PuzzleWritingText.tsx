@@ -38,8 +38,6 @@ const PuzzleWritingText = (): JSX.Element => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-    console.log(user);
-    console.log(hero);
   }, []);
 
   const setRecordComponent = function () {

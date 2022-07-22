@@ -21,6 +21,7 @@ import {Alert} from 'react-native';
 import {AuthTokens} from '../../type/auth';
 import {authState} from '../../recoils/AuthRecoil';
 import PuzzleWritingDate from '../../pages/PuzzleWritingDate/PuzzleWritingDate';
+import {useAxiosPromise} from '../../hooks/network.hooks';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,32 +34,34 @@ const PuzzleWritingNavigator = (): JSX.Element => {
   const resetRecord = useResetRecoilState(recordFileState);
   const tokens = useRecoilValue<AuthTokens>(authState);
 
-  const handleSubmit = async function () {
-    const formData = new FormData();
-    addImagesInFormData(formData);
-    addVoiceInFormData(formData);
-    addStoryinfoInFormData(formData);
-
-    // TODO 이후 network useAxios 사용으로 수정
-    await axios({
+  const {response, error, loading, refetch} = useAxiosPromise<any>(
+    {
       method: 'post',
-      url: `${SERVER_HOST}/story`,
-      data: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: tokens.accessToken && `Bearer ${tokens.accessToken}`,
-      },
-      timeout: 5000,
-    })
+      url: '/story',
+      headers: {'Content-Type': 'multipart/form-data'},
+    },
+    {disableInitialRequest: true},
+  );
+
+  React.useEffect(() => {
+    if (!response) return;
+
+    void response
       .then(() => {
         resetStoryRecoil();
         goHome(String(Date.now()));
       })
       .catch(error => {
-        console.log(error);
-        // console.log(String(error).includes('timeout'));
         Alert.alert('파일 업로드가 실패했습니다. 재시도 부탁드립니다.');
       });
+  }, [response]);
+
+  const handleSubmit = function () {
+    const formData = new FormData();
+    addImagesInFormData(formData);
+    addVoiceInFormData(formData);
+    addStoryinfoInFormData(formData);
+    refetch({data: formData});
   };
 
   const addStoryinfoInFormData = function (formData: FormData) {

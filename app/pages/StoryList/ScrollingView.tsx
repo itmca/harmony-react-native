@@ -69,14 +69,12 @@ const storyViewData: ItemData[] = [
 const ScrollingView = (): JSX.Element => {
   const [scrollPositionY, setScrollPositionY] = useState<number>(0);
   const onPressTopButton = () => {
-    console.log('top button clicked');
     setScrollPositionY(0);
   };
 
   const handleScroll = (event: Object) => {
     const positionY = event.nativeEvent.contentOffset.y;
     setScrollPositionY(positionY);
-    console.log(positionY);
   };
 
   return (
