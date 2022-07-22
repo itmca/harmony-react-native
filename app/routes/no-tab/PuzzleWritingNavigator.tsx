@@ -4,7 +4,6 @@ import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
 import PuzzleWritingPhoto from '../../pages/PuzzleWritingPhoto/PuzzleWritingPhoto';
 import PuzzleWritingText from '../../pages/PuzzleWritingText/PuzzleWritingText';
-import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWritingQuestion';
 import PuzzleWritingVoice from '../../pages/PuzzleWritingVoice/PuzzleWritingVoice';
 import {useRecoilValue, useResetRecoilState} from 'recoil';
 import {
@@ -14,14 +13,13 @@ import {
   writingStoryState,
 } from '../../recoils/StoryWritingRecoil';
 import axios from 'axios';
-import {heroState} from '../../recoils/HeroRecoil';
 import {selectedPhotoState} from '../../recoils/SelectedPhotoRecoil';
 import {useNavigation} from '@react-navigation/native';
 import {SERVER_HOST} from '../../constants/url.constants';
 import {AUDIO_TYPE, IMG_TYPE} from '../../constants/uploadFileType.constants';
 import {Alert} from 'react-native';
-import { AuthTokens } from '../../type/auth';
-import { authState } from '../../recoils/AuthRecoil';
+import {AuthTokens} from '../../type/auth';
+import {authState} from '../../recoils/AuthRecoil';
 import PuzzleWritingDate from '../../pages/PuzzleWritingDate/PuzzleWritingDate';
 
 const Stack = createNativeStackNavigator();
@@ -30,7 +28,6 @@ const PuzzleWritingNavigator = (): JSX.Element => {
   const writingStory = useRecoilValue(writingStoryState);
   const navigation = useNavigation<any>();
   const resetStoryText = useResetRecoilState(storyTextState);
-  const resetHero = useResetRecoilState(heroState);
   const resetHelpQuestion = useResetRecoilState(helpQuestionState);
   const resetSelectedPhoto = useResetRecoilState(selectedPhotoState);
   const resetRecord = useResetRecoilState(recordFileState);
@@ -55,7 +52,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
     })
       .then(() => {
         resetStoryRecoil();
-        goHome();
+        goHome(String(Date.now()));
       })
       .catch(error => {
         console.log(error);
@@ -70,6 +67,7 @@ const PuzzleWritingNavigator = (): JSX.Element => {
       recQuestionNo: writingStory?.recQuestionNo,
       recQuestionModified: writingStory?.recQuestionModified,
       helpQuestionText: writingStory?.helpQuestionText,
+      date: writingStory?.date,
       title: writingStory?.title,
       storyText: writingStory?.storyText,
     };
@@ -114,14 +112,15 @@ const PuzzleWritingNavigator = (): JSX.Element => {
 
   const resetStoryRecoil = function () {
     resetStoryText();
-    resetHero();
     resetHelpQuestion();
     resetSelectedPhoto();
     resetRecord();
   };
 
-  const goHome = function () {
-    navigation.navigate('Home');
+  const goHome = function (key: string) {
+    navigation.navigate('Home', {
+      event: `${key}-created`,
+    });
   };
 
   return (

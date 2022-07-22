@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import {View} from 'react-native';
 import HelpQuestion from '../../components/help-question/HelpQuestion';
@@ -10,6 +10,7 @@ import {useRecoilState, useRecoilValue} from 'recoil';
 import {heroState} from '../../recoils/HeroRecoil';
 import {DateType} from '../../type/date-type';
 import {storyDateState} from '../../recoils/StoryWritingRecoil';
+import {dummyHero} from '../../utils/dummy.util';
 
 type DateTypeDisplay = {
   dateType: DateType;
@@ -25,7 +26,12 @@ const dateTypeDisplays: DateTypeDisplay[] = [
 const PuzzleWritingDate = (): JSX.Element => {
   const [dateType, setDateType] = useState<DateType>(DateType.AGE);
   const [_, setStoryDate] = useRecoilState<Date | undefined>(storyDateState);
-  const hero = useRecoilValue<Hero | undefined>(heroState);
+  const hero = useRecoilValue<Hero | undefined>(heroState) || dummyHero;
+
+  const birthday =
+    hero?.birthday && typeof hero?.birthday === 'string'
+      ? new Date(hero?.birthday)
+      : hero?.birthday;
 
   return (
     <View style={styles.container}>
@@ -42,9 +48,9 @@ const PuzzleWritingDate = (): JSX.Element => {
         containerStyle={styles.chipsContainer}
       />
       <StoryDatePicker
-        birthday={hero?.birthday || new Date()}
+        birthday={birthday || new Date()}
         dateType={dateType}
-        heroName={hero?.heroName || ''}
+        heroName={hero?.heroNickName || ''}
         initialDate={new Date()}
         onChangeDate={setStoryDate}
         containerStyle={styles.datePickerContainer}

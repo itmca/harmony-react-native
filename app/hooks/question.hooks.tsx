@@ -1,8 +1,9 @@
 import {useEffect, useState} from 'react';
 import {useAxios} from './network.hooks';
+import {AxiosRequestConfig} from 'axios';
 
 type Param = {
-  characterNo: number;
+  heroNo: number;
   category?: string;
   defaultQuestion?: string;
 };
@@ -14,15 +15,15 @@ export type Question = {
 };
 
 const useRecommendedQuestion = ({
-  characterNo,
+  heroNo,
   defaultQuestion = '',
-}: Param): [string, () => void, number] => {
+}: Param): [string | undefined, () => void, number, () => void] => {
   const [questionNo, setQuestionNo] = useState(0);
   const [question, setQuestion] = useState(defaultQuestion);
   const [questions, setQuestions] = useState<Question[]>([]);
 
-  const {response: responseQuestions} = useAxios<Question[]>({
-    url: '/question/recommend?characterNo=${characterNo}',
+  const {response: responseQuestions, refetch} = useAxios<Question[]>({
+    url: `/question/recommend?heroNo=${heroNo}`,
   });
 
   useEffect(() => {
@@ -41,7 +42,14 @@ const useRecommendedQuestion = ({
     setQuestionIndex((questionIndex + 1) % questions.length);
   };
 
-  return [question, changer, questionNo];
+  return [
+    question,
+    changer,
+    questionNo,
+    () => {
+      refetch({});
+    },
+  ];
 };
 
 export {useRecommendedQuestion};

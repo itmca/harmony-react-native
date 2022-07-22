@@ -10,6 +10,7 @@ import {heroState} from '../recoils/HeroRecoil';
 import {LocalStorage} from '../storage/local.storage';
 import {getTokenState} from '../utils/auth.util';
 
+
 type IsRefreshInErrorType = 'UnSelect' | 'SelectRefresh' | 'CancleRefresh';
 type AxiosOption = {
   disableInitialRequest: boolean;
@@ -21,16 +22,21 @@ export const useAxios = <R>(requestConfig: AxiosRequestConfig) => {
     response: promiseResponse,
     error,
     loading,
+    refetch,
   } = useAxiosPromise<R>(requestConfig);
 
-  void promiseResponse?.then(r => {
-    setResponse(r.data);
-  });
+  useEffect(() => {
+    void promiseResponse?.then(r => {
+      console.log(r.data);
+      setResponse(r.data);
+    });
+  }, [promiseResponse]);
 
   return {
     response,
     error,
     loading,
+    refetch,
   };
 };
 
@@ -81,7 +87,6 @@ export const useAxiosPromise = <R>(
       return;
     }
     const tokenState = getTokenState(tokens);
-    console.log('Useffect Token');
     if (tokenState == 'Expire') {
       if (tokens.accessToken == '') {
         void fetchData(paramAxiosConfig);

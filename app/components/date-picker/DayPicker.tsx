@@ -11,7 +11,7 @@ type Props = {
 export const DayPicker = ({initialDate, onChange}: Props): JSX.Element => {
   const [year, setYear] = useState<number>(initialDate.getFullYear());
   const [month, setMonth] = useState<number>(initialDate.getMonth() + 1);
-  const [day, setDay] = useState<number>(initialDate.getDay());
+  const [day, setDay] = useState<number>(initialDate.getDate());
   const [actualMaxDay, setActualMaxDay] = useState<number>(31);
 
   useEffect(() => {
@@ -19,9 +19,9 @@ export const DayPicker = ({initialDate, onChange}: Props): JSX.Element => {
       return;
     }
 
-    const date = new Date(year, month, day);
+    const date = new Date(year, month - 1, day);
     onChange(date);
-  }, [year, month]);
+  }, [year, month, day]);
 
   useEffect(() => {
     const date = new Date(year, month, 0);

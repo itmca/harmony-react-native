@@ -20,41 +20,10 @@ export const isLoggedInState = selector({
       const refreshTokenExpireAt = Date.parse(auth.refreshTokenExpireAt);
       const current = Date.now();
       const isLogged =
-        refreshTokenExpireAt >= current || accessTokenExpireAt >= current;
 
+        refreshTokenExpireAt >= current || accessTokenExpireAt >= current;
       return isLogged;
     } else return false;
   },
 });
 
-export const tokenState = atom<TokenState>({
-  key: 'tokenState',
-  default: 'Expire',
-});
-
-export const currentTokenState = selector({
-  key: 'currentTokenState',
-  get: ({get}): TokenState => {
-    const currentTokenState = get(tokenState);
-    return currentTokenState;
-  },
-  set: ({set, get}) => {
-    const auth = get(authState);
-    if (auth && auth.accessToken != '') {
-      const accessTokenExpireAt = Date.parse(auth.accessTokenExpireAt);
-      const refreshTokenExpireAt = Date.parse(auth.refreshTokenExpireAt);
-      const current = Date.now();
-
-      const isAccessTokenUse = accessTokenExpireAt >= current;
-      const isRefreshTokenUse = refreshTokenExpireAt >= current;
-
-      if (isAccessTokenUse) {
-        set(tokenState, 'Use');
-      } else if (isRefreshTokenUse) {
-        set(tokenState, 'Refresh');
-      } else {
-        set(tokenState, 'Expire');
-      }
-    } else set(tokenState, 'Expire');
-  },
-});

@@ -32,10 +32,10 @@ export const StoryDatePicker = ({
   let renderPicker = (
     <AgePicker
       heroName={heroName}
-      initialAge={initialDate.getFullYear() - birthday.getFullYear()}
+      initialAge={initialDate.getFullYear() - birthday.getFullYear() + 1}
       onChangeAge={(age: number) => {
-        const storyYear = birthday.getFullYear() + age;
-        const newStoryDate = new Date(storyYear, 12, 31);
+        const storyYear = birthday.getFullYear() + age - 1;
+        const newStoryDate = new Date(storyYear, 12, 0);
         setStoryDate(newStoryDate);
       }}
     />
@@ -47,8 +47,8 @@ export const StoryDatePicker = ({
         heroName={heroName}
         initialAge={initialDate.getFullYear() - birthday.getFullYear()}
         onChangeAgeGroup={ageGroup => {
-          const storyYear = birthday.getFullYear() + ageGroup + 9;
-          const newStoryDate = new Date(storyYear, 12, 31);
+          const storyYear = birthday.getFullYear() + ageGroup + 8;
+          const newStoryDate = new Date(storyYear, 12, 0);
           setStoryDate(newStoryDate);
         }}
       />

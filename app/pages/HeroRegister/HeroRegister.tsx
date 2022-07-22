@@ -6,7 +6,7 @@ import ColoredButton from '../../components/button/ColoredButton';
 import {DatePickerInput} from 'react-native-paper-dates';
 import {useAxiosPromise} from '../../hooks/network.hooks';
 
-const CharacterRegister = ({navigation}): JSX.Element => {
+const HeroRegister = ({navigation}): JSX.Element => {
   const [name, setName] = useState<string>('');
   const [nickName, setNickName] = useState<string>('');
   const [birthday, setBirthday] = useState<Date | undefined>(undefined);
@@ -94,4 +94,4 @@ const CharacterRegister = ({navigation}): JSX.Element => {
   );
 };
 
-export default CharacterRegister;
+export default HeroRegister;
