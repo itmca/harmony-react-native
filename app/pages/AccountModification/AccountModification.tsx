@@ -1,27 +1,28 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {styles} from './styles';
 import {TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
 import {DatePickerInput} from 'react-native-paper-dates';
-import {useRecoilValue, useResetRecoilState} from 'recoil';
+import {useResetRecoilState} from 'recoil';
 import {authState} from '../../recoils/AuthRecoil';
 import {userState} from '../../recoils/UserRecoil';
 import {
   helpQuestionState,
-  storyTextState,
-  storyDateState,
   recordFileState,
+  storyDateState,
+  storyTextState,
 } from '../../recoils/StoryWritingRecoil';
 import {SelectedCategoryState} from '../../recoils/SelectedCategoryRecoil';
 import {selectedPhotoState} from '../../recoils/SelectedPhotoRecoil';
 import {SelectedStoryKeyState} from '../../recoils/SelectedStoryIdRecoil';
 import {
-  helpQuestionTextState,
   helpQuestionOpenState,
+  helpQuestionTextState,
 } from '../../recoils/HelpQuestionRecoil';
 import {useNavigation} from '@react-navigation/native';
-import { LocalStorage } from '../../storage/local.storage';
+import {LocalStorage} from '../../storage/local.storage';
+import {heroState} from '../../recoils/HeroRecoil';
 
 const AccountModification = (): JSX.Element => {
   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined);
@@ -29,7 +30,7 @@ const AccountModification = (): JSX.Element => {
 
   const authReset = useResetRecoilState(authState);
   const userReset = useResetRecoilState(userState);
-  const heroReset = useResetRecoilState(userState);
+  const heroReset = useResetRecoilState(heroState);
   const questionTextReset = useResetRecoilState(helpQuestionTextState);
   const questionOpenReset = useResetRecoilState(helpQuestionOpenState);
   const selectedCategoryReset = useResetRecoilState(SelectedCategoryState);
