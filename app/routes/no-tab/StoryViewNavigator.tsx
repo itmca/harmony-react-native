@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import StoryDetail from '../../pages/StoryDetail/StoryDetail';
 import GoBackHeaderLeft from '../../components/header/GoBackHeaderLeft';
@@ -8,7 +7,6 @@ import HeroBadgeHeader from '../../components/header/HeroBadgeHeader';
 const Stack = createNativeStackNavigator();
 
 const StoryViewNavigator = (): JSX.Element => {
-  const navigation = useNavigation();
   return (
     <Stack.Navigator
       initialRouteName="StoryDetail"

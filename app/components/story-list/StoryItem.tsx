@@ -17,22 +17,19 @@ const StoryItem = ({story}: props): JSX.Element => {
   const navigation = useNavigation<any>();
   const storyId = useSetRecoilState(SelectedStoryKeyState);
 
-  const onPress = (id: Story['id']) => {
+  const moveToStoryDetailPage = (id: Story['id']) => {
     storyId(id);
     navigation.navigate('NoTab', StoryViewNavigator);
   };
 
-  function getDisplayDate() {
-    const date = new Date(story.date);
-    return `${date.getFullYear()}년 ${
-      date.getMonth() + 1
-    }월 ${date.getDate()}일`;
-  }
-
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        moveToStoryDetailPage(story.id);
+      }}>
       <View style={styles.thumbnailListItemContainer}>
-        <TouchableOpacity onPress={() => onPress(story.id)} style={{flex: 1}}>
+        <View style={{flex: 1}}>
           <View>
             <Text
               numberOfLines={1}
@@ -47,7 +44,7 @@ const StoryItem = ({story}: props): JSX.Element => {
               {story.content}
             </Text>
           </View>
-        </TouchableOpacity>
+        </View>
         {story.photos.length > 0 && (
           <View style={styles.thumbnailBox}>
             <View>
@@ -74,7 +71,7 @@ const StoryItem = ({story}: props): JSX.Element => {
           )}
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

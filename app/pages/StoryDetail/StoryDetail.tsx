@@ -7,6 +7,7 @@ import {styles} from './styles';
 import {useAxios} from '../../hooks/network.hooks';
 import {Story} from '../../type/story';
 import {getStoryDisplayTagsDate} from '../../utils/story.display.util';
+import {StoryAudioPlayer} from '../../components/story/StoryAudioPlayer';
 
 const StoryDetail = (): JSX.Element => {
   const storyKey = useRecoilValue(SelectedStoryKeyState);
@@ -43,10 +44,15 @@ const StoryDetail = (): JSX.Element => {
             height: 360,
           }}
         />
-        <View style={styles.textContainer}>
-          <View style={{marginBottom: 16}}>
-            <Text style={{fontSize: 24}}>{story.title}</Text>
-            <Text style={{fontSize: 12}}>{getStoryDisplayTagsDate(story)}</Text>
+        <View style={styles.contentMainContainer}>
+          <View style={styles.contentTopPartContainer}>
+            <View>
+              <Text style={{fontSize: 24}}>{story.title}</Text>
+              <Text style={{fontSize: 12}}>
+                {getStoryDisplayTagsDate(story)}
+              </Text>
+            </View>
+            <StoryAudioPlayer audioURL={story.audios[0]} />
           </View>
           <Text>{story.content}</Text>
         </View>

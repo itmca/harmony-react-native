@@ -10,7 +10,6 @@ import PuzzleWritingQuestion from '../../pages/PuzzleWritingQuestion/PuzzleWriti
 import WritingHeaderLeft from '../../components/header/WritingHeaderLeft';
 import WritingHeaderRight from '../../components/header/WritingHeaderRight';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {useRecoilValue} from 'recoil';
 import {isLoggedInState} from '../../recoils/AuthRecoil';
 import StoryList from '../../pages/StoryList/StoryList';
@@ -38,6 +37,10 @@ const HomeTabRootNavigator = (): JSX.Element => {
         headerRightContainerStyle: {
           paddingRight: 16,
         },
+        headerStyle: {
+          shadowColor: 'transparent',
+          elevation: 0,
+        },
         tabBarHideOnKeyboard: true,
       }}>
       <BottomTab.Screen
@@ -47,8 +50,8 @@ const HomeTabRootNavigator = (): JSX.Element => {
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) =>
             isLoggedIn ? (
-              <MaterialIcon
-                name={focused ? 'menu-book' : 'menu-book'}
+              <MaterialCommunityIcon
+                name={focused ? 'book-open-page-variant' : 'book-outline'}
                 size={24}
               />
             ) : (
@@ -59,13 +62,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
             ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
-          headerRight: () =>
-            isLoggedIn && (
-              <HeroBadgeHeader
-                imageURL={hero?.imageURL || ''}
-                characterName={hero.heroNickName}
-              />
-            ),
+          headerRight: () => isLoggedIn && <HeroBadgeHeader />,
         }}
       />
       <BottomTab.Screen
@@ -94,6 +91,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
         component={Profile}
         options={{
           title: '',
+          headerShown: false,
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => (
             <MaterialCommunityIcon
