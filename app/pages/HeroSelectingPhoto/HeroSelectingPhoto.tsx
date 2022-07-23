@@ -76,7 +76,7 @@ const HeroSelectingPhoto = (): JSX.Element => {
           {photos?.map((photo, index) => {
             const isDisabled =
               selectedPhoto?.node.image.uri === photo.node.image.uri;
-            console.log(isDisabled, index, selectedPhoto?.node.image.uri);
+            console.log(isDisabled, index, selectedPhoto?.node.image);
 
             return (
               <SelectablePhoto
@@ -85,8 +85,8 @@ const HeroSelectingPhoto = (): JSX.Element => {
                   setSelectedPhoto(photo);
                 }}
                 //! size 수정 필요
-                onDeselected={(photo: PhotoIdentifier) => {
-                  setSelectedPhoto(undefined);
+                onDeselected={() => {
+                  if (isDisabled == false) setSelectedPhoto(undefined);
                 }}
                 size={DeviceWidth / 3}
                 photo={photo}
