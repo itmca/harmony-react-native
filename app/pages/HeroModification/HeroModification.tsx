@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Alert, ScrollView, View} from 'react-native';
 import {styles} from './styles';
-import {TextInput} from 'react-native-paper';
+import {Avatar, TextInput} from 'react-native-paper';
 import ColoredButton from '../../components/button/ColoredButton';
 import {DatePickerInput} from 'react-native-paper-dates';
 import {useAxiosPromise} from '../../hooks/network.hooks';
 import {Hero} from '../../type/hero';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const HeroModification = ({navigation, route}): JSX.Element => {
   const heroNo = route?.params?.heroNo;
@@ -73,6 +74,18 @@ const HeroModification = ({navigation, route}): JSX.Element => {
       <ScrollView
         style={styles.scrollViewContainer}
         contentContainerStyle={styles.formContainer}>
+        <TouchableOpacity
+          style={{marginTop: 32, marginBottom: 32}}
+          onPress={() => {
+            navigation.push('NoTab', {
+              screen: 'CharacterSettingNavigator',
+              params: {
+                screen: 'CharacterSelectingPhoto',
+              },
+            });
+          }}>
+          <Avatar.Image size={128} source={{uri: undefined}} />
+        </TouchableOpacity>
         <TextInput
           style={styles.formInput}
           mode="outlined"

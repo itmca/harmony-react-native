@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {CheckCover, Container} from './styles';
@@ -9,6 +9,7 @@ type SelectablePhotoProps = {
   onDeselected: Function;
   size: number;
   photo: PhotoIdentifier;
+  initalSelected?: boolean;
 };
 
 const SelectablePhoto = ({
@@ -16,8 +17,9 @@ const SelectablePhoto = ({
   onDeselected,
   size,
   photo,
+  initalSelected = false,
 }: SelectablePhotoProps): JSX.Element => {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(initalSelected);
 
   const _onPress = () => {
     isSelected === true ? onDeselected(photo) : onSelected(photo);
