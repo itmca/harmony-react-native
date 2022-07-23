@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     overflow: 'hidden',
     flex: 1.2,
+    marginTop: 8,
     maxHeight: 355,
   },
   mainImage: {

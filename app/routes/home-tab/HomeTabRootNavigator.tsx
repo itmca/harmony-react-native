@@ -37,6 +37,10 @@ const HomeTabRootNavigator = (): JSX.Element => {
         headerRightContainerStyle: {
           paddingRight: 16,
         },
+        headerStyle: {
+          shadowColor: 'transparent',
+          elevation: 0,
+        },
         tabBarHideOnKeyboard: true,
       }}>
       <BottomTab.Screen
@@ -58,13 +62,7 @@ const HomeTabRootNavigator = (): JSX.Element => {
             ),
           headerLeft: () => <DefaultHeaderLeft />,
           title: '',
-          headerRight: () =>
-            isLoggedIn && (
-              <HeroBadgeHeader
-                imageURL={hero?.imageURL || ''}
-                characterName={hero.heroNickName}
-              />
-            ),
+          headerRight: () => isLoggedIn && <HeroBadgeHeader />,
         }}
       />
       <BottomTab.Screen
